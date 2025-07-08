@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const cityName = location.cityName
-    const stateName = location.state.stateName
+    const stateName = 'state' in location && location.state ? location.state.stateName : state.toUpperCase()
 
     return {
       title: `Bitcoin Estate Planning Attorney in ${cityName}, ${stateName} | BEPC Certified`,
@@ -58,7 +58,7 @@ export async function generateStaticParams() {
     })
 
     return cities.map((city) => ({
-      state: city.state.stateCode,
+      state: 'state' in city && city.state ? city.state.stateCode : city.stateId,
       city: city.citySlug,
     }))
   } catch (error) {

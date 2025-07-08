@@ -57,14 +57,23 @@ export const safeDb = {
         console.log('Database error in city.findFirst, returning mock data')
         // Return mock data based on the query
         if (args?.where?.citySlug && args?.where?.state?.stateCode) {
-          return {
+          const includeState = args?.include?.state
+          const mockCity = {
             ...mockLocation,
             citySlug: args.where.citySlug,
-            state: {
-              ...mockLocation.state,
-              stateCode: args.where.state.stateCode,
-            },
           }
+          
+          if (includeState) {
+            return {
+              ...mockCity,
+              state: {
+                ...mockLocation.state,
+                stateCode: args.where.state.stateCode,
+              },
+            }
+          }
+          
+          return mockCity
         }
         return null
       }
@@ -75,6 +84,13 @@ export const safeDb = {
         return result
       } catch (error) {
         console.log('Database error in city.findMany, returning mock data')
+        const includeState = args?.include?.state
+        if (includeState) {
+          return mockCities.map(city => ({
+            ...city,
+            state: mockStates.find(s => s.id === city.stateId) || mockStates[0]
+          }))
+        }
         return mockCities
       }
     },

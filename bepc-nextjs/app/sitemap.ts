@@ -59,8 +59,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
   
   // Location pages (highest priority for SEO)
-  const locationPages = cities.map((city) => ({
-    url: `${baseUrl}/${city.state.stateCode}/${city.citySlug}/bitcoin-estate-planning-attorney`,
+  const locationPages = cities.map((city: any) => ({
+    url: `${baseUrl}/${city.state?.stateCode || city.stateId}/${city.citySlug}/bitcoin-estate-planning-attorney`,
     lastModified: new Date(),
     changeFrequency: 'daily' as const,
     priority: 0.9,
