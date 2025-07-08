@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const cityName = location.cityName
-    const stateName = 'state' in location && location.state ? location.state.stateName : state.toUpperCase()
+    const stateName = (location as any).state?.stateName || state.toUpperCase()
 
     return {
       title: `Bitcoin Estate Planning Attorney in ${cityName}, ${stateName} | BEPC Certified`,
@@ -57,8 +57,8 @@ export async function generateStaticParams() {
       include: { state: true },
     })
 
-    return cities.map((city) => ({
-      state: 'state' in city && city.state ? city.state.stateCode : city.stateId,
+    return cities.map((city: any) => ({
+      state: city.state?.stateCode || city.stateId || 'ca',
       city: city.citySlug,
     }))
   } catch (error) {
@@ -132,7 +132,7 @@ export default async function LocationPage({ params }: Props) {
     return (
       <LocationPageContent
         location={location}
-        attorneys={location.attorneys || []}
+        attorneys={(location as any).attorneys || []}
         nearbyCities={nearbyCities}
       />
     )
