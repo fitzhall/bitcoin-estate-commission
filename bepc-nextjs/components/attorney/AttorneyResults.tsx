@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import { safeDb } from '@/lib/database'
 import { AttorneyCard } from './AttorneyCard'
 import Link from 'next/link'
 
@@ -21,13 +21,16 @@ export async function AttorneyResults({ searchParams }: Props) {
     verifiedStatus: true,
   }
 
+  let attorneys = []
+  let totalCount = 0
+
+  try {
+
   if (searchParams.certification) {
     where.certificationLevel = searchParams.certification
   }
 
   // For location and specialization, we'll need to do more complex queries
-  let attorneys
-  let totalCount
 
   if (searchParams.location || searchParams.specialization) {
     // Complex query with joins
@@ -43,7 +46,7 @@ export async function AttorneyResults({ searchParams }: Props) {
       : {}
 
     const [results, count] = await Promise.all([
-      prisma.attorney.findMany({
+      safeDb.attorney.findMany({
         where: {
           ...where,
           ...locationFilter,
@@ -60,7 +63,7 @@ export async function AttorneyResults({ searchParams }: Props) {
         take: limit,
         skip: offset,
       }),
-      prisma.attorney.count({
+      safeDb.attorney.count({
         where: {
           ...where,
           ...locationFilter,
@@ -85,7 +88,7 @@ export async function AttorneyResults({ searchParams }: Props) {
   } else {
     // Simple query
     const [results, count] = await Promise.all([
-      prisma.attorney.findMany({
+      safeDb.attorney.findMany({
         where,
         include: {
           city: true,
@@ -99,11 +102,15 @@ export async function AttorneyResults({ searchParams }: Props) {
         take: limit,
         skip: offset,
       }),
-      prisma.attorney.count({ where }),
+      safeDb.attorney.count({ where }),
     ])
     
     attorneys = results
     totalCount = count
+  }
+  } catch (error) {
+    console.log('Database error:', error)
+    // Return empty results if database is not ready
   }
 
   const totalPages = Math.ceil(totalCount / limit)

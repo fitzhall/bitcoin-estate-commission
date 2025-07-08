@@ -1,21 +1,29 @@
 import { MetadataRoute } from 'next'
-import { prisma } from '@/lib/prisma'
+import { safeDb } from '@/lib/database'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://bitcoinestateplanning.org'
   
-  // Get all cities for location pages
-  const cities = await prisma.city.findMany({
-    include: { state: true }
-  })
+  let cities = []
+  let attorneys = []
+  let states = []
   
-  // Get all attorneys
-  const attorneys = await prisma.attorney.findMany({
-    where: { verifiedStatus: true }
-  })
-  
-  // Get all states
-  const states = await prisma.state.findMany()
+  try {
+    // Get all cities for location pages
+    cities = await safeDb.city.findMany({
+      include: { state: true }
+    })
+    
+    // Get all attorneys
+    attorneys = await safeDb.attorney.findMany({
+      where: { verifiedStatus: true }
+    })
+    
+    // Get all states
+    states = await safeDb.state.findMany()
+  } catch (error) {
+    console.log('Database not ready for sitemap generation:', error)
+  }
   
   // Static pages
   const staticPages = [

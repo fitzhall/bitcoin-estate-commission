@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { safeDb } from '@/lib/database'
 
 export async function GET(request: NextRequest) {
   try {
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     }
 
     const [attorneys, total] = await Promise.all([
-      prisma.attorney.findMany({
+      safeDb.attorney.findMany({
         where,
         include: {
           city: true,
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
         take: limit,
         skip: offset,
       }),
-      prisma.attorney.count({ where }),
+      safeDb.attorney.count({ where }),
     ])
 
     // Filter by specialization if needed

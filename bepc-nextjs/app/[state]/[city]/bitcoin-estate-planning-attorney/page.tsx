@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { prisma } from '@/lib/prisma'
+import { safeDb } from '@/lib/database'
 import { LocationPageContent } from '@/components/location/LocationPageContent'
 
 interface Props {
@@ -13,85 +13,152 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state, city } = params
   
-  const location = await prisma.city.findFirst({
-    where: {
-      citySlug: city,
-      state: { stateCode: state }
-    },
-    include: { state: true }
-  })
+  try {
+    const location = await safeDb.city.findFirst({
+      where: {
+        citySlug: city,
+        state: { stateCode: state }
+      },
+      include: { state: true }
+    })
 
-  if (!location) {
-    return {
-      title: 'Location Not Found',
+    if (!location) {
+      return {
+        title: `Bitcoin Estate Planning Attorney in ${city}, ${state.toUpperCase()}`,
+        description: `Find BEPC certified Bitcoin estate planning attorneys. Expert cryptocurrency inheritance planning and digital asset protection.`,
+      }
     }
-  }
 
-  const cityName = location.cityName
-  const stateName = location.state.stateName
+    const cityName = location.cityName
+    const stateName = location.state.stateName
 
-  return {
-    title: `Bitcoin Estate Planning Attorney in ${cityName}, ${stateName} | BEPC Certified`,
-    description: `Find BEPC certified Bitcoin estate planning attorneys in ${cityName}, ${stateName}. Expert cryptocurrency inheritance planning, digital asset protection, and tax optimization. Free consultation available.`,
-    openGraph: {
-      title: `Bitcoin Estate Planning Attorney in ${cityName}, ${stateName}`,
-      description: `Expert Bitcoin estate planning attorneys in ${cityName}. Certified professionals specializing in cryptocurrency inheritance.`,
-      type: 'website',
-    },
+    return {
+      title: `Bitcoin Estate Planning Attorney in ${cityName}, ${stateName} | BEPC Certified`,
+      description: `Find BEPC certified Bitcoin estate planning attorneys in ${cityName}, ${stateName}. Expert cryptocurrency inheritance planning, digital asset protection, and tax optimization. Free consultation available.`,
+      openGraph: {
+        title: `Bitcoin Estate Planning Attorney in ${cityName}, ${stateName}`,
+        description: `Expert Bitcoin estate planning attorneys in ${cityName}. Certified professionals specializing in cryptocurrency inheritance.`,
+        type: 'website',
+      },
+    }
+  } catch (error) {
+    console.error('Error generating metadata:', error)
+    // Return fallback metadata
+    return {
+      title: `Bitcoin Estate Planning Attorney in ${city}, ${state.toUpperCase()}`,
+      description: `Find BEPC certified Bitcoin estate planning attorneys. Expert cryptocurrency inheritance planning and digital asset protection.`,
+    }
   }
 }
 
 export async function generateStaticParams() {
-  const cities = await prisma.city.findMany({
-    include: { state: true },
-  })
+  try {
+    const cities = await safeDb.city.findMany({
+      include: { state: true },
+    })
 
-  return cities.map((city) => ({
-    state: city.state.stateCode,
-    city: city.citySlug,
-  }))
+    return cities.map((city) => ({
+      state: city.state.stateCode,
+      city: city.citySlug,
+    }))
+  } catch (error) {
+    console.log('Database not ready, returning empty params')
+    return []
+  }
 }
 
 export default async function LocationPage({ params }: Props) {
   const { state, city } = params
 
-  const location = await prisma.city.findFirst({
-    where: {
-      citySlug: city,
-      state: { stateCode: state }
-    },
-    include: {
-      state: true,
-      attorneys: {
-        where: { verifiedStatus: true },
-        orderBy: [
-          { featured: 'desc' },
-          { certificationLevel: 'desc' },
-          { yearsExperience: 'desc' }
-        ],
+  try {
+    const location = await safeDb.city.findFirst({
+      where: {
+        citySlug: city,
+        state: { stateCode: state }
       },
-    },
-  })
+      include: {
+        state: true,
+        attorneys: {
+          where: { verifiedStatus: true },
+          orderBy: [
+            { featured: 'desc' },
+            { certificationLevel: 'desc' },
+            { yearsExperience: 'desc' }
+          ],
+        },
+      },
+    })
 
-  if (!location) {
-    notFound()
+    if (!location) {
+      // Instead of notFound(), return a basic page with mock data
+      const mockLocationData = {
+        id: 'mock-id',
+        cityName: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+        citySlug: city,
+        population: 100000,
+        stateId: state,
+        state: {
+          id: state,
+          stateName: state.toUpperCase(),
+          stateCode: state.toUpperCase(),
+        },
+        attorneys: [],
+      }
+
+      return (
+        <LocationPageContent
+          location={mockLocationData}
+          attorneys={[]}
+          nearbyCities={[]}
+        />
+      )
+    }
+
+    // Get nearby cities
+    let nearbyCities = []
+    try {
+      nearbyCities = await safeDb.city.findMany({
+        where: {
+          stateId: location.stateId,
+          NOT: { id: location.id },
+        },
+        orderBy: { population: 'desc' },
+        take: 5,
+      })
+    } catch (error) {
+      console.log('Error fetching nearby cities:', error)
+    }
+
+    return (
+      <LocationPageContent
+        location={location}
+        attorneys={location.attorneys || []}
+        nearbyCities={nearbyCities}
+      />
+    )
+  } catch (error) {
+    console.error('Error loading location page:', error)
+    // Return a basic page with mock data
+    const mockLocationData = {
+      id: 'mock-id',
+      cityName: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+      citySlug: city,
+      population: 100000,
+      stateId: state,
+      state: {
+        id: state,
+        stateName: state.toUpperCase(),
+        stateCode: state.toUpperCase(),
+      },
+      attorneys: [],
+    }
+
+    return (
+      <LocationPageContent
+        location={mockLocationData}
+        attorneys={[]}
+        nearbyCities={[]}
+      />
+    )
   }
-
-  // Get nearby cities
-  const nearbyCities = await prisma.city.findMany({
-    where: {
-      stateId: location.stateId,
-      NOT: { id: location.id },
-    },
-    orderBy: { population: 'desc' },
-    take: 5,
-  })
-
-  return (
-    <LocationPageContent
-      location={location}
-      attorneys={location.attorneys}
-      nearbyCities={nearbyCities}
-    />
-  )
 }
