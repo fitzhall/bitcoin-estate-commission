@@ -70,7 +70,7 @@ export function PathSelection() {
                   Start Certification
                 </Link>
                 <Link href="/certification/overview" className="btn btn-outline btn-lg w-full">
-                  Learn More
+                  View Certification Details
                 </Link>
               </div>
             </div>

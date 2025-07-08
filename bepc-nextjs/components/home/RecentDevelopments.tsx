@@ -55,7 +55,9 @@ export function RecentDevelopments() {
                 href={item.link}
                 className="inline-flex items-center text-primary font-semibold hover:text-primary-dark"
               >
-                Read More
+                {item.category === 'Standards Update' && 'View KEEP Protocol Details'}
+                {item.category === 'Legal Update' && 'Review State Law Changes'}
+                {item.category === 'Research' && 'Read Full Report'}
                 <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
