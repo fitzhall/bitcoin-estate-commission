@@ -52,23 +52,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    const cities = await safeDb.city.findMany({
-      include: { state: true },
-    })
+// Force static generation at build time
+export const dynamic = 'force-static'
+export const revalidate = 86400 // Revalidate once per day
 
-    if (cities.length > 0) {
-      return cities.map((city: any) => ({
-        state: city.state?.stateCode || city.stateId || 'ca',
-        city: city.citySlug,
-      }))
-    }
-  } catch (error) {
-    console.log('Database not ready, using static city data')
-  }
+export async function generateStaticParams() {
+  // Always use static city data to ensure all 500+ cities are created at build time
+  // This ensures consistent static generation regardless of database availability
+  console.log(`Generating static params for ${US_MAJOR_CITIES.length} cities`)
   
-  // Use static city data to ensure all 500+ cities are created
   return US_MAJOR_CITIES.map((city) => ({
     state: city.state,
     city: city.city,
@@ -77,110 +69,122 @@ export async function generateStaticParams() {
 
 export default async function LocationPage({ params }: Props) {
   const { state, city } = params
-
-  try {
-    const location = await safeDb.city.findFirst({
-      where: {
-        citySlug: city,
-        state: { stateCode: state }
-      },
-      include: {
-        state: true,
-        attorneys: {
-          where: { verifiedStatus: true },
-          orderBy: [
-            { featured: 'desc' },
-            { certificationLevel: 'desc' },
-            { yearsExperience: 'desc' }
-          ],
-        },
-      },
-    })
-
-    if (!location) {
-      // Instead of notFound(), return a basic page with mock data
-      const mockLocationData: any = {
-        id: 'mock-id',
-        cityName: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-        citySlug: city,
-        population: 100000,
-        stateId: state,
-        medianIncome: 75000,
-        bitcoinBusinessesCount: 10,
-        lawFirmsCount: 50,
-        latitude: null,
-        longitude: null,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        state: {
-          id: state,
-          stateName: state.toUpperCase(),
-          stateCode: state.toUpperCase(),
-        },
-        attorneys: [],
-      }
-
-      return (
-        <LocationPageContent
-          location={mockLocationData}
-          attorneys={[]}
-          nearbyCities={[]}
-        />
-      )
-    }
-
-    // Get nearby cities
-    let nearbyCities: any[] = []
-    try {
-      nearbyCities = await safeDb.city.findMany({
-        where: {
-          stateId: location.stateId,
-          NOT: { id: location.id },
-        },
-        orderBy: { population: 'desc' },
-        take: 5,
-      })
-    } catch (error) {
-      console.log('Error fetching nearby cities:', error)
-    }
-
-    return (
-      <LocationPageContent
-        location={location as any}
-        attorneys={(location as any).attorneys || []}
-        nearbyCities={nearbyCities}
-      />
-    )
-  } catch (error) {
-    console.error('Error loading location page:', error)
-    // Return a basic page with mock data
-    const mockLocationData: any = {
-      id: 'mock-id',
-      cityName: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-      citySlug: city,
-      population: 100000,
-      stateId: state,
-      medianIncome: 75000,
-      bitcoinBusinessesCount: 10,
-      lawFirmsCount: 50,
-      latitude: null,
-      longitude: null,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      state: {
-        id: state,
-        stateName: state.toUpperCase(),
-        stateCode: state.toUpperCase(),
-      },
-      attorneys: [],
-    }
-
-    return (
-      <LocationPageContent
-        location={mockLocationData}
-        attorneys={[]}
-        nearbyCities={[]}
-      />
-    )
+  
+  // Find the city data from our static list first
+  const staticCityData = US_MAJOR_CITIES.find(
+    c => c.state === state && c.city === city
+  )
+  
+  if (!staticCityData) {
+    notFound()
   }
+  
+  // Create base location data from static data
+  const baseLocationData: any = {
+    id: `${state}-${city}`,
+    cityName: staticCityData.name,
+    citySlug: city,
+    population: staticCityData.population,
+    stateId: state,
+    medianIncome: 75000,
+    bitcoinBusinessesCount: Math.floor(staticCityData.population / 10000),
+    lawFirmsCount: Math.floor(staticCityData.population / 2000),
+    latitude: null,
+    longitude: null,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    state: {
+      id: state,
+      stateName: state.toUpperCase(),
+      stateCode: state.toUpperCase(),
+    },
+    attorneys: [],
+  }
+  
+  // Try to enhance with database data if available, but don't block
+  let location = baseLocationData
+  let attorneys: any[] = []
+  let nearbyCities: any[] = []
+  
+  // Only try database if we have a DATABASE_URL
+  if (process.env.DATABASE_URL) {
+    try {
+      // Use Promise.race to ensure we don't wait too long
+      const dbPromise = safeDb.city.findFirst({
+        where: {
+          citySlug: city,
+          state: { stateCode: state }
+        },
+        include: {
+          state: true,
+          attorneys: {
+            where: { verifiedStatus: true },
+            orderBy: [
+              { featured: 'desc' },
+              { certificationLevel: 'desc' },
+              { yearsExperience: 'desc' }
+            ],
+            take: 10, // Limit attorneys to improve performance
+          },
+        },
+      })
+      
+      const timeoutPromise = new Promise((resolve) => 
+        setTimeout(() => resolve(null), 1000) // 1 second timeout
+      )
+      
+      const dbResult = await Promise.race([dbPromise, timeoutPromise])
+      
+      if (dbResult) {
+        location = dbResult as any
+        attorneys = (location as any).attorneys || []
+        
+        // Get nearby cities with timeout
+        const nearbyCitiesPromise = safeDb.city.findMany({
+          where: {
+            stateId: location.stateId,
+            NOT: { id: location.id },
+          },
+          orderBy: { population: 'desc' },
+          take: 5,
+          select: {
+            id: true,
+            cityName: true,
+            citySlug: true,
+            stateId: true,
+          },
+        })
+        
+        const nearbyCitiesResult = await Promise.race([
+          nearbyCitiesPromise,
+          new Promise(resolve => setTimeout(() => resolve([]), 500))
+        ])
+        
+        nearbyCities = nearbyCitiesResult as any[]
+      }
+    } catch (error) {
+      console.log('Using static data due to database error:', error)
+    }
+  }
+  
+  // Get nearby cities from static data if not from database
+  if (nearbyCities.length === 0) {
+    nearbyCities = US_MAJOR_CITIES
+      .filter(c => c.state === state && c.city !== city)
+      .slice(0, 5)
+      .map(c => ({
+        id: `${c.state}-${c.city}`,
+        cityName: c.name,
+        citySlug: c.city,
+        stateId: c.state,
+      }))
+  }
+  
+  return (
+    <LocationPageContent
+      location={location}
+      attorneys={attorneys}
+      nearbyCities={nearbyCities}
+    />
+  )
 }

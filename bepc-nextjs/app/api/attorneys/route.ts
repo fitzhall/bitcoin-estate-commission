@@ -3,8 +3,12 @@ import { safeDb } from '@/lib/database'
 
 export const dynamic = 'force-dynamic'
 
+// Add caching headers for API responses
 export async function GET(request: NextRequest) {
   try {
+    // Set cache headers for API responses
+    const headers = new Headers()
+    headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300')
     const searchParams = request.nextUrl.searchParams
     const location = searchParams.get('location')
     const specialization = searchParams.get('specialization')
@@ -65,12 +69,13 @@ export async function GET(request: NextRequest) {
       total: specialization ? results.length : total,
       limit,
       offset,
-    })
+    }, { headers })
   } catch (error) {
     console.error('Error fetching attorneys:', error)
+    // Return empty results on error to avoid breaking the UI
     return NextResponse.json(
-      { error: 'Failed to fetch attorneys' },
-      { status: 500 }
+      { attorneys: [], total: 0, limit, offset, error: 'Failed to fetch attorneys' },
+      { status: 200, headers }
     )
   }
 }

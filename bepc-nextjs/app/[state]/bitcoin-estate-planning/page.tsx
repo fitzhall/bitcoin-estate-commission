@@ -88,6 +88,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+// Force static generation at build time
+export const dynamic = 'force-static'
+export const revalidate = 86400 // Revalidate once per day
+
 export async function generateStaticParams() {
   return Object.keys(US_STATES).map((stateCode) => ({
     state: stateCode,
@@ -105,41 +109,32 @@ export default async function StatePage({ params }: Props) {
   const stateCode = stateInfo.code
   const stateRegulation = stateRegulations[params.state] || stateRegulations.california
 
-  // Get cities in this state
-  let cities = []
+  // Get cities in this state - always use static data for consistent build
+  const staticCities = getCitiesByState(params.state)
+  let cities = staticCities.slice(0, 10).map(city => ({
+    id: `${city.state}-${city.city}`,
+    cityName: city.name,
+    citySlug: city.city,
+    population: city.population,
+    bitcoinBusinessesCount: Math.floor(city.population / 10000),
+    lawFirmsCount: Math.floor(city.population / 2000),
+    state: { stateCode: city.state.toUpperCase() }
+  }))
+  
   let attorneyCount = 0
   
-  try {
-    cities = await safeDb.city.findMany({
-      where: {
-        state: { stateCode: params.state.toUpperCase() }
-      },
-      orderBy: { population: 'desc' },
-      take: 10,
-      include: { state: true }
-    })
-
-    const attorneys = await safeDb.attorney.findMany({
-      where: {
-        state: { stateCode: params.state.toUpperCase() },
-        verifiedStatus: true
-      }
-    })
-    
-    attorneyCount = attorneys.length
-  } catch (error) {
-    console.log('Error fetching state data:', error)
-    // Fall back to static city data
-    const staticCities = getCitiesByState(params.state)
-    cities = staticCities.slice(0, 10).map(city => ({
-      id: `${city.state}-${city.city}`,
-      cityName: city.name,
-      citySlug: city.city,
-      population: city.population,
-      bitcoinBusinessesCount: Math.floor(city.population / 10000),
-      lawFirmsCount: Math.floor(city.population / 2000),
-      state: { stateCode: city.state.toUpperCase() }
-    }))
+  // Only try database for attorney count if available and not during build
+  if (process.env.DATABASE_URL && !process.env.SKIP_DATABASE_DURING_BUILD) {
+    try {
+      attorneyCount = await safeDb.attorney.count({
+        where: {
+          state: { stateCode: params.state.toUpperCase() },
+          verifiedStatus: true
+        }
+      })
+    } catch (error) {
+      console.log('Could not fetch attorney count:', error)
+    }
   }
 
   return (

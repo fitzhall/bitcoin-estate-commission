@@ -8,10 +8,10 @@ export class DatabaseError extends Error {
   }
 }
 
-// Cache database availability status for 5 minutes
+// Cache database availability status for 30 seconds in production
 let dbAvailable: boolean | null = null
 let lastCheck = 0
-const DB_CHECK_INTERVAL = 5 * 60 * 1000 // 5 minutes
+const DB_CHECK_INTERVAL = process.env.NODE_ENV === 'production' ? 30 * 1000 : 5 * 60 * 1000 // 30s in prod, 5m in dev
 
 // Helper to check if database is available
 export async function isDatabaseAvailable(): Promise<boolean> {
@@ -32,28 +32,30 @@ export async function isDatabaseAvailable(): Promise<boolean> {
     }
 
     // Skip connection attempt during build
-    if (process.env.VERCEL_ENV || process.env.CI) {
+    if (process.env.VERCEL_ENV || process.env.CI || process.env.NEXT_PHASE === 'phase-production-build' || process.env.SKIP_DATABASE_DURING_BUILD === 'true') {
       console.log('Build environment detected, skipping database connection')
       dbAvailable = false
       lastCheck = now
       return false
     }
 
-    // Try to connect to database with timeout
+    // Try to connect to database with shorter timeout
     const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Database connection timeout')), 5000)
+      setTimeout(() => reject(new Error('Database connection timeout')), 2000) // Reduced from 5s to 2s
     )
     
     try {
-      await Promise.race([
-        prisma.$connect(),
-        timeoutPromise
-      ])
-      // Test with a simple query
-      await prisma.$queryRaw`SELECT 1`
-      dbAvailable = true
-      lastCheck = now
-      return true
+      // Don't connect if already connected
+      if (prisma) {
+        // Test with a simple query
+        await Promise.race([
+          prisma.$queryRaw`SELECT 1`,
+          timeoutPromise
+        ])
+        dbAvailable = true
+        lastCheck = now
+        return true
+      }
     } catch (timeoutError) {
       throw timeoutError
     }

@@ -22,7 +22,26 @@ export const prisma = globalForPrisma.prisma ?? (() => {
   
   return new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+    // Optimize connection pooling
+    datasources: {
+      db: {
+        url: process.env.DATABASE_URL,
+      }
+    },
   })
 })()
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+// Always reuse the same instance in production for connection pooling
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma
+} else {
+  // In production, ensure we reuse the same client
+  globalForPrisma.prisma = prisma
+}
+
+// Gracefully handle shutdown to close connections
+if (process.env.NODE_ENV === 'production') {
+  process.on('beforeExit', async () => {
+    await prisma.$disconnect()
+  })
+}
