@@ -76,10 +76,10 @@ export function ValuePillars() {
                   <span className="text-red-600">Problem:</span> {pillar.problem}
                 </p>
                 <p className="text-gray-700">
-                  <span className="text-orange-600">Why it matters:</span> {pillar.agitation}
+                  <span className="text-orange-700 font-semibold">Why it matters:</span> {pillar.agitation}
                 </p>
                 <p className="text-gray-900">
-                  <span className="text-green-600">Our solution:</span> {pillar.solution}
+                  <span className="text-green-700 font-semibold">Our solution:</span> {pillar.solution}
                 </p>
               </div>
               <ul className="space-y-2 mb-8">

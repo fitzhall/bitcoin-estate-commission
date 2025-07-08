@@ -15,9 +15,9 @@ const config: Config = {
           light: '#2c4a6b',
         },
         secondary: {
-          DEFAULT: '#C9A96E',
-          dark: '#b59960',
-          light: '#d4b47f',
+          DEFAULT: '#8B6914',  // Darker gold for better contrast (WCAG AA)
+          dark: '#6B5010',
+          light: '#C9A96E',    // Original color moved to light variant
         },
         accent: '#F7931A',
         gray: {

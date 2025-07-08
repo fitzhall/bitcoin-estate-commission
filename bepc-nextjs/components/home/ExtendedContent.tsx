@@ -79,28 +79,28 @@ export function ExtendedContent() {
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   K
                 </div>
-                <h4 className="font-bold mb-2 text-center">Keep it Secure</h4>
+                <h3 className="font-bold mb-2 text-center">Keep it Secure</h3>
                 <p className="text-sm text-gray-600">Implement robust security measures to protect Bitcoin assets during your lifetime and beyond</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   E
                 </div>
-                <h4 className="font-bold mb-2 text-center">Establish Legal Protection</h4>
+                <h3 className="font-bold mb-2 text-center">Establish Legal Protection</h3>
                 <p className="text-sm text-gray-600">Create legally binding frameworks ensuring Bitcoin transfers according to your wishes</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   E
                 </div>
-                <h4 className="font-bold mb-2 text-center">Ensure Access Through Governance</h4>
+                <h3 className="font-bold mb-2 text-center">Ensure Access Through Governance</h3>
                 <p className="text-sm text-gray-600">Design clear governance structures enabling beneficiary access when needed</p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   P
                 </div>
-                <h4 className="font-bold mb-2 text-center">Plan for the Future</h4>
+                <h3 className="font-bold mb-2 text-center">Plan for the Future</h3>
                 <p className="text-sm text-gray-600">Create adaptable strategies that evolve with technology and family circumstances</p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export function ExtendedContent() {
             <h2 className="text-3xl font-bold mb-8">Fatal Mistakes in Bitcoin Estate Planning</h2>
             <div className="space-y-6">
               <div className="bg-red-50 border-l-4 border-red-500 p-6">
-                <h4 className="font-bold text-red-900 mb-2">Mistake #1: Storing Private Keys in a Will</h4>
+                <h3 className="font-bold text-red-900 mb-2">Mistake #1: Storing Private Keys in a Will</h3>
                 <p className="text-gray-700">
                   Wills become public record during probate. Including private keys exposes Bitcoin to theft. 
                   Yet 31% of DIY Bitcoin estate plans make this critical error.
@@ -172,7 +172,7 @@ export function ExtendedContent() {
               </div>
               
               <div className="bg-red-50 border-l-4 border-red-500 p-6">
-                <h4 className="font-bold text-red-900 mb-2">Mistake #2: Over-Relying on Hardware Wallets</h4>
+                <h3 className="font-bold text-red-900 mb-2">Mistake #2: Over-Relying on Hardware Wallets</h3>
                 <p className="text-gray-700">
                   Hardware wallets can fail, PINs can be forgotten, and manufacturers discontinue support. 
                   Without proper backup procedures, hardware wallets become single points of failure.
@@ -180,7 +180,7 @@ export function ExtendedContent() {
               </div>
               
               <div className="bg-red-50 border-l-4 border-red-500 p-6">
-                <h4 className="font-bold text-red-900 mb-2">Mistake #3: Incomplete Access Instructions</h4>
+                <h3 className="font-bold text-red-900 mb-2">Mistake #3: Incomplete Access Instructions</h3>
                 <p className="text-gray-700">
                   Telling heirs you have Bitcoin without complete recovery instructions is like leaving 
                   them a treasure map with missing pieces. Technical details matter.
@@ -188,7 +188,7 @@ export function ExtendedContent() {
               </div>
               
               <div className="bg-red-50 border-l-4 border-red-500 p-6">
-                <h4 className="font-bold text-red-900 mb-2">Mistake #4: Ignoring Tax Implications</h4>
+                <h3 className="font-bold text-red-900 mb-2">Mistake #4: Ignoring Tax Implications</h3>
                 <p className="text-gray-700">
                   Bitcoin inheritance can trigger massive tax liabilities. Without proper planning, 
                   heirs may be forced to liquidate at unfavorable times just to pay taxes.
