@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 const stats = [
-  { value: '$140B', label: 'Lost Forever' },
-  { value: '20%', label: 'Of All Bitcoin' },
-  { value: '4M', label: 'Coins Inaccessible' },
+  { value: '$140B+', label: 'Bitcoin at Risk' },
+  { value: '89%', label: 'Attorneys Unprepared' },
+  { value: '4M', label: 'Coins Could Be Lost' },
 ]
 
 export function Hero() {
@@ -13,11 +13,11 @@ export function Hero() {
       <div className="container relative py-24 sm:py-32">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            The Global Authority for Bitcoin Estate Planning
+            The Professional Standard for Bitcoin Estate Planning
           </h1>
           <p className="mb-10 text-xl text-gray-200 sm:text-2xl">
-            Protecting $2.3 trillion in Bitcoin wealth through professional standards, 
-            certification, and expert legal guidance.
+            Preventing Bitcoin inheritance disasters through attorney certification 
+            and professional standards
           </p>
           
           <div className="mb-10 flex flex-wrap justify-center gap-8 sm:gap-12">

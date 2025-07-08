@@ -4,38 +4,44 @@ const pillars = [
   {
     number: '01',
     title: 'Professional Standards',
-    description: 'The KEEP Protocol (Key, Estate, Execution, Protection) establishes the global standard for Bitcoin inheritance planning. Our rigorous certification ensures attorneys understand the unique challenges of digital asset transfer.',
+    problem: 'No established standards exist for Bitcoin estate planning',
+    agitation: 'Attorneys are making it up as they go, risking malpractice and client assets',
+    solution: 'The KEEP Protocol provides the first comprehensive framework for professional Bitcoin estate planning',
     features: [
-      'Comprehensive security protocols',
-      'Legal compliance frameworks',
-      'Technical implementation guides',
-      'Ongoing education requirements',
+      'Research-based security protocols',
+      'Tested legal frameworks',
+      'Step-by-step implementation guides',
+      'Quarterly standard updates',
     ],
     link: '/standards',
     linkText: 'Learn About Standards',
   },
   {
     number: '02',
-    title: 'Expert Certification',
-    description: 'Our multi-tiered certification program ensures attorneys have the specialized knowledge to handle Bitcoin estate planning safely and effectively. From basic understanding to advanced multisig strategies.',
+    title: 'Attorney Certification',
+    problem: 'Estate attorneys lack Bitcoin-specific training',
+    agitation: 'One mistake in key management can cost families millions',
+    solution: 'Rigorous certification ensures attorneys have specialized Bitcoin estate planning competence',
     features: [
-      'Foundation level certification',
-      'Advanced technical training',
-      'Expert specialization tracks',
-      'Continuing education credits',
+      '40+ hours specialized training',
+      'Comprehensive competency testing',
+      'Hands-on security protocols',
+      'Ongoing education requirements',
     ],
     link: '/certification',
     linkText: 'View Certification Program',
   },
   {
     number: '03',
-    title: 'Qualified Attorney Network',
-    description: 'Connect with verified, certified attorneys who specialize in Bitcoin estate planning. Our directory includes detailed profiles, specializations, and client reviews to help you find the right legal partner.',
+    title: 'Expert Network',
+    problem: 'Bitcoin holders can\'t find qualified estate planning help',
+    agitation: 'Generic estate attorneys don\'t understand Bitcoin\'s unique inheritance challenges',
+    solution: 'Connect with verified, certified attorneys who specialize in Bitcoin estate planning',
     features: [
-      'Verified professional credentials',
-      'Specialization matching',
-      'Location-based search',
-      'Client review system',
+      'Pre-screened Bitcoin expertise',
+      'Transparent certification levels',
+      'Client protection standards',
+      'Geographic coverage network',
     ],
     link: '/find-attorney',
     linkText: 'Find Your Attorney',
@@ -65,7 +71,17 @@ export function ValuePillars() {
                 {pillar.number}
               </div>
               <h3 className="text-2xl font-bold mb-4">{pillar.title}</h3>
-              <p className="text-gray-600 mb-6">{pillar.description}</p>
+              <div className="space-y-3 mb-6">
+                <p className="text-gray-900 font-medium">
+                  <span className="text-red-600">Problem:</span> {pillar.problem}
+                </p>
+                <p className="text-gray-700">
+                  <span className="text-orange-600">Why it matters:</span> {pillar.agitation}
+                </p>
+                <p className="text-gray-900">
+                  <span className="text-green-600">Our solution:</span> {pillar.solution}
+                </p>
+              </div>
               <ul className="space-y-2 mb-8">
                 {pillar.features.map((feature, index) => (
                   <li key={index} className="flex items-start">

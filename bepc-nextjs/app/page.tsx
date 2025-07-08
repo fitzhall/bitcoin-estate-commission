@@ -1,6 +1,7 @@
 import { Hero } from '@/components/home/Hero'
 import { AuthoritySignals } from '@/components/home/AuthoritySignals'
 import { ValuePillars } from '@/components/home/ValuePillars'
+import { StorySection } from '@/components/home/StorySection'
 import { PathSelection } from '@/components/home/PathSelection'
 import { RecentDevelopments } from '@/components/home/RecentDevelopments'
 import { TrustIndicators } from '@/components/home/TrustIndicators'
@@ -12,9 +13,10 @@ export default function HomePage() {
     <>
       <OrganizationSchema />
       <Hero />
-      {/* Content updated with PDF data - v2 */}
+      {/* Content updated with truth-based messaging - v3 */}
       <AuthoritySignals />
       <ValuePillars />
+      <StorySection />
       <PathSelection />
       <RecentDevelopments />
       <TrustIndicators />
