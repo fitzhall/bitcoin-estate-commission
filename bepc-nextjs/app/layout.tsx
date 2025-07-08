@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://bitcoinestateplanning.org'),
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -37,9 +42,9 @@ export const metadata: Metadata = {
     description: 'The global authority for Bitcoin estate planning standards, certification, and professional education.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/logos/bepc-logo-vertical.png',
         width: 1200,
-        height: 630,
+        height: 1200,
         alt: 'Bitcoin Estate Planning Commission',
       },
     ],

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -19,8 +20,15 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold font-serif text-primary">BEPC</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logos/bepc-logo-horizontal.png"
+              alt="Bitcoin Estate Planning Commission"
+              width={200}
+              height={50}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
           <div className="hidden md:flex md:gap-6">
             {navigation.map((item) => (
