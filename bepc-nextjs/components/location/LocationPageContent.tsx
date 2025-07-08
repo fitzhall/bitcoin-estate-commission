@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { formatNumber } from '@/lib/utils'
 import { AttorneyCard } from '@/components/attorney/AttorneyCard'
 import { LocalBusinessSchema, BreadcrumbSchema } from '@/components/SchemaMarkup'
+import { familyGuideContent } from '@/lib/content-data'
 import type { City, State, Attorney } from '@prisma/client'
 
 interface Props {
@@ -99,34 +100,121 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
               <div className="prose prose-lg max-w-none mb-12">
                 <h2>Why Choose a BEPC Certified Attorney in {cityName}?</h2>
                 <p>
-                  Bitcoin estate planning requires specialized knowledge of cryptocurrency technology, 
-                  tax implications, and regulatory compliance. Our certified attorneys in {cityName} 
-                  have completed rigorous training in the BEPC certification program and stay current 
-                  with evolving digital asset laws.
+                  Bitcoin estate planning in {cityName}, {stateName} requires specialized knowledge of both 
+                  cryptocurrency technology and local regulations. With an estimated {formatNumber(location.population * 0.15)} 
+                  cryptocurrency holders in {cityName} and billions in digital assets at risk, proper estate 
+                  planning has never been more critical.
                 </p>
+
+                <div className="bg-red-50 border-l-4 border-red-500 p-6 my-8">
+                  <h3 className="text-xl font-bold text-red-900 mb-3">The Cost of Poor Planning</h3>
+                  <p className="text-red-800">
+                    Without proper Bitcoin estate planning, families in {stateName} face an average of 
+                    $45,000 in probate costs and 18-24 months of legal battles. Don't let your family 
+                    become another statistic.
+                  </p>
+                </div>
 
                 <h3>Bitcoin Estate Planning Laws in {stateName}</h3>
                 <p>{location.state.probateLawsSummary}</p>
                 
                 {location.state.estateTaxExemption > 0 && (
-                  <p>
-                    <strong>Estate Tax Exemption:</strong> ${formatNumber(location.state.estateTaxExemption)}
-                  </p>
+                  <div className="bg-blue-50 p-4 rounded-lg my-4">
+                    <p className="mb-2">
+                      <strong>Estate Tax Exemption:</strong> ${formatNumber(location.state.estateTaxExemption)}
+                    </p>
+                    <p className="text-sm text-gray-700">
+                      {stateName} residents with cryptocurrency holdings above this threshold need advanced 
+                      tax planning strategies to minimize estate tax liability.
+                    </p>
+                  </div>
                 )}
                 
                 {location.state.regulatoryNotes && (
-                  <p>
-                    <strong>Regulatory Notes:</strong> {location.state.regulatoryNotes}
-                  </p>
+                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-4">
+                    <p className="font-semibold text-yellow-900">Important {stateName} Requirements:</p>
+                    <p className="text-yellow-800">{location.state.regulatoryNotes}</p>
+                  </div>
                 )}
 
-                <h3>Local {cityName} Bitcoin Estate Planning Statistics</h3>
-                <ul>
-                  <li>Population: {formatNumber(location.population)}</li>
-                  <li>Median Income: ${formatNumber(location.medianIncome)}</li>
-                  <li>Bitcoin Businesses: {formatNumber(location.bitcoinBusinessesCount)}</li>
-                  <li>Law Firms: {formatNumber(location.lawFirmsCount)}</li>
+                <h3>The KEEP Protocol Advantage in {cityName}</h3>
+                <p>
+                  BEPC certified attorneys in {cityName} implement the Key Emergency Estate Protocol (KEEP), 
+                  providing:
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>24-hour emergency response for beneficiaries</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Multi-signature security preventing single points of failure</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Compliance with {stateName} digital asset regulations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Annual security audits and updates</span>
+                  </li>
                 </ul>
+
+                <h3>Local {cityName} Cryptocurrency Market</h3>
+                <div className="grid grid-cols-2 gap-4 my-6">
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-primary">{formatNumber(location.population)}</div>
+                    <div className="text-sm text-gray-600">Population</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      Est. {formatNumber(location.population * 0.15)} crypto holders
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-primary">${formatNumber(location.medianIncome)}</div>
+                    <div className="text-sm text-gray-600">Median Income</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      {location.medianIncome > 80000 ? 'High' : 'Moderate'} wealth concentration
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-primary">{formatNumber(location.bitcoinBusinessesCount)}</div>
+                    <div className="text-sm text-gray-600">Bitcoin Businesses</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      Active crypto ecosystem
+                    </div>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="text-2xl font-bold text-primary">{formatNumber(location.lawFirmsCount)}</div>
+                    <div className="text-sm text-gray-600">Law Firms</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      Only {attorneys.length} BEPC certified
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-primary to-secondary text-white p-6 rounded-lg my-8">
+                  <h4 className="text-xl font-bold mb-3">Don't Wait Until It's Too Late</h4>
+                  <p className="mb-4">
+                    Every day without proper Bitcoin estate planning puts your family's financial future at risk. 
+                    In {cityName} alone, an estimated ${formatNumber(location.population * 0.15 * 5000)} in 
+                    cryptocurrency remains vulnerable to permanent loss.
+                  </p>
+                  <Link href="#cta" className="inline-flex items-center bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    Find Your BEPC Attorney Now
+                    <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
 
               {/* Attorneys Section */}
@@ -151,6 +239,30 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
                     </Link>
                   </div>
                 )}
+              </div>
+
+              {/* Horror Stories Section */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold mb-8">Real Stories: The Cost of Poor Planning</h2>
+                <div className="space-y-6">
+                  {familyGuideContent.horrorStories.slice(0, 2).map((story) => (
+                    <div key={story.id} className="bg-gray-50 border-l-4 border-red-500 p-6 rounded-lg">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2">{story.title}</h4>
+                      <p className="text-gray-700 mb-4">{story.details}</p>
+                      <div className="bg-white p-4 rounded border border-gray-200">
+                        <p className="font-semibold text-gray-900 mb-1">Key Lesson:</p>
+                        <p className="text-gray-700">{story.lesson}</p>
+                        <p className="text-primary font-semibold mt-2">
+                          Prevention: {story.preventionTip}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-gray-600">
+                  These are just a few examples of the {familyGuideContent.statistics.overview.percentageAtRisk} of 
+                  cryptocurrency holders who lack proper estate planning. Don't let your family become another statistic.
+                </p>
               </div>
 
               {/* Cost Estimates */}
