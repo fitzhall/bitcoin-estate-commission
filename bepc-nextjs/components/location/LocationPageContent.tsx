@@ -29,8 +29,8 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
         items={[
           { name: 'Home', url: 'https://bitcoinestateplanning.org' },
           { name: 'Find Attorney', url: 'https://bitcoinestateplanning.org/find-attorney' },
-          { name: stateName, url: `https://bitcoinestateplanning.org/${stateCode}` },
-          { name: cityName, url: `https://bitcoinestateplanning.org/${stateCode}/${location.citySlug}/bitcoin-estate-planning-attorney` },
+          { name: stateName, url: `https://bitcoinestateplanning.org/${stateCode.toLowerCase()}` },
+          { name: cityName, url: `https://bitcoinestateplanning.org/${stateCode.toLowerCase()}/${location.citySlug}/bitcoin-estate-planning-attorney` },
         ]}
       />
       {/* Hero Section */}
@@ -42,7 +42,7 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
               <li>/</li>
               <li><Link href="/find-attorney" className="hover:text-primary">Find Attorney</Link></li>
               <li>/</li>
-              <li><Link href={`/${stateCode}`} className="hover:text-primary">{stateName}</Link></li>
+              <li><Link href={`/${stateCode.toLowerCase()}`} className="hover:text-primary">{stateName}</Link></li>
               <li>/</li>
               <li className="text-gray-900">{cityName}</li>
             </ol>
