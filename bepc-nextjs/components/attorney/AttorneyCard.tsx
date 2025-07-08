@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import type { Attorney } from '@prisma/client'
 
@@ -12,30 +11,14 @@ export function AttorneyCard({ attorney }: Props) {
   const contactInfo = attorney.contactInfo as { email?: string; phone?: string } || {}
 
   return (
-    <div className="attorney-card p-6 hover:shadow-xl transition-all relative">
-      {/* KEEP Badge for certified attorneys */}
-      {attorney.verifiedStatus && (
-        <div className="absolute top-4 right-4">
-          <Image
-            src="/logos/keep-practitioner-badge.png"
-            alt="KEEP Licensed Practitioner"
-            width={80}
-            height={40}
-            className="h-10 w-auto"
-          />
-        </div>
-      )}
-      
+    <div className="attorney-card p-6 hover:shadow-xl transition-all">
       <div className="flex justify-between items-start mb-4">
-        <div className="pr-24">
+        <div>
           <h3 className="text-xl font-bold mb-1">{attorney.name}</h3>
           {attorney.firmName && (
             <p className="text-gray-600">{attorney.firmName}</p>
           )}
         </div>
-      </div>
-      
-      <div className="flex items-center gap-2 mb-3">
         <span className={cn(
           "certification-badge",
           attorney.certificationLevel === 'Expert' && "certification-expert",
@@ -44,11 +27,6 @@ export function AttorneyCard({ attorney }: Props) {
         )}>
           {attorney.certificationLevel} Certified
         </span>
-        {attorney.featured && (
-          <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
-            Featured
-          </span>
-        )}
       </div>
 
       {attorney.yearsExperience > 0 && (

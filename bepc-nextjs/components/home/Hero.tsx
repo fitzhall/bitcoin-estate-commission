@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const stats = [
   { value: '$140B', label: 'Lost Forever' },
@@ -13,16 +12,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
       <div className="container relative py-24 sm:py-32">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-8 flex justify-center">
-            <Image
-              src="/logos/bepc-logo-shield.png"
-              alt="BEPC Shield"
-              width={120}
-              height={140}
-              className="h-28 w-auto opacity-90"
-              priority
-            />
-          </div>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl">
             The Global Authority for Bitcoin Estate Planning
           </h1>
