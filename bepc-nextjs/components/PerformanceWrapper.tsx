@@ -86,19 +86,7 @@ export function PerformanceWrapper({ children }: { children: React.ReactNode }) 
 
   // Add performance hints
   useEffect(() => {
-    // Preconnect to external domains
-    const preconnectDomains = [
-      'https://fonts.googleapis.com',
-      'https://fonts.gstatic.com',
-    ]
-
-    preconnectDomains.forEach(domain => {
-      const link = document.createElement('link')
-      link.rel = 'preconnect'
-      link.href = domain
-      link.setAttribute('crossorigin', 'anonymous')
-      document.head.appendChild(link)
-    })
+    // No external fonts needed anymore - using system fonts
 
     // DNS prefetch for potential external resources
     const dnsPrefetchDomains = [
