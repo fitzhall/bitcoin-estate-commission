@@ -43,7 +43,7 @@ export function RecentDevelopments() {
             >
               <div className="flex items-center gap-4 mb-4">
                 <span className="text-sm text-gray-500">{item.date}</span>
-                <span className="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full uppercase tracking-wider"
+                <span className="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full uppercase tracking-wider">
                   {item.category}
                 </span>
               </div>
