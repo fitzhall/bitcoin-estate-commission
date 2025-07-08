@@ -75,7 +75,9 @@ export const safeDb = {
         const result = await prisma.city.findFirst(args)
         return result
       } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
         console.log('Database error in city.findFirst, returning mock data')
+      }
         // Return mock data based on the query
         if (args?.where?.citySlug && args?.where?.state?.stateCode) {
           const includeState = args?.include?.state
@@ -104,7 +106,9 @@ export const safeDb = {
         const result = await prisma.city.findMany(args)
         return result
       } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
         console.log('Database error in city.findMany, returning mock data')
+      }
         const includeState = args?.include?.state
         if (includeState) {
           return mockCities.map(city => ({
@@ -122,7 +126,9 @@ export const safeDb = {
         const result = await prisma.attorney.findMany(args)
         return result
       } catch (error) {
-        console.log('Database error in attorney.findMany, returning empty array')
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in attorney.findMany, returning empty array')
+        }
         return []
       }
     },
@@ -131,7 +137,9 @@ export const safeDb = {
         const result = await prisma.attorney.count(args)
         return result
       } catch (error) {
-        console.log('Database error in attorney.count, returning 0')
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in attorney.count, returning 0')
+        }
         return 0
       }
     },
@@ -142,7 +150,9 @@ export const safeDb = {
         const result = await prisma.state.findMany(args)
         return result
       } catch (error) {
-        console.log('Database error in state.findMany, returning mock data')
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in state.findMany, returning mock data')
+        }
         return mockStates
       }
     },
