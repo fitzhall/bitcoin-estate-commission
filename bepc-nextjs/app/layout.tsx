@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Source_Serif_Pro } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 import { Header } from '@/components/Header'
@@ -10,12 +10,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
-})
-
-const sourceSerifPro = Source_Serif_Pro({ 
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-source-serif',
 })
 
 export const metadata: Metadata = {
@@ -76,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerifPro.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className={inter.className}>
         <Providers>
           <div className="flex min-h-screen flex-col">
