@@ -122,7 +122,7 @@ export default async function LocationPage({ params }: Props) {
     }
 
     // Get nearby cities
-    let nearbyCities = []
+    let nearbyCities: any[] = []
     try {
       nearbyCities = await safeDb.city.findMany({
         where: {
