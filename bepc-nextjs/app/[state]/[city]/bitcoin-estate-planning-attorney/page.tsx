@@ -138,7 +138,7 @@ export default async function LocationPage({ params }: Props) {
       })
       
       const timeoutPromise = new Promise((resolve) => 
-        setTimeout(() => resolve(null), 500) // 500ms timeout for better performance
+        setTimeout(() => resolve(null), 3000) // 3 second timeout to prevent 500 errors
       )
       
       const dbResult = await Promise.race([dbPromise, timeoutPromise])
@@ -165,7 +165,7 @@ export default async function LocationPage({ params }: Props) {
         
         const nearbyCitiesResult = await Promise.race([
           nearbyCitiesPromise,
-          new Promise(resolve => setTimeout(() => resolve([]), 500))
+          new Promise(resolve => setTimeout(() => resolve([]), 2000))
         ])
         
         nearbyCities = nearbyCitiesResult as any[]

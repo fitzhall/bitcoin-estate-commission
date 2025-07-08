@@ -4,15 +4,17 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
   
-  // Check if this is a state/city URL pattern
-  const stateMatch = path.match(/^\/([A-Z]{2})\/([^\/]+)\/(.*)$/)
+  // Check if path starts with uppercase state code (2 letters)
+  const uppercaseStateMatch = path.match(/^\/([A-Z]{2})(\/|$)/)
   
-  if (stateMatch) {
-    // If state code is uppercase, redirect to lowercase version
-    const [, state, city, rest] = stateMatch
-    const lowercaseUrl = `/${state.toLowerCase()}/${city}/${rest}`
+  if (uppercaseStateMatch) {
+    // Convert the state code to lowercase and keep the rest of the path
+    const lowercasePath = path.replace(/^\/([A-Z]{2})/, (match, state) => `/${state.toLowerCase()}`)
     
-    return NextResponse.redirect(new URL(lowercaseUrl, request.url), 301)
+    // Only redirect if the path actually changed
+    if (lowercasePath !== path) {
+      return NextResponse.redirect(new URL(lowercasePath, request.url), 301)
+    }
   }
   
   return NextResponse.next()

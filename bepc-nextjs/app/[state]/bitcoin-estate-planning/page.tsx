@@ -67,7 +67,8 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const stateInfo = US_STATES[params.state as keyof typeof US_STATES]
+  const normalizedState = params.state.toLowerCase()
+  const stateInfo = US_STATES[normalizedState as keyof typeof US_STATES]
   
   if (!stateInfo) {
     return {
@@ -99,7 +100,9 @@ export async function generateStaticParams() {
 }
 
 export default async function StatePage({ params }: Props) {
-  const stateInfo = US_STATES[params.state as keyof typeof US_STATES]
+  // Normalize state to lowercase
+  const normalizedState = params.state.toLowerCase()
+  const stateInfo = US_STATES[normalizedState as keyof typeof US_STATES]
   
   if (!stateInfo) {
     notFound()
@@ -107,10 +110,10 @@ export default async function StatePage({ params }: Props) {
 
   const stateName = stateInfo.name
   const stateCode = stateInfo.code
-  const stateRegulation = stateRegulations[params.state] || stateRegulations.california
+  const stateRegulation = stateRegulations[normalizedState] || stateRegulations.california
 
   // Get cities in this state - always use static data for consistent build
-  const staticCities = getCitiesByState(params.state)
+  const staticCities = getCitiesByState(normalizedState)
   let cities = staticCities.slice(0, 10).map(city => ({
     id: `${city.state}-${city.city}`,
     cityName: city.name,
@@ -128,7 +131,7 @@ export default async function StatePage({ params }: Props) {
     try {
       attorneyCount = await safeDb.attorney.count({
         where: {
-          state: { stateCode: params.state.toUpperCase() },
+          state: { stateCode: normalizedState.toUpperCase() },
           verifiedStatus: true
         }
       })
@@ -142,7 +145,7 @@ export default async function StatePage({ params }: Props) {
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: 'https://bitcoinestateplanning.org' },
-          { name: stateName, url: `https://bitcoinestateplanning.org/${params.state}/bitcoin-estate-planning` },
+          { name: stateName, url: `https://bitcoinestateplanning.org/${normalizedState}/bitcoin-estate-planning` },
         ]}
       />
 
@@ -216,7 +219,7 @@ export default async function StatePage({ params }: Props) {
               {cities.map((city) => (
                 <Link
                   key={city.id}
-                  href={`/${params.state}/${city.citySlug}/bitcoin-estate-planning-attorney`}
+                  href={`/${normalizedState}/${city.citySlug}/bitcoin-estate-planning-attorney`}
                   className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
                 >
                   <h3 className="text-xl font-bold mb-2">{city.cityName}</h3>
