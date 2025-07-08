@@ -31,13 +31,32 @@ export async function isDatabaseAvailable(): Promise<boolean> {
       return false
     }
 
-    // Try to connect to database
-    await prisma.$connect()
-    // Test with a simple query
-    await prisma.$queryRaw`SELECT 1`
-    dbAvailable = true
-    lastCheck = now
-    return true
+    // Skip connection attempt during build
+    if (process.env.VERCEL_ENV || process.env.CI) {
+      console.log('Build environment detected, skipping database connection')
+      dbAvailable = false
+      lastCheck = now
+      return false
+    }
+
+    // Try to connect to database with timeout
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Database connection timeout')), 5000)
+    )
+    
+    try {
+      await Promise.race([
+        prisma.$connect(),
+        timeoutPromise
+      ])
+      // Test with a simple query
+      await prisma.$queryRaw`SELECT 1`
+      dbAvailable = true
+      lastCheck = now
+      return true
+    } catch (timeoutError) {
+      throw timeoutError
+    }
   } catch (error) {
     console.log('Database not available:', error)
     dbAvailable = false
