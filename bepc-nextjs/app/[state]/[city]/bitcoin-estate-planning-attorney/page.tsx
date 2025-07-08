@@ -138,7 +138,7 @@ export default async function LocationPage({ params }: Props) {
 
     return (
       <LocationPageContent
-        location={location}
+        location={location as any}
         attorneys={(location as any).attorneys || []}
         nearbyCities={nearbyCities}
       />
