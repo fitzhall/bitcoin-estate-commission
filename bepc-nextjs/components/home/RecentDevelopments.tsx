@@ -39,11 +39,11 @@ export function RecentDevelopments() {
           {developments.map((item, index) => (
             <article
               key={index}
-              className="border border-gray-200 rounded-lg p-6 hover:border-primary transition-colors"
+              className="border border-gray-200 rounded-lg p-6 hover:border-accent hover:shadow-md transition-all"
             >
               <div className="flex items-center gap-4 mb-4">
                 <span className="text-sm text-gray-500">{item.date}</span>
-                <span className="px-2 py-1 bg-secondary text-white text-xs font-semibold rounded">
+                <span className="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full uppercase tracking-wider"
                   {item.category}
                 </span>
               </div>
@@ -53,12 +53,12 @@ export function RecentDevelopments() {
               
               <Link
                 href={item.link}
-                className="inline-flex items-center text-primary font-semibold hover:text-primary-dark"
+                className="inline-flex items-center text-accent font-semibold hover:text-accent-dark transition-colors group"
               >
                 {item.category === 'Standards Update' && 'View KEEP Protocol Details'}
                 {item.category === 'Legal Update' && 'Review State Law Changes'}
                 {item.category === 'Research' && 'Read Full Report'}
-                <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>

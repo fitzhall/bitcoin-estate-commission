@@ -65,9 +65,9 @@ export function ValuePillars() {
           {pillars.map((pillar) => (
             <div
               key={pillar.number}
-              className="border-2 border-gray-200 rounded-lg p-8 hover:border-primary transition-colors"
+              className="border-2 border-gray-200 rounded-lg p-8 hover:border-accent hover:shadow-lg transition-all"
             >
-              <div className="text-5xl font-bold text-secondary mb-4">
+              <div className="text-5xl font-bold text-accent mb-4">
                 {pillar.number}
               </div>
               <h3 className="text-2xl font-bold mb-4">{pillar.title}</h3>
@@ -85,7 +85,7 @@ export function ValuePillars() {
               <ul className="space-y-2 mb-8">
                 {pillar.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <svg className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 text-accent mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-gray-600">{feature}</span>
@@ -94,10 +94,10 @@ export function ValuePillars() {
               </ul>
               <Link
                 href={pillar.link}
-                className="inline-flex items-center text-primary font-semibold hover:text-primary-dark"
+                className="inline-flex items-center text-accent font-semibold hover:text-accent-dark transition-colors group"
               >
                 {pillar.linkText}
-                <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>

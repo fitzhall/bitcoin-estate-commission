@@ -37,7 +37,7 @@ export function Footer() {
       <div className="container py-12">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-light">
               For Attorneys
             </h3>
             <ul className="space-y-2">
@@ -45,7 +45,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-accent-light transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -55,7 +55,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-light">
               For Families
             </h3>
             <ul className="space-y-2">
@@ -63,7 +63,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-accent-light transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -73,7 +73,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-light">
               Standards & Research
             </h3>
             <ul className="space-y-2">
@@ -81,7 +81,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-accent-light transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -91,7 +91,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-light">
               About BEPC
             </h3>
             <ul className="space-y-2">
@@ -99,7 +99,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-accent-light transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -115,7 +115,7 @@ export function Footer() {
               © {new Date().getFullYear()} Bitcoin Estate Planning Commission. All rights reserved.
             </p>
             <p className="mt-2 text-sm text-gray-400">
-              The global authority for Bitcoin estate planning standards and certification.
+              The global authority for <span className="text-accent-light">Bitcoin</span> estate planning standards and certification.
             </p>
           </div>
         </div>

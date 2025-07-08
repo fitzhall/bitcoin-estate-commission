@@ -19,7 +19,12 @@ const config: Config = {
           dark: '#6B5010',
           light: '#C9A96E',    // Original color moved to light variant
         },
-        accent: '#F7931A',
+        accent: {
+          DEFAULT: '#FF6B00',  // Vibrant Bitcoin orange
+          dark: '#E55A00',
+          light: '#FF8533',
+        },
+        bitcoin: '#F7931A',  // Traditional Bitcoin orange
         gray: {
           50: '#F8F9FA',
           100: '#E9ECEF',
