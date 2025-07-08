@@ -6,7 +6,7 @@ const pillars = [
     title: 'Professional Standards',
     problem: 'No established standards exist for Bitcoin estate planning',
     agitation: 'Attorneys are making it up as they go, risking malpractice and client assets',
-    solution: 'The KEEP Protocol provides the first comprehensive framework for professional Bitcoin estate planning',
+    solution: 'The KEEP Framework provides the first comprehensive system for professional Bitcoin estate planning',
     features: [
       'Research-based security protocols',
       'Tested legal frameworks',

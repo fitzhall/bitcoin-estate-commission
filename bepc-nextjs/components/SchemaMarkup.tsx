@@ -63,8 +63,8 @@ export function OrganizationSchema({ url = 'https://bitcoinestateplanning.org' }
           },
           {
             '@type': 'Offer', 
-            name: 'KEEP Protocol Standards',
-            description: 'Industry-leading Key Emergency Estate Protocol for secure Bitcoin inheritance',
+            name: 'KEEP Framework Standards',
+            description: 'Comprehensive framework for Bitcoin estate planning: Keep it Secure, Establish Legal Protection, Ensure Access Through Governance, Plan for the Future',
             url: `${url}/standards`
           },
           {

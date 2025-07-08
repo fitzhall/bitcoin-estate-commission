@@ -129,20 +129,66 @@ export const familyGuideContent = {
   },
   
   keepProtocol: {
-    overview: "The Key Emergency Estate Protocol (KEEP) provides a standardized framework for secure Bitcoin inheritance",
+    overview: "The KEEP framework ensures comprehensive Bitcoin estate planning through four essential pillars: Keep it Secure, Establish Legal Protection, Ensure Access Through Governance, and Plan for the Future. This holistic approach protects your Bitcoin wealth for generations.",
+    pillars: {
+      K: {
+        title: "Keep it Secure",
+        description: "Implement robust security measures to protect Bitcoin assets during your lifetime and beyond",
+        elements: [
+          "Multi-signature wallet configurations",
+          "Hardware wallet best practices",
+          "Secure key storage protocols",
+          "Regular security audits",
+          "Protection against theft and loss"
+        ]
+      },
+      E1: {
+        title: "Establish Legal Protection",
+        description: "Create legally binding frameworks that ensure your Bitcoin transfers according to your wishes",
+        elements: [
+          "Bitcoin-specific trust structures",
+          "Legally enforceable transfer mechanisms",
+          "Tax optimization strategies",
+          "Compliance with state and federal regulations",
+          "Protection from legal challenges"
+        ]
+      },
+      E2: {
+        title: "Ensure Access Through Governance",
+        description: "Design clear governance structures that enable beneficiaries to access Bitcoin when needed",
+        elements: [
+          "Multi-party governance protocols",
+          "Clear succession procedures",
+          "Emergency access mechanisms",
+          "Beneficiary education programs",
+          "Dispute resolution frameworks"
+        ]
+      },
+      P: {
+        title: "Plan for the Future",
+        description: "Create adaptable strategies that evolve with technology and family circumstances",
+        elements: [
+          "Regular plan reviews and updates",
+          "Technology evolution considerations",
+          "Generational wealth transfer strategies",
+          "Education for future trustees",
+          "Long-term asset preservation"
+        ]
+      }
+    },
     benefits: [
-      "Immediate emergency access procedures",
-      "Attorney-managed recovery process",
-      "Multi-party security verification",
-      "Compliance with state regulations",
-      "Standardized documentation"
+      "Complete protection for Bitcoin assets",
+      "Clear transfer procedures for beneficiaries",
+      "Legal certainty and tax optimization",
+      "Adaptable to changing circumstances",
+      "Peace of mind for Bitcoin holders"
     ],
     implementation: {
-      phase1: "Initial consultation and asset inventory",
-      phase2: "Security protocol establishment",
-      phase3: "Legal documentation integration",
-      phase4: "Emergency response testing",
-      phase5: "Ongoing monitoring and updates"
+      phase1: "Security Assessment - Evaluate current Bitcoin holdings and storage methods",
+      phase2: "Legal Framework Development - Create customized trust and estate documents",
+      phase3: "Governance Structure Design - Establish clear access and decision-making protocols",
+      phase4: "Future Planning Integration - Build in flexibility for technological and family changes",
+      phase5: "Testing and Documentation - Verify all systems work as intended"
     }
   }
 }

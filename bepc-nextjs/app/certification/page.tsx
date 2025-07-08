@@ -189,7 +189,7 @@ export default function CertificationPage() {
                   <li>• Multi-signature implementations</li>
                   <li>• Complex trust structures</li>
                   <li>• Tax optimization strategies</li>
-                  <li>• KEEP Protocol integration</li>
+                  <li>• KEEP Framework integration</li>
                 </ul>
               </div>
               

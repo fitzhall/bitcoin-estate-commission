@@ -11,8 +11,8 @@ const faqs = [
     answer: "Bitcoin estate planning requires understanding both legal frameworks and technical aspects of cryptocurrency. Traditional estate planning relies on centralized institutions that can be compelled by courts. Bitcoin's decentralized nature means that without proper key management and transfer protocols, assets become permanently inaccessible. BEPC-certified attorneys understand these unique challenges."
   },
   {
-    question: "What is the KEEP Protocol?",
-    answer: "The Key Emergency Estate Protocol (KEEP) is a comprehensive framework designed specifically for Bitcoin inheritance. It addresses key management, emergency access procedures, estate document integration, and multi-layer protection strategies. KEEP ensures your Bitcoin can be securely transferred to beneficiaries while maintaining security during your lifetime."
+    question: "What is the KEEP Framework?",
+    answer: "The KEEP framework is our comprehensive Bitcoin estate planning system built on four essential pillars: Keep it Secure (robust security measures), Establish Legal Protection (legally binding frameworks), Ensure Access Through Governance (clear succession procedures), and Plan for the Future (adaptable strategies). This holistic approach ensures your Bitcoin wealth is protected for generations."
   },
   {
     question: "How much does Bitcoin estate planning cost?",

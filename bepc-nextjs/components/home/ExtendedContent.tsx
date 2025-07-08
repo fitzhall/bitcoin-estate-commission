@@ -63,53 +63,56 @@ export function ExtendedContent() {
             </div>
           </div>
 
-          {/* The KEEP Protocol Solution */}
+          {/* The KEEP Framework Solution */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">The KEEP Protocol: A Framework Built for Bitcoin</h2>
+            <h2 className="text-3xl font-bold mb-8">The KEEP Framework: Your Complete Bitcoin Protection System</h2>
             <div className="prose prose-lg text-gray-700 mb-8">
               <p>
-                The Key Emergency Estate Protocol (KEEP) represents the first comprehensive framework designed 
-                specifically for Bitcoin inheritance. Developed through extensive research and real-world testing, 
-                KEEP addresses the unique challenges of digital asset transfer while maintaining security.
+                The KEEP framework ensures comprehensive Bitcoin estate planning through four essential pillars. 
+                This holistic approach protects your Bitcoin wealth for generations, addressing both the technical 
+                and legal complexities unique to digital assets.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-4 gap-6 mb-8">
-              <div className="text-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   K
                 </div>
-                <h4 className="font-bold mb-2">Key Management</h4>
-                <p className="text-sm text-gray-600">Secure storage and access protocols</p>
+                <h4 className="font-bold mb-2 text-center">Keep it Secure</h4>
+                <p className="text-sm text-gray-600">Implement robust security measures to protect Bitcoin assets during your lifetime and beyond</p>
               </div>
-              <div className="text-center">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   E
                 </div>
-                <h4 className="font-bold mb-2">Emergency Access</h4>
-                <p className="text-sm text-gray-600">Time-locked recovery mechanisms</p>
+                <h4 className="font-bold mb-2 text-center">Establish Legal Protection</h4>
+                <p className="text-sm text-gray-600">Create legally binding frameworks ensuring Bitcoin transfers according to your wishes</p>
               </div>
-              <div className="text-center">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   E
                 </div>
-                <h4 className="font-bold mb-2">Estate Integration</h4>
-                <p className="text-sm text-gray-600">Legal document coordination</p>
+                <h4 className="font-bold mb-2 text-center">Ensure Access Through Governance</h4>
+                <p className="text-sm text-gray-600">Design clear governance structures enabling beneficiary access when needed</p>
               </div>
-              <div className="text-center">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="bg-primary text-white text-3xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   P
                 </div>
-                <h4 className="font-bold mb-2">Protection Layers</h4>
-                <p className="text-sm text-gray-600">Multi-party verification</p>
+                <h4 className="font-bold mb-2 text-center">Plan for the Future</h4>
+                <p className="text-sm text-gray-600">Create adaptable strategies that evolve with technology and family circumstances</p>
               </div>
             </div>
 
-            <div className="prose prose-lg text-gray-700">
-              <p>
-                Unlike generic approaches that treat Bitcoin like any other asset, KEEP recognizes that Bitcoin 
-                requires specialized handling at every stage of the estate planning process. From initial client 
-                consultation to final asset transfer, every step is designed with Bitcoin's unique properties in mind.
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+              <p className="text-lg font-semibold text-blue-900 mb-2">
+                Why KEEP Works Where Others Fail
+              </p>
+              <p className="text-gray-700">
+                Traditional estate planning focuses on legal documents alone. The KEEP framework integrates 
+                security, legal protection, governance, and future planning into one comprehensive system. 
+                This ensures your Bitcoin remains both secure today and accessible to your beneficiaries tomorrow.
               </p>
             </div>
           </div>
