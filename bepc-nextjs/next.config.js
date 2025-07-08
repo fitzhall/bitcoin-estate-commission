@@ -75,8 +75,6 @@ const nextConfig = {
   experimental: {
     // Optimize CSS
     optimizeCss: true,
-    // Enable partial prerendering for dynamic routes
-    ppr: true,
   },
 }
 
