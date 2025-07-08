@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { formatNumber } from '@/lib/utils'
 import { AttorneyCard } from '@/components/attorney/AttorneyCard'

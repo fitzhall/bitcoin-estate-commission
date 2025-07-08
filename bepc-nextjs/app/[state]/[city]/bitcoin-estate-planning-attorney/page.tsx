@@ -12,7 +12,9 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { state, city } = params
+  // Normalize to lowercase for consistency
+  const state = params.state.toLowerCase()
+  const city = params.city.toLowerCase()
   
   try {
     const location = await safeDb.city.findFirst({
@@ -68,7 +70,9 @@ export async function generateStaticParams() {
 }
 
 export default async function LocationPage({ params }: Props) {
-  const { state, city } = params
+  // Normalize state to lowercase to handle case-insensitive URLs
+  const state = params.state.toLowerCase()
+  const city = params.city.toLowerCase()
   
   // Find the city data from our static list first
   const staticCityData = US_MAJOR_CITIES.find(
@@ -117,7 +121,7 @@ export default async function LocationPage({ params }: Props) {
       const dbPromise = safeDb.city.findFirst({
         where: {
           citySlug: city,
-          state: { stateCode: state }
+          state: { stateCode: state.toUpperCase() }
         },
         include: {
           state: true,
@@ -134,7 +138,7 @@ export default async function LocationPage({ params }: Props) {
       })
       
       const timeoutPromise = new Promise((resolve) => 
-        setTimeout(() => resolve(null), 1000) // 1 second timeout
+        setTimeout(() => resolve(null), 500) // 500ms timeout for better performance
       )
       
       const dbResult = await Promise.race([dbPromise, timeoutPromise])
