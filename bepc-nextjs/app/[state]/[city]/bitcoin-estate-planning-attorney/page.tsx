@@ -91,12 +91,19 @@ export default async function LocationPage({ params }: Props) {
 
     if (!location) {
       // Instead of notFound(), return a basic page with mock data
-      const mockLocationData = {
+      const mockLocationData: any = {
         id: 'mock-id',
         cityName: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
         citySlug: city,
         population: 100000,
         stateId: state,
+        medianIncome: 75000,
+        bitcoinBusinessesCount: 10,
+        lawFirmsCount: 50,
+        latitude: null,
+        longitude: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
         state: {
           id: state,
           stateName: state.toUpperCase(),
@@ -139,12 +146,19 @@ export default async function LocationPage({ params }: Props) {
   } catch (error) {
     console.error('Error loading location page:', error)
     // Return a basic page with mock data
-    const mockLocationData = {
+    const mockLocationData: any = {
       id: 'mock-id',
       cityName: city.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
       citySlug: city,
       population: 100000,
       stateId: state,
+      medianIncome: 75000,
+      bitcoinBusinessesCount: 10,
+      lawFirmsCount: 50,
+      latitude: null,
+      longitude: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       state: {
         id: state,
         stateName: state.toUpperCase(),
