@@ -12,6 +12,7 @@ export default function HomePage() {
     <>
       <OrganizationSchema />
       <Hero />
+      {/* Content updated with PDF data - v2 */}
       <AuthoritySignals />
       <ValuePillars />
       <PathSelection />
