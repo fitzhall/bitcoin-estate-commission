@@ -4,9 +4,9 @@ import { safeDb } from '@/lib/database'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://bitcoinestateplanning.org'
   
-  let cities = []
-  let attorneys = []
-  let states = []
+  let cities: any[] = []
+  let attorneys: any[] = []
+  let states: any[] = []
   
   try {
     // Get all cities for location pages
