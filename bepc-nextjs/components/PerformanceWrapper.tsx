@@ -15,7 +15,7 @@ export function PerformanceWrapper({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     // Log Core Web Vitals
-    if (typeof window !== 'undefined' && 'web-vital' in window) {
+    if (typeof window !== 'undefined') {
       // Report performance metrics
       const reportWebVitals = (metric: any) => {
         // You can send these to your analytics service
@@ -33,12 +33,14 @@ export function PerformanceWrapper({ children }: { children: React.ReactNode }) 
       }
 
       // Import web-vitals dynamically
-      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      import('web-vitals').then(({ getCLS, getFCP, getLCP, getTTFB, onINP }) => {
         getCLS(reportWebVitals)
-        getFID(reportWebVitals)
         getFCP(reportWebVitals)
         getLCP(reportWebVitals)
         getTTFB(reportWebVitals)
+        onINP(reportWebVitals) // INP replaces FID in web-vitals v3+
+      }).catch((error) => {
+        console.error('Failed to load web-vitals:', error)
       })
     }
 
@@ -94,7 +96,7 @@ export function PerformanceWrapper({ children }: { children: React.ReactNode }) 
       const link = document.createElement('link')
       link.rel = 'preconnect'
       link.href = domain
-      link.crossOrigin = 'anonymous'
+      link.setAttribute('crossorigin', 'anonymous')
       document.head.appendChild(link)
     })
 

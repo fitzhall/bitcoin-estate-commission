@@ -97,6 +97,10 @@ export default async function LocationPage({ params }: Props) {
       id: state,
       stateName: state.toUpperCase(),
       stateCode: state.toUpperCase(),
+      bitcoinAdoptionRate: 15.5, // Default adoption rate
+      probateLawsSummary: `${state.toUpperCase()} follows standard probate procedures with specific provisions for digital assets.`,
+      estateTaxExemption: 12920000, // Federal exemption as default
+      regulatoryNotes: null,
     },
     attorneys: [],
   }

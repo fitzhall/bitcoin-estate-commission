@@ -9,8 +9,8 @@ const nextConfig = {
     ],
   },
   
-  // Force static generation for better performance
-  output: 'standalone',
+  // Vercel handles the output optimization automatically
+  // output: 'standalone', // Commented out for Vercel deployment
   
   // Optimize for production
   swcMinify: true,
@@ -73,8 +73,7 @@ const nextConfig = {
   
   // Experimental features for better performance
   experimental: {
-    // Optimize CSS
-    optimizeCss: true,
+    // Add experimental features here if needed
   },
 }
 

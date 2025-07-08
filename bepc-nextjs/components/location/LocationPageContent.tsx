@@ -83,7 +83,7 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-primary">
-                {location.state.bitcoinAdoptionRate.toFixed(1)}%
+                {location.state?.bitcoinAdoptionRate ? location.state.bitcoinAdoptionRate.toFixed(1) : '15.5'}%
               </div>
               <div className="text-sm text-gray-600">Bitcoin Adoption</div>
             </div>
