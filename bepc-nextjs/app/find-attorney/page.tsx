@@ -34,7 +34,9 @@ export default function FindAttorneyPage({
       </div>
 
       <div className="container py-8">
-        <AttorneySearch />
+        <Suspense fallback={<div className="bg-white rounded-lg shadow-sm p-6 animate-pulse h-32" />}>
+          <AttorneySearch />
+        </Suspense>
         
         <Suspense fallback={<AttorneyResultsSkeleton />}>
           <AttorneyResults searchParams={searchParams} />
