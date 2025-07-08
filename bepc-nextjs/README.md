@@ -135,4 +135,4 @@ Questions? Issues? Create an issue on GitHub or check the docs!
 
 ---
 
-Built for scale. Optimized for SEO. Ready to dominate Bitcoin estate planning search.
+Built for scale. Optimized for SEO. Ready to dominate Bitcoin estate planning search. 
