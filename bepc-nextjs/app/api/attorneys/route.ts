@@ -5,16 +5,19 @@ export const dynamic = 'force-dynamic'
 
 // Add caching headers for API responses
 export async function GET(request: NextRequest) {
+  // Set cache headers for API responses
+  const headers = new Headers()
+  headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300')
+  
+  // Parse query parameters outside try block for access in catch
+  const searchParams = request.nextUrl.searchParams
+  const limit = parseInt(searchParams.get('limit') || '20')
+  const offset = parseInt(searchParams.get('offset') || '0')
+  
   try {
-    // Set cache headers for API responses
-    const headers = new Headers()
-    headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300')
-    const searchParams = request.nextUrl.searchParams
     const location = searchParams.get('location')
     const specialization = searchParams.get('specialization')
     const certification = searchParams.get('certification')
-    const limit = parseInt(searchParams.get('limit') || '20')
-    const offset = parseInt(searchParams.get('offset') || '0')
 
     const where: any = {
       verifiedStatus: true,
