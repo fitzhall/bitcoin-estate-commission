@@ -2,6 +2,10 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 
+// Force static generation at build time
+export const dynamic = 'force-static'
+export const revalidate = 86400 // Revalidate daily
+
 export const metadata: Metadata = {
   title: 'Bitcoin Estate Planning Certification | BEPC',
   description: 'Why 500+ estate attorneys are getting Bitcoin certified before their competition. Comprehensive training, professional certification, and ongoing education.',

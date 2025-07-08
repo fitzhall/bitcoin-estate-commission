@@ -11,6 +11,10 @@ import { FAQSection } from '@/components/home/FAQSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 
+// Force static generation at build time
+export const dynamic = 'force-static'
+export const revalidate = 3600 // Revalidate hourly
+
 export default function HomePage() {
   return (
     <>

@@ -3,6 +3,10 @@ import { Suspense } from 'react'
 import { AttorneySearch } from '@/components/attorney/AttorneySearch'
 import { AttorneyResults } from '@/components/attorney/AttorneyResults'
 
+// Force static generation at build time
+export const dynamic = 'force-static'
+export const revalidate = 3600 // Revalidate hourly
+
 export const metadata: Metadata = {
   title: 'Find a Certified Bitcoin Estate Planning Attorney',
   description: 'Connect with BEPC certified attorneys specializing in Bitcoin and cryptocurrency estate planning. Search by location, specialization, and certification level.',

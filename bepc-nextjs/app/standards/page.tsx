@@ -3,6 +3,10 @@ import Link from 'next/link'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 import { familyGuideContent } from '@/lib/content-data'
 
+// Force static generation at build time
+export const dynamic = 'force-static'
+export const revalidate = 86400 // Revalidate daily
+
 export const metadata: Metadata = {
   title: 'KEEP Framework Standards | Bitcoin Estate Planning Commission',
   description: 'The comprehensive KEEP framework for Bitcoin estate planning. Learn about our four pillars: Keep it Secure, Establish Legal Protection, Ensure Access Through Governance, and Plan for the Future.',
