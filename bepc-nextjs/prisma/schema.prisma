@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model State {
+  id                  String    @id @default(cuid())
+  stateName           String    @unique
+  stateCode           String    @unique @db.VarChar(2)
+  population          Int       @default(0)
+  bitcoinAdoptionRate Float     @default(0)
+  estateTaxExemption  Float     @default(0)
+  probateLawsSummary  String?   @db.Text
+  regulatoryNotes     String?   @db.Text
+  majorCities         Json?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  cities      City[]
+  attorneys   Attorney[]
+  regulations StateRegulation[]
+
+  @@index([stateCode])
+}
+
+model City {
+  id                    String    @id @default(cuid())
+  cityName              String
+  citySlug              String
+  stateId               String
+  population            Int       @default(0)
+  medianIncome          Float     @default(0)
+  bitcoinBusinessesCount Int      @default(0)
+  lawFirmsCount         Int       @default(0)
+  latitude              Float?
+  longitude             Float?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  state     State      @relation(fields: [stateId], references: [id])
+  attorneys Attorney[]
+
+  @@unique([citySlug, stateId])
+  @@index([citySlug])
+  @@index([stateId])
+}
+
+model Attorney {
+  id                 String    @id @default(cuid())
+  name               String
+  slug               String    @unique
+  firmName           String?
+  cityId             String?
+  stateId            String?
+  certificationLevel String?
+  specializations    Json?
+  yearsExperience    Int       @default(0)
+  contactInfo        Json?
+  profileImage       String?
+  bio                String?   @db.Text
+  clientReviews      Json?
+  verifiedStatus     Boolean   @default(false)
+  featured           Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  city  City?  @relation(fields: [cityId], references: [id])
+  state State? @relation(fields: [stateId], references: [id])
+
+  @@index([slug])
+  @@index([certificationLevel])
+  @@index([verifiedStatus])
+}
+
+model LegalTopic {
+  id                 String    @id @default(cuid())
+  topicName          String    @unique
+  topicSlug          String    @unique
+  subtopics          Json?
+  description        String?   @db.Text
+  complexityLevel    String?
+  averageCostRange   String?
+  timeRequirements   String?
+  riskFactors        Json?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  regulations StateRegulation[]
+
+  @@index([topicSlug])
+}
+
+model StateRegulation {
+  id                     String    @id @default(cuid())
+  stateId                String
+  topicId                String
+  regulationText         String?   @db.Text
+  lastUpdated            DateTime?
+  sourceCitation         String?
+  complianceRequirements String?   @db.Text
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  state State      @relation(fields: [stateId], references: [id])
+  topic LegalTopic @relation(fields: [topicId], references: [id])
+
+  @@unique([stateId, topicId])
+  @@index([stateId])
+  @@index([topicId])
+}
