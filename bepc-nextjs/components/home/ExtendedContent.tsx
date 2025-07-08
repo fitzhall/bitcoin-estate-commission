@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function ExtendedContent() {
   return (
     <section className="py-20 bg-white">
