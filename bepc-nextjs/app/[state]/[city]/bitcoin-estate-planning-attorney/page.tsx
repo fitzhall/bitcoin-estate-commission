@@ -54,9 +54,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// Force static generation at build time
+// Force static generation at build time - NO ISR
 export const dynamic = 'force-static'
-export const revalidate = 86400 // Revalidate once per day
+export const revalidate = false // Disable ISR completely
 
 export async function generateStaticParams() {
   // Always use static city data to ensure all 500+ cities are created at build time
@@ -114,8 +114,8 @@ export default async function LocationPage({ params }: Props) {
   let attorneys: any[] = []
   let nearbyCities: any[] = []
   
-  // Only try database if we have a DATABASE_URL
-  if (process.env.DATABASE_URL) {
+  // Skip database entirely to ensure no runtime execution
+  if (false && process.env.DATABASE_URL) {
     try {
       // Use Promise.race to ensure we don't wait too long
       const dbPromise = safeDb.city.findFirst({

@@ -59,22 +59,9 @@ const US_STATES = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://bitcoinestateplanning.org'
   
+  // Skip database entirely - use static data only
   let cities: any[] = []
   let attorneys: any[] = []
-  
-  try {
-    // Get all cities for location pages
-    cities = await safeDb.city.findMany({
-      include: { state: true }
-    })
-    
-    // Get all attorneys
-    attorneys = await safeDb.attorney.findMany({
-      where: { verifiedStatus: true }
-    })
-  } catch (error) {
-    console.log('Database not ready for sitemap generation:', error)
-  }
   
   // Static pages
   const staticPages = [

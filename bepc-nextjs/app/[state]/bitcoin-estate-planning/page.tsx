@@ -89,9 +89,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// Force static generation at build time
+// Force static generation at build time - NO ISR
 export const dynamic = 'force-static'
-export const revalidate = 86400 // Revalidate once per day
+export const revalidate = false // Disable ISR completely
 
 export async function generateStaticParams() {
   return Object.keys(US_STATES).map((stateCode) => ({
@@ -126,8 +126,8 @@ export default async function StatePage({ params }: Props) {
   
   let attorneyCount = 0
   
-  // Only try database for attorney count if available and not during build
-  if (process.env.DATABASE_URL && !process.env.SKIP_DATABASE_DURING_BUILD) {
+  // Skip database entirely to ensure no runtime execution
+  if (false && process.env.DATABASE_URL && !process.env.SKIP_DATABASE_DURING_BUILD) {
     try {
       attorneyCount = await safeDb.attorney.count({
         where: {
