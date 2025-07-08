@@ -8,10 +8,6 @@
     --radius: 0.5rem;
   }
 
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply text-gray-800 antialiased;
   }
