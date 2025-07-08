@@ -3,35 +3,105 @@ interface OrganizationSchemaProps {
 }
 
 export function OrganizationSchema({ url = 'https://bitcoinestateplanning.org' }: OrganizationSchemaProps) {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Bitcoin Estate Planning Commission',
-    alternateName: 'BEPC',
-    url: url,
-    logo: `${url}/logo.png`,
-    description: 'The global authority for Bitcoin estate planning standards, certification, and professional education.',
-    foundingDate: '2024',
-    sameAs: [
-      'https://twitter.com/BitcoinEstatePlanning',
-      'https://www.linkedin.com/company/bitcoin-estate-planning-commission',
-    ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      email: 'info@bitcoinestateplanning.org',
-      url: `${url}/contact`,
+  const schemas = [
+    // Organization Schema
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      '@id': `${url}/#organization`,
+      name: 'Bitcoin Estate Planning Commission',
+      alternateName: 'BEPC',
+      url: url,
+      logo: `${url}/logos/bepc-logo-vertical.png`,
+      image: `${url}/logos/bepc-logo-vertical.png`,
+      description: 'The global authority for Bitcoin estate planning standards, certification, and professional education.',
+      foundingDate: '2024',
+      founder: {
+        '@type': 'Person',
+        name: 'Bitcoin Estate Planning Commission Founders',
+        description: 'Leading estate planning experts who identified the critical gap in Bitcoin inheritance planning'
+      },
+      sameAs: [
+        'https://twitter.com/BitcoinEstatePlanning',
+        'https://www.linkedin.com/company/bitcoin-estate-planning-commission',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        email: 'info@bitcoinestateplanning.org',
+        url: `${url}/contact`,
+        availableLanguage: ['English']
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'US',
+      },
     },
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'US',
+    // ProfessionalService Schema
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      '@id': `${url}/#service`,
+      name: 'Bitcoin Estate Planning Certification & Standards',
+      serviceType: ['Legal Certification', 'Professional Education', 'Industry Standards'],
+      provider: {
+        '@id': `${url}/#organization`
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'United States'
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'BEPC Professional Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            name: 'Attorney Certification Program',
+            description: 'Comprehensive 40+ hour Bitcoin estate planning certification for legal professionals',
+            url: `${url}/certification`
+          },
+          {
+            '@type': 'Offer', 
+            name: 'KEEP Protocol Standards',
+            description: 'Industry-leading Key Emergency Estate Protocol for secure Bitcoin inheritance',
+            url: `${url}/standards`
+          },
+          {
+            '@type': 'Offer',
+            name: 'Certified Attorney Directory',
+            description: 'Connect Bitcoin holders with certified estate planning attorneys nationwide',
+            url: `${url}/find-attorney`
+          }
+        ]
+      }
     },
-  }
+    // WebSite Schema with Search
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': `${url}/#website`,
+      url: url,
+      name: 'Bitcoin Estate Planning Commission',
+      description: 'Professional standards and certification for Bitcoin estate planning attorneys',
+      publisher: {
+        '@id': `${url}/#organization`
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${url}/find-attorney?location={search_term_string}`
+        },
+        'query-input': 'required name=search_term_string'
+      }
+    }
+  ]
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
     />
   )
 }

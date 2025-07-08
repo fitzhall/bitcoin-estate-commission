@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { safeDb } from '@/lib/database'
+import { US_MAJOR_CITIES } from '@/lib/cities-data'
 import { LocationPageContent } from '@/components/location/LocationPageContent'
 
 interface Props {
@@ -57,14 +58,21 @@ export async function generateStaticParams() {
       include: { state: true },
     })
 
-    return cities.map((city: any) => ({
-      state: city.state?.stateCode || city.stateId || 'ca',
-      city: city.citySlug,
-    }))
+    if (cities.length > 0) {
+      return cities.map((city: any) => ({
+        state: city.state?.stateCode || city.stateId || 'ca',
+        city: city.citySlug,
+      }))
+    }
   } catch (error) {
-    console.log('Database not ready, returning empty params')
-    return []
+    console.log('Database not ready, using static city data')
   }
+  
+  // Use static city data to ensure all 500+ cities are created
+  return US_MAJOR_CITIES.map((city) => ({
+    state: city.state,
+    city: city.city,
+  }))
 }
 
 export default async function LocationPage({ params }: Props) {
