@@ -1,13 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -49,9 +43,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Bitcoin Estate Planning Commission | BEPC',
-    description: 'The global authority for Bitcoin estate planning standards, certification, and professional education.',
-    images: ['/og-image.png'],
-    creator: '@BitcoinEstatePlanning',
+    description: 'The global authority for Bitcoin estate planning standards and certification.',
+    creator: '@BEPC',
+    images: ['/logos/bepc-logo-vertical.png'],
   },
   robots: {
     index: true,
@@ -72,8 +66,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={inter.className}>
+    <html lang="en" className="font-sans">
+      <body>
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">
