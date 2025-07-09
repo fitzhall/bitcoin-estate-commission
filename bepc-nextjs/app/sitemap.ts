@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { safeDb } from '@/lib/database'
 import { US_MAJOR_CITIES } from '@/lib/cities-data'
+import { getAllPublishedPages } from '@/lib/programmatic-content'
 
 // List of all US states
 const US_STATES = [
@@ -116,5 +117,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
   
-  return [...staticPages, ...locationPages, ...statePages, ...attorneyPages]
+  // Programmatic topic pages
+  const programmaticPages = getAllPublishedPages().map((page) => ({
+    url: `${baseUrl}/${page.category}/${page.slug}`,
+    lastModified: new Date(page.lastUpdated),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }))
+  
+  // Category landing pages
+  const categoryPages = [
+    '/professional-standards',
+    '/education',
+    '/technical',
+    '/compliance'
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }))
+  
+  return [...staticPages, ...locationPages, ...statePages, ...attorneyPages, ...programmaticPages, ...categoryPages]
 }
