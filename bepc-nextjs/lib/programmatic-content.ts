@@ -564,6 +564,128 @@ export const programmaticPages: TopicPage[] = [
     schemaType: 'ProfessionalService'
   },
   
+  // Education Pillar - Batch 5 (Expert Level)
+  {
+    slug: 'expert-level-bitcoin-estate-planning-mastery',
+    title: 'Expert Level Bitcoin Estate Planning Mastery',
+    metaDescription: 'Achieve mastery in complex Bitcoin estate planning strategies. Expert framework, advanced technical expertise, and professional excellence standards.',
+    category: 'education',
+    keywords: ['expert bitcoin estate planning', 'cryptocurrency planning mastery', 'digital asset expert level', 'bitcoin professional mastery'],
+    contentFile: '31_Expert_Level_Bitcoin_Estate_Planning_Mastery.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Course'
+  },
+  {
+    slug: 'advanced-multi-asset-portfolio-integration',
+    title: 'Advanced Multi-Asset Portfolio Integration',
+    metaDescription: 'Integrate Bitcoin with traditional assets in estate planning. Complex portfolio strategies, coordination frameworks, and unified wealth management.',
+    category: 'education',
+    keywords: ['bitcoin portfolio integration', 'multi-asset estate planning', 'cryptocurrency portfolio management', 'integrated wealth planning'],
+    contentFile: '32_Advanced_Multi_Asset_Portfolio_Integration.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'sophisticated-tax-optimization-planning',
+    title: 'Sophisticated Tax Optimization Planning',
+    metaDescription: 'Advanced tax optimization strategies for Bitcoin estates. Complex structures, international planning, charitable techniques, and multi-generational strategies.',
+    category: 'education',
+    keywords: ['bitcoin tax optimization', 'advanced cryptocurrency tax planning', 'digital asset tax strategies', 'sophisticated estate tax planning'],
+    contentFile: '33_Sophisticated_Tax_Optimization_Planning.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'global-regulatory-compliance-coordination',
+    title: 'Global Regulatory Compliance Coordination',
+    metaDescription: 'Master global Bitcoin estate planning compliance. International frameworks, multi-jurisdiction coordination, regulatory navigation, and compliance systems.',
+    category: 'education',
+    keywords: ['global bitcoin compliance', 'international cryptocurrency regulations', 'multi-jurisdiction planning', 'global regulatory coordination'],
+    contentFile: '34_Global_Regulatory_Compliance_Coordination.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-excellence-achievement',
+    title: 'Professional Excellence Achievement',
+    metaDescription: 'Achieve professional excellence in Bitcoin estate planning. Excellence frameworks, performance optimization, client success, and industry recognition.',
+    category: 'education',
+    keywords: ['bitcoin planning excellence', 'professional achievement', 'cryptocurrency excellence standards', 'digital asset professional success'],
+    contentFile: '35_Professional_Excellence_Industry_Leadership.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'ProfessionalService'
+  },
+  {
+    slug: 'advanced-client-relationship-management',
+    title: 'Advanced Client Relationship Management',
+    metaDescription: 'Master client relationships in Bitcoin estate planning. Advanced communication, trust building, service excellence, and long-term client success.',
+    category: 'education',
+    keywords: ['bitcoin client management', 'cryptocurrency client relationships', 'digital asset client service', 'advanced client excellence'],
+    contentFile: '36_Advanced_Client_Relationship_Management.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'ProfessionalService'
+  },
+  {
+    slug: 'innovation-technology-leadership',
+    title: 'Innovation & Technology Leadership',
+    metaDescription: 'Lead innovation in Bitcoin estate planning. Emerging technologies, industry innovation, technology adoption, and future-ready practice development.',
+    category: 'education',
+    keywords: ['bitcoin innovation leadership', 'cryptocurrency technology innovation', 'digital asset tech leadership', 'future estate planning'],
+    contentFile: '37_Innovation_Technology_Leadership.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'global-market-expansion-opportunities',
+    title: 'Global Market Expansion Opportunities',
+    metaDescription: 'Expand Bitcoin estate planning services globally. International markets, expansion strategies, cross-border opportunities, and global practice development.',
+    category: 'education',
+    keywords: ['global bitcoin market expansion', 'international cryptocurrency services', 'digital asset global opportunities', 'worldwide practice expansion'],
+    contentFile: '38_Global_Market_Expansion_Opportunities.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-legacy-industry-impact',
+    title: 'Professional Legacy & Industry Impact',
+    metaDescription: 'Build lasting legacy in Bitcoin estate planning. Industry impact, professional legacy, thought leadership, and long-term influence strategies.',
+    category: 'education',
+    keywords: ['bitcoin professional legacy', 'cryptocurrency industry impact', 'digital asset thought leadership', 'lasting professional influence'],
+    contentFile: '39_Professional_Legacy_Industry_Impact.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'future-bitcoin-estate-planning-excellence',
+    title: 'Future Bitcoin Estate Planning Excellence',
+    metaDescription: 'Shape the future of Bitcoin estate planning. Future trends, emerging opportunities, industry evolution, and next-generation planning strategies.',
+    category: 'education',
+    keywords: ['future bitcoin estate planning', 'cryptocurrency planning evolution', 'digital asset future trends', 'next-generation planning'],
+    contentFile: '40_Future_Bitcoin_Estate_Planning_Excellence.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  
   // Technical Pillar (Coming in Phase 1C)
   {
     slug: 'bitcoin-multisig-inheritance-setup',
