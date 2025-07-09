@@ -11,9 +11,9 @@ import { FAQSection } from '@/components/home/FAQSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 
-// Force static generation at build time - NO ISR
+// Static generation with ISR for better performance
 export const dynamic = 'force-static'
-export const revalidate = false // Disable ISR completely
+export const revalidate = 3600 // Revalidate every hour
 
 export default function HomePage() {
   return (

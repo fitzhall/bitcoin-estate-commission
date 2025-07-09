@@ -54,9 +54,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// Force static generation at build time - NO ISR
+// Static generation with ISR
 export const dynamic = 'force-static'
-export const revalidate = false // Disable ISR completely
+export const revalidate = 86400 // Revalidate daily
 
 export async function generateStaticParams() {
   // Always use static city data to ensure all 500+ cities are created at build time
