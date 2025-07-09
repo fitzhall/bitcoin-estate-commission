@@ -21,6 +21,13 @@ class MockPrismaClient {
     findMany: async () => [],
     count: async () => 0,
   }
+  subscriber = {
+    findFirst: async () => null,
+    findMany: async () => [],
+    create: async (data: any) => ({ id: '1', ...data }),
+    update: async (data: any) => ({ id: '1', ...data }),
+    count: async () => 0,
+  }
   $queryRaw = async () => null
   $disconnect = async () => {}
 }

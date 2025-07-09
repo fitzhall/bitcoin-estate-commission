@@ -10,6 +10,7 @@ import { StateDirectory } from '@/components/home/StateDirectory'
 import { FAQSection } from '@/components/home/FAQSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
+import { EmailCapture } from '@/components/EmailCapture'
 
 // Static generation with ISR for better performance
 export const dynamic = 'force-static'
@@ -20,6 +21,13 @@ export default function HomePage() {
     <>
       <OrganizationSchema />
       <Hero />
+      {/* Email capture after hero for maximum visibility */}
+      <EmailCapture 
+        source="homepage-hero"
+        variant="inline"
+        title="Get the Bitcoin Estate Planning Standards (Early Access)"
+        description="Join 500+ attorneys and thousands of Bitcoin holders preparing for the future."
+      />
       {/* Content updated with truth-based messaging - v3 */}
       <AuthoritySignals />
       <ValuePillars />

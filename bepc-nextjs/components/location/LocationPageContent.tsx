@@ -3,6 +3,7 @@ import { formatNumber } from '@/lib/utils'
 import { AttorneyCard } from '@/components/attorney/AttorneyCard'
 import { LocalBusinessSchema, BreadcrumbSchema } from '@/components/SchemaMarkup'
 import { familyGuideContent } from '@/lib/content-data'
+import { InlineEmailCapture } from '@/components/InlineEmailCapture'
 import type { City, State, Attorney } from '@prisma/client'
 
 interface Props {
@@ -262,6 +263,13 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
                   cryptocurrency holders who lack proper estate planning. Don't let your family become another statistic.
                 </p>
               </div>
+
+              {/* Email Capture after Horror Stories */}
+              <InlineEmailCapture 
+                source={`/${stateCode.toLowerCase()}/${location.citySlug}`}
+                state={stateName}
+                city={cityName}
+              />
 
               {/* Cost Estimates */}
               <div className="bg-gray-50 rounded-lg p-8">
