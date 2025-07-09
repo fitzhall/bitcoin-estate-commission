@@ -177,17 +177,56 @@ export async function AttorneyResults({ searchParams }: Props) {
           )}
         </>
       ) : (
-        <div className="bg-gray-50 rounded-lg p-12 text-center">
-          <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <h3 className="text-xl font-semibold mb-2">No attorneys found</h3>
-          <p className="text-gray-600 mb-6">
-            Try adjusting your search criteria or browse all attorneys
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-12 text-center">
+          <div className="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold inline-flex items-center mb-6">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Directory Launching Soon
+          </div>
+          
+          <h3 className="text-2xl font-bold mb-4">Attorney Directory Coming Q1 2025</h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            We're building a comprehensive directory of BEPC certified Bitcoin estate planning attorneys. 
+            The first certified attorneys will be listed here after our certification program launches.
           </p>
-          <Link href="/find-attorney" className="btn btn-primary">
-            View All Attorneys
-          </Link>
+          
+          <div className="bg-white rounded-lg p-6 mb-8 max-w-xl mx-auto">
+            <h4 className="font-semibold text-gray-900 mb-3">While You Wait:</h4>
+            <ul className="text-left space-y-2 text-gray-700">
+              <li className="flex items-start">
+                <svg className="w-5 h-5 text-accent mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Download our Bitcoin Estate Planning Standards
+              </li>
+              <li className="flex items-start">
+                <svg className="w-5 h-5 text-accent mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Learn about the certification requirements
+              </li>
+              <li className="flex items-start">
+                <svg className="w-5 h-5 text-accent mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Join the early interest list for updates
+              </li>
+            </ul>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/get-standards" className="btn btn-primary">
+              Get Standards Guide
+            </Link>
+            <Link href="/certification" className="btn btn-outline">
+              Learn About Certification
+            </Link>
+          </div>
+          
+          <p className="text-sm text-gray-500 mt-8">
+            Are you an attorney? <Link href="/certification/apply" className="text-primary hover:underline">Apply for early certification</Link>
+          </p>
         </div>
       )}
     </div>

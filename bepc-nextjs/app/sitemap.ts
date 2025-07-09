@@ -63,32 +63,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let cities: any[] = []
   let attorneys: any[] = []
   
-  // Static pages
+  // Static pages - only include pages that exist
   const staticPages = [
     '',
     '/find-attorney',
     '/certification',
     '/certification/apply',
-    '/certification/overview',
     '/standards',
-    '/standards/keep-protocol',
-    '/standards/guidelines',
-    '/standards/compliance',
     '/resources',
-    '/resources/guide',
-    '/resources/templates',
-    '/resources/tools',
-    '/education',
-    '/education/cle',
-    '/research',
-    '/research/reports',
-    '/research/case-studies',
-    '/news',
     '/about',
-    '/about/mission',
-    '/about/team',
-    '/contact',
-    '/privacy',
+    '/get-standards',
+    '/thank-you',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
