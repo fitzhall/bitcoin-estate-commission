@@ -134,7 +134,10 @@ export function EmailCapture({
               <select
                 value={userType}
                 onChange={(e) => setUserType(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900"
+                required
+                className={`px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white ${
+                  userType === '' ? 'text-gray-500' : 'text-gray-900'
+                }`}
               >
                 <option value="">I am a...</option>
                 <option value="bitcoin_holder">Bitcoin Holder</option>
@@ -154,7 +157,7 @@ export function EmailCapture({
 
             <button
               type="submit"
-              disabled={loading || !email}
+              disabled={loading || !email || !userType}
               className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               {loading ? (

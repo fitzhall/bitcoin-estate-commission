@@ -70,10 +70,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/certification',
     '/certification/apply',
     '/standards',
+    '/standards/keep-protocol',
     '/resources',
     '/about',
     '/get-standards',
     '/thank-you',
+    '/privacy',
+    '/terms',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
