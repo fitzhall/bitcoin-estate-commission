@@ -4,6 +4,13 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
   
+  // Only process paths that might have uppercase state codes
+  // Skip if path doesn't start with exactly 2 uppercase letters
+  if (!/^\/[A-Z]{2}(\/|$)/.test(path)) {
+    // Skip middleware entirely for most requests
+    return NextResponse.next()
+  }
+  
   // Check if path starts with uppercase state code (2 letters)
   const uppercaseStateMatch = path.match(/^\/([A-Z]{2})(\/|$)/)
   
@@ -23,13 +30,10 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder
+     * Only match paths that could be state URLs
+     * This reduces middleware execution significantly
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|public).*)',
+    '/[A-Z][A-Z]/:path*',
+    '/[A-Z][A-Z]',
   ],
 }
