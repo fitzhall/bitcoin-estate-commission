@@ -15,6 +15,11 @@ const DB_CHECK_INTERVAL = process.env.NODE_ENV === 'production' ? 30 * 1000 : 5 
 
 // Helper to check if database is available
 export async function isDatabaseAvailable(): Promise<boolean> {
+  // Always return false if no DATABASE_URL or during build
+  if (!process.env.DATABASE_URL || process.env.SKIP_DATABASE_DURING_BUILD === 'true') {
+    return false
+  }
+
   const now = Date.now()
   
   // Return cached result if checked recently
@@ -23,16 +28,8 @@ export async function isDatabaseAvailable(): Promise<boolean> {
   }
 
   try {
-    // Skip database check during build time
-    if (process.env.NODE_ENV === 'production' && !process.env.DATABASE_URL) {
-      console.log('No DATABASE_URL provided, using mock data')
-      dbAvailable = false
-      lastCheck = now
-      return false
-    }
-
     // Skip connection attempt during build
-    if (process.env.VERCEL_ENV || process.env.CI || process.env.NEXT_PHASE === 'phase-production-build' || process.env.SKIP_DATABASE_DURING_BUILD === 'true') {
+    if (process.env.VERCEL_ENV || process.env.CI || process.env.NEXT_PHASE === 'phase-production-build') {
       console.log('Build environment detected, skipping database connection')
       dbAvailable = false
       lastCheck = now
@@ -76,8 +73,8 @@ export const safeDb = {
         return result
       } catch (error) {
         if (process.env.NODE_ENV !== 'production') {
-        console.log('Database error in city.findFirst, returning mock data')
-      }
+          console.log('Database error in city.findFirst, returning mock data')
+        }
         // Return mock data based on the query
         if (args?.where?.citySlug && args?.where?.state?.stateCode) {
           const includeState = args?.include?.state
@@ -107,8 +104,8 @@ export const safeDb = {
         return result
       } catch (error) {
         if (process.env.NODE_ENV !== 'production') {
-        console.log('Database error in city.findMany, returning mock data')
-      }
+          console.log('Database error in city.findMany, returning mock data')
+        }
         const includeState = args?.include?.state
         if (includeState) {
           return mockCities.map(city => ({

@@ -4,20 +4,33 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
+// Mock Prisma client that never connects to database
+class MockPrismaClient {
+  city = {
+    findFirst: async () => null,
+    findMany: async () => [],
+    count: async () => 0,
+  }
+  attorney = {
+    findFirst: async () => null,
+    findMany: async () => [],
+    count: async () => 0,
+  }
+  state = {
+    findFirst: async () => null,
+    findMany: async () => [],
+    count: async () => 0,
+  }
+  $queryRaw = async () => null
+  $disconnect = async () => {}
+}
+
 // Create a Prisma client instance only if DATABASE_URL is provided
 export const prisma = globalForPrisma.prisma ?? (() => {
-  // During build time or when DATABASE_URL is not set, create a minimal client
-  if (!process.env.DATABASE_URL) {
-    console.log('DATABASE_URL not provided, database features will be limited')
-    // Return a minimal client that won't attempt to connect
-    return new PrismaClient({
-      datasources: {
-        db: {
-          url: process.env.DATABASE_URL || 'postgresql://user:pass@localhost:5432/db?schema=public'
-        }
-      },
-      log: ['error'],
-    })
+  // During build time or when DATABASE_URL is not set, return mock client
+  if (!process.env.DATABASE_URL || process.env.SKIP_DATABASE_DURING_BUILD === 'true') {
+    console.log('DATABASE_URL not provided, using mock client')
+    return new MockPrismaClient() as any
   }
   
   return new PrismaClient({
