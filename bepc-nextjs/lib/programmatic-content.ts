@@ -320,6 +320,128 @@ export const programmaticPages: TopicPage[] = [
     schemaType: 'Article'
   },
   
+  // Education Pillar - Batch 3 (Advanced Strategies)
+  {
+    slug: 'advanced-multisignature-strategies',
+    title: 'Advanced Multisignature Strategies',
+    metaDescription: 'Sophisticated security architectures for high-value Bitcoin holdings. Complex family configurations, geographic distribution, and professional integration models.',
+    category: 'education',
+    keywords: ['advanced bitcoin multisig', 'complex multisignature strategies', 'high-value bitcoin security', 'institutional multisig'],
+    contentFile: '11_Advanced_Multisignature_Strategies.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'HowTo'
+  },
+  {
+    slug: 'international-bitcoin-estate-planning',
+    title: 'International Bitcoin Estate Planning',
+    metaDescription: 'Navigate cross-border Bitcoin inheritance challenges. International tax treaties, multi-jurisdictional planning, and global regulatory compliance strategies.',
+    category: 'education',
+    keywords: ['international bitcoin estate planning', 'cross-border cryptocurrency inheritance', 'global bitcoin tax planning', 'multi-jurisdiction digital assets'],
+    contentFile: '12_International_Bitcoin_Estate_Planning.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'business-corporate-bitcoin-holdings',
+    title: 'Business & Corporate Bitcoin Holdings',
+    metaDescription: 'Manage corporate Bitcoin assets for succession. Business continuity, key person planning, partnership agreements, and institutional custody solutions.',
+    category: 'education',
+    keywords: ['corporate bitcoin holdings', 'business bitcoin succession', 'company cryptocurrency planning', 'institutional bitcoin custody'],
+    contentFile: '13_Business_Corporate_Bitcoin_Holdings.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'emergency-protocols-crisis-management',
+    title: 'Emergency Protocols & Crisis Management',
+    metaDescription: 'Emergency access protocols for Bitcoin holdings. Crisis management, duress protection, temporary incapacity planning, and rapid response procedures.',
+    category: 'education',
+    keywords: ['bitcoin emergency protocols', 'cryptocurrency crisis management', 'digital asset duress protection', 'bitcoin incapacity planning'],
+    contentFile: '14_Emergency_Protocols_Crisis_Management.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'HowTo'
+  },
+  {
+    slug: 'advanced-estate-planning-strategies',
+    title: 'Advanced Estate Planning Strategies',
+    metaDescription: 'Sophisticated Bitcoin estate planning techniques. Dynasty trusts, charitable remainder trusts, generation-skipping strategies, and tax optimization.',
+    category: 'education',
+    keywords: ['advanced bitcoin estate planning', 'cryptocurrency dynasty trusts', 'bitcoin charitable planning', 'digital asset tax strategies'],
+    contentFile: '15_Advanced_Estate_Planning_Strategies.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'institutional-fiduciary-management',
+    title: 'Institutional Fiduciary Management',
+    metaDescription: 'Institutional management of Bitcoin estates. Fiduciary best practices, professional trustee integration, compliance frameworks, and audit procedures.',
+    category: 'education',
+    keywords: ['institutional bitcoin management', 'cryptocurrency fiduciary services', 'bitcoin trustee best practices', 'digital asset compliance'],
+    contentFile: '16_Institutional_Fiduciary_Management.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'ProfessionalService'
+  },
+  {
+    slug: 'technology-evolution-future-planning',
+    title: 'Technology Evolution & Future Planning',
+    metaDescription: 'Future-proof Bitcoin estate plans against technology changes. Protocol upgrades, quantum computing threats, emerging standards, and adaptive strategies.',
+    category: 'education',
+    keywords: ['bitcoin technology evolution', 'future-proof estate planning', 'quantum computing bitcoin', 'cryptocurrency protocol changes'],
+    contentFile: '17_Technology_Evolution_Future_Planning.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-network-coordination',
+    title: 'Professional Network Coordination',
+    metaDescription: 'Coordinate professional teams for Bitcoin estate planning. Attorney-CPA collaboration, technical advisor integration, and multi-disciplinary approaches.',
+    category: 'education',
+    keywords: ['bitcoin professional coordination', 'cryptocurrency team planning', 'digital asset advisor network', 'multidisciplinary bitcoin planning'],
+    contentFile: '18_Professional_Network_Coordination.md',
+    wordCount: 3300,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'ProfessionalService'
+  },
+  {
+    slug: 'wealth-preservation-across-generations',
+    title: 'Wealth Preservation Across Generations',
+    metaDescription: 'Preserve Bitcoin wealth for multiple generations. Family governance, successor education, long-term security strategies, and generational planning.',
+    category: 'education',
+    keywords: ['bitcoin generational wealth', 'cryptocurrency wealth preservation', 'multi-generation bitcoin planning', 'family bitcoin governance'],
+    contentFile: '19_Wealth_Preservation_Across_Generations.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'global-bitcoin-estate-planning-perspectives',
+    title: 'Global Bitcoin Estate Planning Perspectives',
+    metaDescription: 'International perspectives on Bitcoin estate planning. Global best practices, cultural considerations, regulatory variations, and worldwide trends.',
+    category: 'education',
+    keywords: ['global bitcoin estate planning', 'international cryptocurrency perspectives', 'worldwide bitcoin inheritance', 'global digital asset trends'],
+    contentFile: '20_Global_Bitcoin_Estate_Planning_Perspectives.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  
   // Technical Pillar (Coming in Phase 1C)
   {
     slug: 'bitcoin-multisig-inheritance-setup',
