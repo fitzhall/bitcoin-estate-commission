@@ -115,3 +115,26 @@ model StateRegulation {
   @@index([stateId])
   @@index([topicId])
 }
+
+model Subscriber {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  firstName         String?
+  lastName          String?
+  userType          String?   // "attorney" | "bitcoin_holder" | "other"
+  state             String?   // Which state they're from
+  city              String?   // Which city they're from
+  source            String?   // Which page/campaign they signed up from
+  interests         Json?     // What they're interested in
+  subscribed        Boolean   @default(true)
+  confirmedAt       DateTime?
+  unsubscribedAt    DateTime?
+  lastActiveAt      DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([email])
+  @@index([userType])
+  @@index([state])
+  @@index([subscribed])
+}

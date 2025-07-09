@@ -27,10 +27,10 @@ export function LocationPageContent({ location, attorneys, nearbyCities }: Props
       />
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://bitcoinestateplanning.org' },
-          { name: 'Find Attorney', url: 'https://bitcoinestateplanning.org/find-attorney' },
-          { name: stateName, url: `https://bitcoinestateplanning.org/${stateCode.toLowerCase()}` },
-          { name: cityName, url: `https://bitcoinestateplanning.org/${stateCode.toLowerCase()}/${location.citySlug}/bitcoin-estate-planning-attorney` },
+          { name: 'Home', url: 'https://bitcoinestatecommission.org' },
+          { name: 'Find Attorney', url: 'https://bitcoinestatecommission.org/find-attorney' },
+          { name: stateName, url: `https://bitcoinestatecommission.org/${stateCode.toLowerCase()}` },
+          { name: cityName, url: `https://bitcoinestatecommission.org/${stateCode.toLowerCase()}/${location.citySlug}/bitcoin-estate-planning-attorney` },
         ]}
       />
       {/* Hero Section */}

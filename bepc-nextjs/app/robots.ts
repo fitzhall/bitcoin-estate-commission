@@ -18,6 +18,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://bitcoinestateplanning.org/sitemap.xml',
+    sitemap: 'https://bitcoinestatecommission.org/sitemap.xml',
   }
 }

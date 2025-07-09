@@ -154,4 +154,61 @@ export const safeDb = {
       }
     },
   },
+  subscriber: {
+    async findFirst(args?: any) {
+      try {
+        const result = await prisma.subscriber.findFirst(args)
+        return result
+      } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in subscriber.findFirst, returning null')
+        }
+        return null
+      }
+    },
+    async create(args: any) {
+      try {
+        const result = await prisma.subscriber.create(args)
+        return result
+      } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in subscriber.create, failing gracefully')
+        }
+        throw error
+      }
+    },
+    async update(args: any) {
+      try {
+        const result = await prisma.subscriber.update(args)
+        return result
+      } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in subscriber.update, failing gracefully')
+        }
+        throw error
+      }
+    },
+    async findMany(args?: any) {
+      try {
+        const result = await prisma.subscriber.findMany(args)
+        return result
+      } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in subscriber.findMany, returning empty array')
+        }
+        return []
+      }
+    },
+    async count(args?: any) {
+      try {
+        const result = await prisma.subscriber.count(args)
+        return result
+      } catch (error) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('Database error in subscriber.count, returning 0')
+        }
+        return 0
+      }
+    },
+  },
 }

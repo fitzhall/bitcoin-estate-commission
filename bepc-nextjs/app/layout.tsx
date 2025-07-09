@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://bitcoinestateplanning.org'),
+  metadataBase: new URL('https://bitcoinestatecommission.org'),
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://bitcoinestateplanning.org',
+    url: 'https://bitcoinestatecommission.org',
     siteName: 'Bitcoin Estate Planning Commission',
     title: 'Bitcoin Estate Planning Commission | BEPC',
     description: 'The global authority for Bitcoin estate planning standards, certification, and professional education.',

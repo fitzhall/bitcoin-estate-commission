@@ -57,7 +57,7 @@ const US_STATES = [
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://bitcoinestateplanning.org'
+  const baseUrl = 'https://bitcoinestatecommission.org'
   
   // Skip database entirely - use static data only
   let cities: any[] = []

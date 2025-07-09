@@ -61,7 +61,7 @@ console.log('State pages that will be generated:');
 console.log('=====================================');
 
 US_STATES.forEach((state, index) => {
-  const url = `https://bitcoinestateplanning.org/${state.code}/bitcoin-estate-planning`;
+  const url = `https://bitcoinestatecommission.org/${state.code}/bitcoin-estate-planning`;
   console.log(`${index + 1}. ${state.name}: ${url}`);
 });
 

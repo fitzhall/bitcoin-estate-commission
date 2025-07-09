@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bitcoinestateplanning.org/sitemap.xml
+Sitemap: https://bitcoinestatecommission.org/sitemap.xml

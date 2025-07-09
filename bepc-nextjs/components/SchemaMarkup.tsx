@@ -2,7 +2,7 @@ interface OrganizationSchemaProps {
   url?: string
 }
 
-export function OrganizationSchema({ url = 'https://bitcoinestateplanning.org' }: OrganizationSchemaProps) {
+export function OrganizationSchema({ url = 'https://bitcoinestatecommission.org' }: OrganizationSchemaProps) {
   const schemas = [
     // Organization Schema
     {
@@ -28,7 +28,7 @@ export function OrganizationSchema({ url = 'https://bitcoinestateplanning.org' }
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer service',
-        email: 'info@bitcoinestateplanning.org',
+        email: 'info@bitcoinestatecommission.org',
         url: `${url}/contact`,
         availableLanguage: ['English']
       },
@@ -126,7 +126,7 @@ export function LocalBusinessSchema({
     '@type': 'LegalService',
     name: `Bitcoin Estate Planning Attorneys in ${cityName}, ${stateName}`,
     description: `BEPC certified Bitcoin estate planning attorneys serving ${cityName} and surrounding areas.`,
-    url: `https://bitcoinestateplanning.org/${stateCode}/${cityName.toLowerCase().replace(/ /g, '-')}/bitcoin-estate-planning-attorney`,
+    url: `https://bitcoinestatecommission.org/${stateCode}/${cityName.toLowerCase().replace(/ /g, '-')}/bitcoin-estate-planning-attorney`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: cityName,

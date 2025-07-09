@@ -144,8 +144,8 @@ export default async function StatePage({ params }: Props) {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', url: 'https://bitcoinestateplanning.org' },
-          { name: stateName, url: `https://bitcoinestateplanning.org/${normalizedState}/bitcoin-estate-planning` },
+          { name: 'Home', url: 'https://bitcoinestatecommission.org' },
+          { name: stateName, url: `https://bitcoinestatecommission.org/${normalizedState}/bitcoin-estate-planning` },
         ]}
       />
 

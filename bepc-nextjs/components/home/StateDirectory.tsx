@@ -65,7 +65,7 @@ export function StateDirectory() {
     "itemListElement": US_STATES.map((state, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `https://bitcoinestateplanning.org/${state.code}/bitcoin-estate-planning`,
+      "url": `https://bitcoinestatecommission.org/${state.code}/bitcoin-estate-planning`,
       "name": `Bitcoin Estate Planning in ${state.name}`
     }))
   };
