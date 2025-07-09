@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { safeDb } from '@/lib/database'
 
+// ConvertKit API configuration
+const CONVERTKIT_API_URL = 'https://api.convertkit.com/v3'
+const CONVERTKIT_API_KEY = process.env.CONVERTKIT_API_KEY
+const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -62,12 +67,12 @@ export async function POST(request: NextRequest) {
       // Continue with email service even if DB fails
     }
 
-    // Send welcome email with PDF (integrate with your email service)
+    // Send to ConvertKit
     try {
-      await sendWelcomeEmail(email, firstName)
+      await addToConvertKit(email, firstName, userType, state, city, source)
     } catch (emailError) {
-      console.error('Email sending error:', emailError)
-      // Still return success to user
+      console.error('ConvertKit error:', emailError)
+      // Still return success to user even if ConvertKit fails
     }
 
     return NextResponse.json({ success: true })
@@ -77,26 +82,94 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function sendWelcomeEmail(email: string, firstName?: string) {
-  // TODO: Integrate with your email service (Resend, ConvertKit, etc.)
-  // For now, just log
-  console.log(`Welcome email would be sent to: ${email} (${firstName})`)
-  
-  // Example Resend integration:
-  /*
-  const resend = new Resend(process.env.RESEND_API_KEY)
-  
-  await resend.emails.send({
-    from: 'BEPC <hello@bitcoinestatecommission.org>',
-    to: email,
-    subject: 'Your Bitcoin Estate Planning Standards (Early Access)',
-    html: `
-      <h1>Welcome ${firstName ? firstName + '!' : '!'}</h1>
-      <p>Here's your early access copy of the Bitcoin Estate Planning Standards...</p>
-      <a href="https://bitcoinestatecommission.org/download/standards.pdf">Download PDF</a>
-    `
-  })
-  */
+async function addToConvertKit(
+  email: string, 
+  firstName?: string, 
+  userType?: string,
+  state?: string,
+  city?: string,
+  source?: string
+) {
+  if (!CONVERTKIT_API_KEY || !CONVERTKIT_API_SECRET) {
+    console.log('ConvertKit API keys not configured')
+    return
+  }
+
+  try {
+    // First, we need to get the form ID for "bepc collection"
+    // Let's get all forms to find the correct one
+    const formsResponse = await fetch(
+      `${CONVERTKIT_API_URL}/forms?api_key=${CONVERTKIT_API_KEY}`,
+      { method: 'GET' }
+    )
+    
+    const formsData = await formsResponse.json()
+    console.log('Available forms:', formsData.forms?.map((f: any) => ({ id: f.id, name: f.name })))
+    
+    // Find the "bepc collection" form
+    const bepcForm = formsData.forms?.find((form: any) => 
+      form.name.toLowerCase().includes('bepc collection') || 
+      form.name.toLowerCase().includes('bepc')
+    )
+    
+    if (!bepcForm) {
+      console.error('BEPC Collection form not found')
+      // Still try to subscribe using the universal endpoint
+    }
+
+    // Subscribe to ConvertKit
+    const subscribeData = {
+      api_key: CONVERTKIT_API_KEY,
+      email: email,
+      first_name: firstName || '',
+      fields: {
+        user_type: userType || 'unknown',
+        state: state || '',
+        city: city || '',
+        source: source || 'website',
+      },
+      tags: []
+    }
+
+    // Add tags based on user type
+    if (userType === 'attorney') {
+      subscribeData.tags.push('attorney')
+    } else if (userType === 'bitcoin_holder') {
+      subscribeData.tags.push('hodler', 'bitcoin_holder')
+    }
+
+    // Add location tags if available
+    if (state) {
+      subscribeData.tags.push(`state_${state.toLowerCase()}`)
+    }
+
+    // Subscribe to the form if we found it, otherwise use universal subscribe
+    const subscribeUrl = bepcForm 
+      ? `${CONVERTKIT_API_URL}/forms/${bepcForm.id}/subscribe`
+      : `${CONVERTKIT_API_URL}/subscribers`
+
+    const response = await fetch(subscribeUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(subscribeData),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.text()
+      throw new Error(`ConvertKit API error: ${response.status} - ${errorData}`)
+    }
+
+    const result = await response.json()
+    console.log('ConvertKit subscription successful:', result.subscription?.subscriber?.email_address)
+    
+    // ConvertKit will handle the welcome email with the PDF
+    return result
+  } catch (error) {
+    console.error('ConvertKit integration error:', error)
+    throw error
+  }
 }
 
 // Add to safeDb in your database.ts file
