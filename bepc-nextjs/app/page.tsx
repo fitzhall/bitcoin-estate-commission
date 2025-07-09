@@ -11,6 +11,7 @@ import { FAQSection } from '@/components/home/FAQSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 import { EmailCapture } from '@/components/EmailCapture'
+import { LeadMagnetCTA } from '@/components/LeadMagnetCTA'
 
 // Static generation with ISR for better performance
 export const dynamic = 'force-static'
@@ -21,13 +22,12 @@ export default function HomePage() {
     <>
       <OrganizationSchema />
       <Hero />
-      {/* Email capture after hero for maximum visibility */}
-      <EmailCapture 
-        source="homepage-hero"
-        variant="inline"
-        title="Get the Bitcoin Estate Planning Standards (Early Access)"
-        description="Join 500+ attorneys and thousands of Bitcoin holders preparing for the future."
-      />
+      {/* Lead magnet CTA after hero for cold traffic */}
+      <section className="py-8 bg-gradient-to-b from-white to-gray-50">
+        <div className="container text-center">
+          <LeadMagnetCTA audience="general" variant="banner" />
+        </div>
+      </section>
       {/* Content updated with truth-based messaging - v3 */}
       <AuthoritySignals />
       <ValuePillars />

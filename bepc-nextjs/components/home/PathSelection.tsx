@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { LeadMagnetCTA } from '@/components/LeadMagnetCTA'
 
 export function PathSelection() {
   return (
@@ -66,12 +67,10 @@ export function PathSelection() {
               </div>
               
               <div className="space-y-3">
-                <Link href="/certification/apply" className="btn bg-accent hover:bg-accent-dark text-white btn-lg w-full shadow-md hover:shadow-lg transition-all">
+                <Link href="/certification" className="btn bg-accent hover:bg-accent-dark text-white btn-lg w-full shadow-md hover:shadow-lg transition-all">
                   Start Certification
                 </Link>
-                <Link href="/certification/overview" className="btn btn-outline btn-lg w-full">
-                  View Certification Details
-                </Link>
+                <LeadMagnetCTA audience="attorney" variant="button" className="w-full justify-center" />
               </div>
             </div>
           </div>
@@ -138,9 +137,7 @@ export function PathSelection() {
                 <Link href="/find-attorney" className="btn bg-accent hover:bg-accent-dark text-white btn-lg w-full shadow-md hover:shadow-lg transition-all">
                   Find Attorney
                 </Link>
-                <Link href="/resources/guide" className="btn btn-outline btn-lg w-full">
-                  Free Guide
-                </Link>
+                <LeadMagnetCTA audience="holder" variant="button" className="w-full justify-center" />
               </div>
             </div>
           </div>

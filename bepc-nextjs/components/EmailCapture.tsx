@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 interface EmailCaptureProps {
   source?: string
-  variant?: 'inline' | 'popup' | 'sidebar' | 'footer'
+  variant?: 'hero' | 'inline' | 'sidebar' | 'compact'
   title?: string
   description?: string
   buttonText?: string
@@ -13,10 +13,10 @@ interface EmailCaptureProps {
 
 export function EmailCapture({
   source = 'unknown',
-  variant = 'inline',
-  title = 'Get the Bitcoin Estate Planning Standards (Early Access)',
-  description = 'Download the draft standards being reviewed by 500+ attorneys nationwide.',
-  buttonText = 'Download Free Guide',
+  variant = 'hero',
+  title = 'Get Early Access: Bitcoin Estate Planning Standards',
+  description = 'Join 500+ attorneys and thousands of Bitcoin holders preparing for the future.',
+  buttonText = 'Download Free Standards',
   className = ''
 }: EmailCaptureProps) {
   const [email, setEmail] = useState('')
@@ -62,79 +62,163 @@ export function EmailCapture({
   if (success) {
     return (
       <div className={`bg-green-50 border border-green-200 rounded-lg p-6 ${className}`}>
-        <h3 className="text-lg font-semibold text-green-800 mb-2">
-          Check Your Email!
-        </h3>
-        <p className="text-green-700">
-          We've sent you the Bitcoin Estate Planning Standards. Check your inbox in the next few minutes.
-        </p>
+        <div className="text-center">
+          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-semibold text-green-800 mb-2">
+            Success! Check Your Email
+          </h3>
+          <p className="text-green-700">
+            We've sent you the Bitcoin Estate Planning Standards. Check your inbox in the next few minutes.
+          </p>
+        </div>
       </div>
     )
   }
 
   const variants = {
-    inline: 'bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-lg p-6',
-    popup: 'bg-white border border-gray-200 rounded-lg p-6 shadow-lg',
-    sidebar: 'bg-gray-50 border border-gray-200 rounded-lg p-4',
-    footer: 'bg-gray-900 text-white p-6 rounded-lg'
+    hero: 'bg-gradient-to-br from-primary via-primary-light to-accent/20 text-white relative overflow-hidden',
+    inline: 'bg-white border-2 border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow',
+    sidebar: 'bg-gradient-to-r from-primary to-primary-light text-white rounded-lg shadow-lg',
+    compact: 'bg-gray-50 border border-gray-200 rounded-lg'
   }
 
   return (
     <div className={`${variants[variant]} ${className}`}>
-      <div className="max-w-md mx-auto">
-        <h3 className="text-xl font-bold mb-3">
-          {title}
-        </h3>
-        <p className="text-gray-600 mb-4">
-          {description}
-        </p>
-
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <input
-              type="text"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-            />
-            <select
-              value={userType}
-              onChange={(e) => setUserType(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-            >
-              <option value="">I am a...</option>
-              <option value="bitcoin_holder">Bitcoin Holder</option>
-              <option value="attorney">Attorney</option>
-              <option value="other">Other</option>
-            </select>
+      {/* Background pattern for hero variant */}
+      {variant === 'hero' && (
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+      )}
+      
+      <div className="relative z-10 p-8">
+        <div className="max-w-2xl mx-auto text-center">
+          {/* Icon */}
+          <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${
+            variant === 'hero' || variant === 'sidebar' 
+              ? 'bg-white/10 backdrop-blur-sm' 
+              : 'bg-accent/10'
+          }`}>
+            <svg className={`w-8 h-8 ${
+              variant === 'hero' || variant === 'sidebar' ? 'text-white' : 'text-accent'
+            }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
           </div>
 
-          <input
-            type="email"
-            placeholder="Enter your email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-          />
+          <h3 className={`text-2xl font-bold mb-4 ${
+            variant === 'hero' || variant === 'sidebar' ? 'text-white' : 'text-gray-900'
+          }`}>
+            {title}
+          </h3>
+          
+          <p className={`text-lg mb-8 ${
+            variant === 'hero' || variant === 'sidebar' 
+              ? 'text-gray-200' 
+              : 'text-gray-600'
+          }`}>
+            {description}
+          </p>
 
-          <button
-            type="submit"
-            disabled={loading || !email}
-            className="w-full bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            {loading ? 'Sending...' : buttonText}
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900 placeholder-gray-500"
+              />
+              <select
+                value={userType}
+                onChange={(e) => setUserType(e.target.value)}
+                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900"
+              >
+                <option value="">I am a...</option>
+                <option value="bitcoin_holder">Bitcoin Holder</option>
+                <option value="attorney">Attorney</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-        {error && (
-          <p className="text-red-600 text-sm mt-2">{error}</p>
-        )}
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900 placeholder-gray-500"
+            />
 
-        <p className="text-xs text-gray-500 mt-3">
-          By submitting, you agree to receive emails about Bitcoin estate planning updates. Unsubscribe anytime.
-        </p>
+            <button
+              type="submit"
+              disabled={loading || !email}
+              className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              {loading ? (
+                <div className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </div>
+              ) : buttonText}
+            </button>
+          </form>
+
+          {error && (
+            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-600 text-sm">{error}</p>
+            </div>
+          )}
+
+          <p className={`text-sm mt-6 ${
+            variant === 'hero' || variant === 'sidebar' 
+              ? 'text-gray-300' 
+              : 'text-gray-500'
+          }`}>
+            By submitting, you agree to receive emails about Bitcoin estate planning updates. Unsubscribe anytime.
+          </p>
+
+          {/* Trust signals */}
+          <div className="mt-8 pt-6 border-t border-white/20">
+            <div className="flex items-center justify-center space-x-6 text-sm">
+              <div className="flex items-center">
+                <svg className={`w-4 h-4 mr-2 ${
+                  variant === 'hero' || variant === 'sidebar' ? 'text-accent-light' : 'text-accent'
+                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span className={variant === 'hero' || variant === 'sidebar' ? 'text-gray-300' : 'text-gray-600'}>
+                  500+ Attorneys
+                </span>
+              </div>
+              <div className="flex items-center">
+                <svg className={`w-4 h-4 mr-2 ${
+                  variant === 'hero' || variant === 'sidebar' ? 'text-accent-light' : 'text-accent'
+                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span className={variant === 'hero' || variant === 'sidebar' ? 'text-gray-300' : 'text-gray-600'}>
+                  Research-Based
+                </span>
+              </div>
+              <div className="flex items-center">
+                <svg className={`w-4 h-4 mr-2 ${
+                  variant === 'hero' || variant === 'sidebar' ? 'text-accent-light' : 'text-accent'
+                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className={variant === 'hero' || variant === 'sidebar' ? 'text-gray-300' : 'text-gray-600'}>
+                  Trusted Nationwide
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
