@@ -198,18 +198,126 @@ export const programmaticPages: TopicPage[] = [
     schemaType: 'Article'
   },
   
-  // Placeholder for future content - to show the structure
-  // Education Pillar (Coming in Phase 1B)
+  // Education Pillar - Batch 2
   {
-    slug: 'bitcoin-estate-planning-cle-course',
-    title: 'Bitcoin Estate Planning CLE Course',
-    metaDescription: 'Comprehensive CLE course for attorneys. Earn continuing education credits while mastering Bitcoin estate planning fundamentals.',
+    slug: 'bitcoin-estate-planning-fundamentals',
+    title: 'Bitcoin Estate Planning Fundamentals',
+    metaDescription: 'Essential knowledge for digital asset inheritance. Understanding the $500 billion problem, core planning challenges, and getting started with Bitcoin estate planning.',
     category: 'education',
-    keywords: ['bitcoin estate planning CLE', 'cryptocurrency CLE course', 'digital asset continuing education'],
-    wordCount: 0,
+    keywords: ['bitcoin estate planning fundamentals', 'digital asset inheritance basics', 'cryptocurrency estate planning 101', 'bitcoin inheritance guide'],
+    contentFile: '01_Bitcoin_Estate_Planning_Fundamentals.md',
+    wordCount: 3200,
     lastUpdated: '2025-01-09',
-    status: 'draft',
+    status: 'published',
     schemaType: 'Course'
+  },
+  {
+    slug: 'understanding-bitcoin-inheritance-risks',
+    title: 'Understanding Bitcoin Inheritance Risks',
+    metaDescription: 'Comprehensive guide to Bitcoin inheritance risks. Technical challenges, legal vulnerabilities, security threats, and risk mitigation strategies for digital assets.',
+    category: 'education',
+    keywords: ['bitcoin inheritance risks', 'cryptocurrency estate planning risks', 'digital asset security threats', 'bitcoin inheritance challenges'],
+    contentFile: '02_Understanding_Bitcoin_Inheritance_Risks.md',
+    wordCount: 3300,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'digital-asset-types-planning-considerations',
+    title: 'Digital Asset Types and Planning Considerations',
+    metaDescription: 'Complete guide to different digital asset types for estate planning. Bitcoin, altcoins, DeFi, NFTs, and how to plan inheritance for each asset class.',
+    category: 'education',
+    keywords: ['digital asset types', 'cryptocurrency estate planning', 'bitcoin altcoin inheritance', 'NFT estate planning'],
+    contentFile: '03_Digital_Asset_Types_Planning_Considerations.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'family-education-heir-preparation',
+    title: 'Family Education and Heir Preparation',
+    metaDescription: 'Guide to educating family members about Bitcoin inheritance. Heir preparation strategies, technical education, and security awareness for digital assets.',
+    category: 'education',
+    keywords: ['bitcoin heir education', 'cryptocurrency family planning', 'digital asset heir preparation', 'bitcoin inheritance education'],
+    contentFile: '04_Family_Education_Heir_Preparation.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'HowTo'
+  },
+  {
+    slug: 'security-best-practices-bitcoin-storage',
+    title: 'Security Best Practices for Bitcoin Storage',
+    metaDescription: 'Essential security practices for Bitcoin estate planning. Hardware wallets, multi-signature setups, key management, and inheritance security protocols.',
+    category: 'education',
+    keywords: ['bitcoin security best practices', 'cryptocurrency storage security', 'hardware wallet estate planning', 'bitcoin key management'],
+    contentFile: '05_Security_Best_Practices_Bitcoin_Storage.md',
+    wordCount: 3300,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'HowTo'
+  },
+  {
+    slug: 'legal-framework-digital-asset-trusts',
+    title: 'Legal Framework for Digital Asset Trusts',
+    metaDescription: 'Comprehensive legal framework for Bitcoin trusts. Trust structures, legal requirements, fiduciary responsibilities, and digital asset trust implementation.',
+    category: 'education',
+    keywords: ['bitcoin trust legal framework', 'cryptocurrency trust law', 'digital asset trust structures', 'bitcoin estate trust'],
+    contentFile: '06_Legal_Framework_Digital_Asset_Trusts.md',
+    wordCount: 3400,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'tax-implications-bitcoin-inheritance',
+    title: 'Tax Implications of Bitcoin Inheritance',
+    metaDescription: 'Complete guide to Bitcoin inheritance taxation. Estate tax, capital gains, stepped-up basis, international considerations, and tax optimization strategies.',
+    category: 'education',
+    keywords: ['bitcoin inheritance tax', 'cryptocurrency estate tax', 'digital asset tax implications', 'bitcoin capital gains estate'],
+    contentFile: '07_Tax_Implications_Bitcoin_Inheritance.md',
+    wordCount: 3300,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'regulatory-compliance-legal-requirements',
+    title: 'Regulatory Compliance and Legal Requirements',
+    metaDescription: 'Navigate Bitcoin estate planning regulations. Federal and state requirements, international compliance, reporting obligations, and legal best practices.',
+    category: 'education',
+    keywords: ['bitcoin estate planning regulations', 'cryptocurrency compliance requirements', 'digital asset legal requirements', 'bitcoin inheritance law'],
+    contentFile: '08_Regulatory_Compliance_Legal_Requirements.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'technology-integration-implementation',
+    title: 'Technology Integration and Implementation',
+    metaDescription: 'Technical implementation guide for Bitcoin estate planning. KEEP Protocol integration, multi-signature setups, automated systems, and technology solutions.',
+    category: 'education',
+    keywords: ['bitcoin estate technology', 'KEEP Protocol implementation', 'cryptocurrency inheritance technology', 'digital asset technical solutions'],
+    contentFile: '09_Technology_Integration_Implementation.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'HowTo'
+  },
+  {
+    slug: 'case-studies-real-world-applications',
+    title: 'Case Studies and Real-World Applications',
+    metaDescription: 'Real-world Bitcoin estate planning case studies. Success stories, lessons learned, best practices, and practical applications of digital asset inheritance.',
+    category: 'education',
+    keywords: ['bitcoin estate planning case studies', 'cryptocurrency inheritance examples', 'digital asset success stories', 'bitcoin estate real world'],
+    contentFile: '10_Case_Studies_Real_World_Applications.md',
+    wordCount: 3700,
+    lastUpdated: '2025-01-09',
+    status: 'published',
+    schemaType: 'Article'
   },
   
   // Technical Pillar (Coming in Phase 1C)
