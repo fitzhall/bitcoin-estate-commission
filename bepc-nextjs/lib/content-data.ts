@@ -304,6 +304,36 @@ export const stateRegulations = {
     requirements: "Dynasty trust compatibility; directed trust provisions",
     taxImplications: "No state estate tax or income tax",
     specialConsiderations: "Perpetual trusts allowed; exceptional privacy protections"
+  },
+  illinois: {
+    probateCode: "Illinois Compiled Statutes Chapter 755",
+    requirements: "Full RUFADAA implementation; comprehensive fiduciary access",
+    taxImplications: "Estate tax above $4M; flat income tax 4.95%",
+    specialConsiderations: "Strong trust protector statutes; directed trust provisions"
+  },
+  washington: {
+    probateCode: "Washington Revised Code Chapter 11.120",
+    requirements: "Early RUFADAA adopter; clear digital asset authority",
+    taxImplications: "Estate tax above $2.193M; no income tax",
+    specialConsiderations: "Community property state; tech industry hub advantages"
+  },
+  nevada: {
+    probateCode: "Nevada Revised Statutes Chapter 143",
+    requirements: "Pre-RUFADAA digital asset laws; comprehensive coverage",
+    taxImplications: "No state estate tax or income tax",
+    specialConsiderations: "365-year dynasty trusts; exceptional asset protection"
+  },
+  wyoming: {
+    probateCode: "Wyoming Statutes Title 2",
+    requirements: "RUFADAA adopted; crypto-friendly regulations",
+    taxImplications: "No state estate tax or income tax",
+    specialConsiderations: "1000-year dynasty trusts; first state with crypto bank charter"
+  },
+  delaware: {
+    probateCode: "Delaware Code Title 12",
+    requirements: "Early digital asset law pioneer; comprehensive framework",
+    taxImplications: "No sales tax; corporate-friendly jurisdiction",
+    specialConsiderations: "Directed trusts; silent trust provisions; Chancery Court expertise"
   }
 }
 

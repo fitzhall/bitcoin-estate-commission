@@ -38,7 +38,12 @@ export async function loadStateContent(state: string): Promise<string | null> {
       'ca': 'California_Bitcoin_Estate_Planning.md',
       'tx': 'Texas_Bitcoin_Estate_Planning.md',
       'fl': 'Florida_Bitcoin_Estate_Planning.md',
-      'sd': 'South_Dakota_Bitcoin_Estate_Planning.md'
+      'sd': 'South_Dakota_Bitcoin_Estate_Planning.md',
+      'il': 'Illinois_Bitcoin_Estate_Planning.md',
+      'wa': 'Washington_Bitcoin_Estate_Planning.md',
+      'nv': 'Nevada_Bitcoin_Estate_Planning.md',
+      'wy': 'Wyoming_Bitcoin_Estate_Planning.md',
+      'de': 'Delaware_Bitcoin_Estate_Planning.md'
     }
     
     const filename = stateFiles[state.toLowerCase()]

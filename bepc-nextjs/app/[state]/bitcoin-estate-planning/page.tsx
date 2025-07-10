@@ -170,9 +170,9 @@ export default async function StatePage({ params }: Props) {
   const stateRegulation = stateRegulations[normalizedState] || stateRegulations.california
   const rufadaaData = getStateData(normalizedState)
   
-  // Load rich content for pilot states
+  // Load rich content for enhanced states
   const stateContent = await loadStateContent(normalizedState)
-  const isPilotState = ['ny', 'ca', 'tx', 'fl', 'sd'].includes(normalizedState)
+  const hasEnhancedContent = ['ny', 'ca', 'tx', 'fl', 'sd', 'il', 'wa', 'nv', 'wy', 'de'].includes(normalizedState)
 
   // Get cities in this state - always use static data for consistent build
   const staticCities = getCitiesByState(normalizedState)
@@ -246,7 +246,7 @@ export default async function StatePage({ params }: Props) {
       </section>
 
       {/* State Content - Rich content for pilot states, template for others */}
-      {isPilotState && stateContent ? (
+      {hasEnhancedContent && stateContent ? (
         <section className="py-16">
           <div className="container">
             <div className="max-w-4xl mx-auto">
@@ -317,7 +317,7 @@ export default async function StatePage({ params }: Props) {
       )}
 
       {/* RUFADAA Status Section - Only for non-pilot states */}
-      {!isPilotState && rufadaaData && (
+      {!hasEnhancedContent && rufadaaData && (
         <section className="py-16 bg-gray-50">
           <div className="container">
             <div className="max-w-4xl mx-auto">
@@ -370,7 +370,7 @@ export default async function StatePage({ params }: Props) {
       )}
 
       {/* State-Specific Content - Only for non-pilot states */}
-      {!isPilotState && (
+      {!hasEnhancedContent && (
         <section className="py-16">
           <div className="container">
             <div className="max-w-4xl mx-auto">
@@ -425,7 +425,7 @@ export default async function StatePage({ params }: Props) {
             </div>
 
             {/* FAQ Section - Only for non-pilot states */}
-            {!isPilotState && rufadaaData && rufadaaData.faqs.length > 0 && (
+            {!hasEnhancedContent && rufadaaData && rufadaaData.faqs.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-3xl font-bold mb-8">
                   Frequently Asked Questions
