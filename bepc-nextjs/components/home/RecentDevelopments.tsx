@@ -2,21 +2,21 @@ import Link from 'next/link'
 
 const developments = [
   {
-    date: 'June 2024',
+    date: 'January 2025',
     category: 'Standards Update',
     title: 'KEEP Protocol 2.0 Released',
     description: 'Enhanced security standards for multisig estate planning and advanced key management protocols now available for certified attorneys.',
     link: '/standards/keep-protocol',
   },
   {
-    date: 'May 2024',
+    date: 'January 2025',
     category: 'Legal Update',
     title: 'New State Digital Asset Laws',
     description: 'Seven states have updated their digital asset inheritance laws. Our certified attorneys are trained on all current regulations.',
     link: '/education/understanding-rufadaa',
   },
   {
-    date: 'April 2024',
+    date: 'January 2025',
     category: 'Research',
     title: 'Bitcoin Estate Planning Report',
     description: 'Annual analysis of Bitcoin inheritance challenges, successful strategies, and emerging trends in digital asset planning.',
