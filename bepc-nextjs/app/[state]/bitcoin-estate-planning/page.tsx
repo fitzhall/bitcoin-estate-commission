@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { stateRegulations } from '@/lib/content-data'
 import { safeDb } from '@/lib/database'
 import { getCitiesByState } from '@/lib/cities-data'
-import { BreadcrumbSchema } from '@/components/SchemaMarkup'
+import { BreadcrumbSchema, FAQSchema } from '@/components/SchemaMarkup'
+import { getStateData } from '@/lib/state-data'
 
 // List of US states
 const US_STATES = {
@@ -60,6 +61,60 @@ const US_STATES = {
   'wy': { name: 'Wyoming', code: 'WY' }
 }
 
+function RufadaaTable({ state }: { state: ReturnType<typeof getStateData> }) {
+  if (!state) return null
+
+  return (
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-primary text-white p-4">
+        <h3 className="text-xl font-bold">RUFADAA Status in {state.name}</h3>
+      </div>
+      <div className="p-6">
+        <div className="grid gap-4">
+          <div className="flex justify-between items-start border-b pb-3">
+            <span className="font-semibold text-gray-700">Adoption Status:</span>
+            <span className={`font-bold ${state.rufadaa.adopted ? 'text-green-600' : 'text-orange-600'}`}>
+              {state.rufadaa.status}
+            </span>
+          </div>
+          
+          {state.rufadaa.adoptionDate && (
+            <div className="flex justify-between items-start border-b pb-3">
+              <span className="font-semibold text-gray-700">Adoption Date:</span>
+              <span>{new Date(state.rufadaa.adoptionDate).toLocaleDateString()}</span>
+            </div>
+          )}
+          
+          {state.rufadaa.citation && (
+            <div className="flex justify-between items-start border-b pb-3">
+              <span className="font-semibold text-gray-700">Legal Citation:</span>
+              <span className="text-sm font-mono">{state.rufadaa.citation}</span>
+            </div>
+          )}
+          
+          {state.rufadaa.courtApprovalThreshold && (
+            <div className="flex justify-between items-start border-b pb-3">
+              <span className="font-semibold text-gray-700">Court Approval:</span>
+              <span className="text-sm">{state.rufadaa.courtApprovalThreshold}</span>
+            </div>
+          )}
+          
+          {state.rufadaa.keyProvisions && state.rufadaa.keyProvisions.length > 0 && (
+            <div>
+              <p className="font-semibold text-gray-700 mb-2">Key Provisions:</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
+                {state.rufadaa.keyProvisions.map((provision, index) => (
+                  <li key={index}>{provision}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 interface Props {
   params: {
     state: string
@@ -111,6 +166,7 @@ export default async function StatePage({ params }: Props) {
   const stateName = stateInfo.name
   const stateCode = stateInfo.code
   const stateRegulation = stateRegulations[normalizedState] || stateRegulations.california
+  const rufadaaData = getStateData(normalizedState)
 
   // Get cities in this state - always use static data for consistent build
   const staticCities = getCitiesByState(normalizedState)
@@ -140,6 +196,13 @@ export default async function StatePage({ params }: Props) {
     }
   }
 
+  const faqData = rufadaaData ? {
+    questions: rufadaaData.faqs.map(faq => ({
+      question: faq.question,
+      answer: faq.answer
+    }))
+  } : null
+
   return (
     <>
       <BreadcrumbSchema
@@ -148,6 +211,8 @@ export default async function StatePage({ params }: Props) {
           { name: stateName, url: `https://bitcoinestatecommission.org/${normalizedState}/bitcoin-estate-planning` },
         ]}
       />
+      
+      {faqData && <FAQSchema {...faqData} />}
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-primary-light text-white py-16">
@@ -181,9 +246,10 @@ export default async function StatePage({ params }: Props) {
             <div className="prose prose-lg">
               <h2>Bitcoin Estate Planning in {stateName}: What You Need to Know</h2>
               <p>
-                {stateName} residents holding Bitcoin and other cryptocurrencies face unique estate planning 
-                challenges. With proper planning through a BEPC certified attorney, you can ensure your 
-                digital assets are protected and properly transferred to your beneficiaries.
+                {rufadaaData 
+                  ? rufadaaData.intro
+                  : `${stateName} residents holding Bitcoin and other cryptocurrencies face unique estate planning challenges. With proper planning through a BEPC certified attorney, you can ensure your digital assets are protected and properly transferred to your beneficiaries.`
+                }
               </p>
               
               {stateRegulation && (
@@ -207,6 +273,29 @@ export default async function StatePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* RUFADAA Status Section */}
+      {rufadaaData && (
+        <section className="py-16 bg-gray-50">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">
+                Digital Asset Laws in {stateName}
+              </h2>
+              <RufadaaTable state={rufadaaData} />
+              
+              <div className="mt-8 text-center">
+                <p className="text-gray-600 mb-6">
+                  Understanding {stateName}'s digital asset laws is crucial for proper Bitcoin estate planning
+                </p>
+                <Link href="/education/understanding-rufadaa" className="btn btn-primary">
+                  Learn More About RUFADAA
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Cities Section */}
       {cities.length > 0 && (
@@ -291,6 +380,23 @@ export default async function StatePage({ params }: Props) {
                 </ul>
               </div>
             </div>
+
+            {/* FAQ Section */}
+            {rufadaaData && rufadaaData.faqs.length > 0 && (
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold mb-8">
+                  Frequently Asked Questions
+                </h2>
+                <div className="space-y-6">
+                  {rufadaaData.faqs.map((faq, index) => (
+                    <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                      <h3 className="text-xl font-bold mb-3">{faq.question}</h3>
+                      <p className="text-gray-700">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* CTA */}
             <div className="bg-primary text-white p-8 rounded-lg text-center">

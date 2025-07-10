@@ -54,19 +54,19 @@ export default function FindAttorneyPage({
             Browse by State
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
-            <Link href="/attorneys/new-york" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+            <Link href="/ny/bitcoin-estate-planning" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
               <span className="font-semibold">New York</span>
             </Link>
-            <Link href="/attorneys/california" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+            <Link href="/ca/bitcoin-estate-planning" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
               <span className="font-semibold">California</span>
             </Link>
-            <Link href="/attorneys/florida" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+            <Link href="/fl/bitcoin-estate-planning" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
               <span className="font-semibold">Florida</span>
             </Link>
-            <Link href="/attorneys/texas" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+            <Link href="/tx/bitcoin-estate-planning" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
               <span className="font-semibold">Texas</span>
             </Link>
-            <Link href="/attorneys/south-dakota" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+            <Link href="/sd/bitcoin-estate-planning" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
               <span className="font-semibold">South Dakota</span>
             </Link>
           </div>

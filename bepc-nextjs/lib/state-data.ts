@@ -28,10 +28,10 @@ export interface StateData {
 
 // Pilot states data
 export const stateData: Record<string, StateData> = {
-  'new-york': {
+  'ny': {
     name: 'New York',
     code: 'NY',
-    slug: 'new-york',
+    slug: 'ny',
     rufadaa: {
       adopted: true,
       adoptionDate: '2016-09-29',
@@ -76,10 +76,10 @@ export const stateData: Record<string, StateData> = {
     }
   },
   
-  'california': {
+  'ca': {
     name: 'California',
     code: 'CA',
-    slug: 'california',
+    slug: 'ca',
     rufadaa: {
       adopted: true,
       adoptionDate: '2017-01-01',
@@ -124,10 +124,10 @@ export const stateData: Record<string, StateData> = {
     }
   },
   
-  'florida': {
+  'fl': {
     name: 'Florida',
     code: 'FL',
-    slug: 'florida',
+    slug: 'fl',
     rufadaa: {
       adopted: true,
       adoptionDate: '2016-07-01',
@@ -172,10 +172,10 @@ export const stateData: Record<string, StateData> = {
     }
   },
   
-  'texas': {
+  'tx': {
     name: 'Texas',
     code: 'TX',
-    slug: 'texas',
+    slug: 'tx',
     rufadaa: {
       adopted: true,
       adoptionDate: '2017-09-01',
@@ -220,10 +220,10 @@ export const stateData: Record<string, StateData> = {
     }
   },
   
-  'south-dakota': {
+  'sd': {
     name: 'South Dakota',
     code: 'SD',
-    slug: 'south-dakota',
+    slug: 'sd',
     rufadaa: {
       adopted: true,
       adoptionDate: '2017-07-01',
