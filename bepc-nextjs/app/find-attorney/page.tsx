@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
+import Link from 'next/link'
 import { AttorneySearch } from '@/components/attorney/AttorneySearch'
 import { AttorneyResults } from '@/components/attorney/AttorneyResults'
 
@@ -47,7 +48,35 @@ export default function FindAttorneyPage({
         </Suspense>
       </div>
 
-      <section className="bg-white py-16 mt-12">
+      <section className="bg-gray-100 py-16 mt-12">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Browse by State
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
+            <Link href="/attorneys/new-york" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+              <span className="font-semibold">New York</span>
+            </Link>
+            <Link href="/attorneys/california" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+              <span className="font-semibold">California</span>
+            </Link>
+            <Link href="/attorneys/florida" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+              <span className="font-semibold">Florida</span>
+            </Link>
+            <Link href="/attorneys/texas" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+              <span className="font-semibold">Texas</span>
+            </Link>
+            <Link href="/attorneys/south-dakota" className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow text-center">
+              <span className="font-semibold">South Dakota</span>
+            </Link>
+          </div>
+          <p className="text-center mt-6 text-gray-600">
+            More states coming soon. <Link href="/certification/become-certified" className="text-primary hover:underline">Become a certified attorney</Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-12">
             Why Choose BEPC Certified Attorneys?
