@@ -11,7 +11,6 @@ import { FAQSection } from '@/components/home/FAQSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 import { EmailCapture } from '@/components/EmailCapture'
-import { LeadMagnetCTA } from '@/components/LeadMagnetCTA'
 import { AdvisoryCouncil } from '@/components/home/AdvisoryCouncil'
 
 // Static generation with ISR for better performance
@@ -23,12 +22,6 @@ export default function HomePage() {
     <>
       <OrganizationSchema />
       <Hero />
-      {/* Lead magnet CTA after hero for cold traffic */}
-      <section className="py-8 bg-gradient-to-b from-white to-gray-50">
-        <div className="container text-center">
-          <LeadMagnetCTA audience="general" variant="banner" />
-        </div>
-      </section>
       {/* Advisory Council section - new per PRD-01 */}
       <AdvisoryCouncil />
       {/* Content updated with truth-based messaging - v3 */}
