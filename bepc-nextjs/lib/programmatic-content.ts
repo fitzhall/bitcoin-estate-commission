@@ -806,17 +806,66 @@ export const programmaticPages: TopicPage[] = [
     schemaType: 'Article'
   },
   
-  // Technical Pillar (Coming in Phase 1C)
+  // Technical Pillar
   {
-    slug: 'bitcoin-multisig-inheritance-setup',
-    title: 'Bitcoin Multisig Inheritance Setup Guide',
-    metaDescription: 'Technical guide for implementing multi-signature Bitcoin inheritance solutions. Hardware wallet configuration and key distribution strategies.',
+    slug: 'bitcoin-technical-fundamentals-estate-planning',
+    title: 'Bitcoin Technical Fundamentals for Estate Planning',
+    metaDescription: 'Master the technical fundamentals of Bitcoin for estate planning. Blockchain basics, wallet types, key management, and security protocols.',
     category: 'technical',
-    keywords: ['bitcoin multisig inheritance', 'multi-signature wallet setup', 'cryptocurrency inheritance security'],
-    wordCount: 0,
-    lastUpdated: '2025-01-09',
-    status: 'draft',
-    schemaType: 'HowTo'
+    keywords: ['bitcoin technical fundamentals', 'blockchain estate planning', 'cryptocurrency basics', 'wallet security'],
+    contentFile: '01_Bitcoin_Technical_Fundamentals_Estate_Planning.md',
+    wordCount: 3500,
+    lastUpdated: '2025-01-10',
+    status: 'published',
+    schemaType: 'TechArticle'
+  },
+  {
+    slug: 'multi-signature-implementation-management',
+    title: 'Multi-Signature Implementation & Management',
+    metaDescription: 'Implement and manage multi-signature Bitcoin wallets for estate planning. Advanced security, key distribution, and inheritance protocols.',
+    category: 'technical',
+    keywords: ['multi-signature wallet', 'multisig implementation', 'bitcoin security', 'key management'],
+    contentFile: '02_Multi_Signature_Implementation_Management.md',
+    wordCount: 3800,
+    lastUpdated: '2025-01-10',
+    status: 'published',
+    schemaType: 'TechArticle'
+  },
+  {
+    slug: 'hardware-wallet-integration-security',
+    title: 'Hardware Wallet Integration & Security',
+    metaDescription: 'Integrate hardware wallets into Bitcoin estate planning. Device selection, setup procedures, backup strategies, and security best practices.',
+    category: 'technical',
+    keywords: ['hardware wallet', 'bitcoin security', 'cold storage', 'device integration'],
+    contentFile: '03_Hardware_Wallet_Integration_Security.md',
+    wordCount: 3600,
+    lastUpdated: '2025-01-10',
+    status: 'published',
+    schemaType: 'TechArticle'
+  },
+  {
+    slug: 'cold-storage-air-gapped-security-protocols',
+    title: 'Cold Storage & Air-Gapped Security Protocols',
+    metaDescription: 'Implement cold storage and air-gapped security for Bitcoin inheritance. Advanced protocols, offline transactions, and maximum security strategies.',
+    category: 'technical',
+    keywords: ['cold storage', 'air-gapped security', 'offline bitcoin', 'maximum security'],
+    contentFile: '04_Cold_Storage_Air_Gapped_Security_Protocols.md',
+    wordCount: 3700,
+    lastUpdated: '2025-01-10',
+    status: 'published',
+    schemaType: 'TechArticle'
+  },
+  {
+    slug: 'blockchain-technology-network-integration',
+    title: 'Blockchain Technology & Network Integration',
+    metaDescription: 'Understand blockchain technology and network integration for Bitcoin estate planning. Node operation, network security, and transaction management.',
+    category: 'technical',
+    keywords: ['blockchain technology', 'bitcoin network', 'node operation', 'network integration'],
+    contentFile: '05_Blockchain_Technology_Network_Integration.md',
+    wordCount: 3900,
+    lastUpdated: '2025-01-10',
+    status: 'published',
+    schemaType: 'TechArticle'
   },
   
   // Compliance Pillar (Coming in Phase 1D)
