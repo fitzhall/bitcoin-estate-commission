@@ -16,8 +16,7 @@ export function Hero() {
             The Professional Standard for <span className="text-accent">Bitcoin</span> Estate Planning
           </h1>
           <p className="mb-10 text-xl text-gray-200 sm:text-2xl">
-            Preventing Bitcoin inheritance disasters through attorney certification 
-            and professional standards
+            Join leading estate planners shaping Bitcoin inheritance standards
           </p>
           
           <div className="mb-10 flex flex-wrap justify-center gap-8 sm:gap-12">
@@ -34,11 +33,11 @@ export function Hero() {
           </div>
           
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link href="/find-attorney" className="btn bg-accent hover:bg-accent-dark text-white btn-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-              Find Certified Attorney
+            <Link href="/get-standards" className="btn bg-accent hover:bg-accent-dark text-white btn-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+              Join Early Access
             </Link>
-            <Link href="/certification" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
-              Get Certified
+            <Link href="/get-standards" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
+              Download Standards
             </Link>
           </div>
         </div>

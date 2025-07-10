@@ -35,6 +35,9 @@ export function TrustIndicators() {
             </div>
           ))}
         </div>
+        <p className="text-center text-sm text-gray-500 mt-8">
+          * Testimonials represent individual opinions and are not endorsements by the organizations mentioned.
+        </p>
       </div>
     </section>
   )

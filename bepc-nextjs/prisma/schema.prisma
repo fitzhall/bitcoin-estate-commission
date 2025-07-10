@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,41 +8,39 @@ datasource db {
 }
 
 model State {
-  id                  String    @id @default(cuid())
-  stateName           String    @unique
-  stateCode           String    @unique @db.VarChar(2)
-  population          Int       @default(0)
-  bitcoinAdoptionRate Float     @default(0)
-  estateTaxExemption  Float     @default(0)
-  probateLawsSummary  String?   @db.Text
-  regulatoryNotes     String?   @db.Text
+  id                  String            @id @default(cuid())
+  stateName           String            @unique
+  stateCode           String            @unique @db.VarChar(2)
+  population          Int               @default(0)
+  bitcoinAdoptionRate Float             @default(0)
+  estateTaxExemption  Float             @default(0)
+  probateLawsSummary  String?
+  regulatoryNotes     String?
   majorCities         Json?
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
-
-  cities      City[]
-  attorneys   Attorney[]
-  regulations StateRegulation[]
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  attorneys           Attorney[]
+  cities              City[]
+  regulations         StateRegulation[]
 
   @@index([stateCode])
 }
 
 model City {
-  id                    String    @id @default(cuid())
-  cityName              String
-  citySlug              String
-  stateId               String
-  population            Int       @default(0)
-  medianIncome          Float     @default(0)
-  bitcoinBusinessesCount Int      @default(0)
-  lawFirmsCount         Int       @default(0)
-  latitude              Float?
-  longitude             Float?
-  createdAt             DateTime  @default(now())
-  updatedAt             DateTime  @updatedAt
-
-  state     State      @relation(fields: [stateId], references: [id])
-  attorneys Attorney[]
+  id                     String     @id @default(cuid())
+  cityName               String
+  citySlug               String
+  stateId                String
+  population             Int        @default(0)
+  medianIncome           Float      @default(0)
+  bitcoinBusinessesCount Int        @default(0)
+  lawFirmsCount          Int        @default(0)
+  latitude               Float?
+  longitude              Float?
+  createdAt              DateTime   @default(now())
+  updatedAt              DateTime   @updatedAt
+  attorneys              Attorney[]
+  state                  State      @relation(fields: [stateId], references: [id])
 
   @@unique([citySlug, stateId])
   @@index([citySlug])
@@ -53,26 +48,25 @@ model City {
 }
 
 model Attorney {
-  id                 String    @id @default(cuid())
+  id                 String   @id @default(cuid())
   name               String
-  slug               String    @unique
+  slug               String   @unique
   firmName           String?
   cityId             String?
   stateId            String?
   certificationLevel String?
   specializations    Json?
-  yearsExperience    Int       @default(0)
+  yearsExperience    Int      @default(0)
   contactInfo        Json?
   profileImage       String?
-  bio                String?   @db.Text
+  bio                String?
   clientReviews      Json?
-  verifiedStatus     Boolean   @default(false)
-  featured           Boolean   @default(false)
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-
-  city  City?  @relation(fields: [cityId], references: [id])
-  state State? @relation(fields: [stateId], references: [id])
+  verifiedStatus     Boolean  @default(false)
+  featured           Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  city               City?    @relation(fields: [cityId], references: [id])
+  state              State?   @relation(fields: [stateId], references: [id])
 
   @@index([slug])
   @@index([certificationLevel])
@@ -80,36 +74,34 @@ model Attorney {
 }
 
 model LegalTopic {
-  id                 String    @id @default(cuid())
-  topicName          String    @unique
-  topicSlug          String    @unique
-  subtopics          Json?
-  description        String?   @db.Text
-  complexityLevel    String?
-  averageCostRange   String?
-  timeRequirements   String?
-  riskFactors        Json?
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-
-  regulations StateRegulation[]
+  id               String            @id @default(cuid())
+  topicName        String            @unique
+  topicSlug        String            @unique
+  subtopics        Json?
+  description      String?
+  complexityLevel  String?
+  averageCostRange String?
+  timeRequirements String?
+  riskFactors      Json?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  regulations      StateRegulation[]
 
   @@index([topicSlug])
 }
 
 model StateRegulation {
-  id                     String    @id @default(cuid())
+  id                     String     @id @default(cuid())
   stateId                String
   topicId                String
-  regulationText         String?   @db.Text
+  regulationText         String?
   lastUpdated            DateTime?
   sourceCitation         String?
-  complianceRequirements String?   @db.Text
-  createdAt              DateTime  @default(now())
-  updatedAt              DateTime  @updatedAt
-
-  state State      @relation(fields: [stateId], references: [id])
-  topic LegalTopic @relation(fields: [topicId], references: [id])
+  complianceRequirements String?
+  createdAt              DateTime   @default(now())
+  updatedAt              DateTime   @updatedAt
+  state                  State      @relation(fields: [stateId], references: [id])
+  topic                  LegalTopic @relation(fields: [topicId], references: [id])
 
   @@unique([stateId, topicId])
   @@index([stateId])
@@ -117,21 +109,21 @@ model StateRegulation {
 }
 
 model Subscriber {
-  id                String    @id @default(cuid())
-  email             String    @unique
-  firstName         String?
-  lastName          String?
-  userType          String?   // "attorney" | "bitcoin_holder" | "other"
-  state             String?   // Which state they're from
-  city              String?   // Which city they're from
-  source            String?   // Which page/campaign they signed up from
-  interests         Json?     // What they're interested in
-  subscribed        Boolean   @default(true)
-  confirmedAt       DateTime?
-  unsubscribedAt    DateTime?
-  lastActiveAt      DateTime?
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
+  id             String    @id @default(cuid())
+  email          String    @unique
+  firstName      String?
+  lastName       String?
+  userType       String?
+  state          String?
+  city           String?
+  source         String?
+  interests      Json?
+  subscribed     Boolean   @default(true)
+  confirmedAt    DateTime?
+  unsubscribedAt DateTime?
+  lastActiveAt   DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
   @@index([email])
   @@index([userType])

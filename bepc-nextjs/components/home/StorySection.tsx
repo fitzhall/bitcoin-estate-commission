@@ -44,7 +44,7 @@ export function StorySection() {
             
             <p className="text-center mt-12">
               <span className="text-lg font-semibold text-gray-900">
-                Join 500+ attorneys building the future of estate planning.
+                Early Access Program Now Forming — Join the pioneers shaping Bitcoin estate planning.
               </span>
             </p>
           </div>

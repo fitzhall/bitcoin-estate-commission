@@ -12,6 +12,7 @@ import { FinalCTA } from '@/components/home/FinalCTA'
 import { OrganizationSchema } from '@/components/SchemaMarkup'
 import { EmailCapture } from '@/components/EmailCapture'
 import { LeadMagnetCTA } from '@/components/LeadMagnetCTA'
+import { AdvisoryCouncil } from '@/components/home/AdvisoryCouncil'
 
 // Static generation with ISR for better performance
 export const dynamic = 'force-static'
@@ -28,6 +29,8 @@ export default function HomePage() {
           <LeadMagnetCTA audience="general" variant="banner" />
         </div>
       </section>
+      {/* Advisory Council section - new per PRD-01 */}
+      <AdvisoryCouncil />
       {/* Content updated with truth-based messaging - v3 */}
       <AuthoritySignals />
       <ValuePillars />
