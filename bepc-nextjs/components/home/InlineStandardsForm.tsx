@@ -123,7 +123,7 @@ export function InlineStandardsForm() {
   }
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 max-w-2xl mx-auto">
+    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-white/20 max-w-xl mx-auto">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex items-center justify-center mb-4">
           <svg className="w-6 h-6 text-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,26 +134,28 @@ export function InlineStandardsForm() {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <input
-            type="text"
-            placeholder="Name (required)"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-            className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900 placeholder-gray-500"
-          />
-          
-          <input
-            type="email"
-            placeholder="Email (required)"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900 placeholder-gray-500"
-          />
+        <div className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input
+              type="text"
+              placeholder="Name (required)"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900 placeholder-gray-500"
+            />
+            
+            <input
+              type="email"
+              placeholder="Email (required)"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent bg-white text-gray-900 placeholder-gray-500"
+            />
+          </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-2 justify-center">
             <label className="flex items-center cursor-pointer">
               <input
                 type="radio"
@@ -164,7 +166,7 @@ export function InlineStandardsForm() {
                 required
                 className="sr-only"
               />
-              <span className={`px-4 py-3 rounded-lg border-2 transition-all ${
+              <span className={`px-6 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
                 role === 'attorney' 
                   ? 'bg-accent text-white border-accent' 
                   : 'bg-white text-gray-700 border-gray-300 hover:border-accent'
@@ -183,7 +185,7 @@ export function InlineStandardsForm() {
                 required
                 className="sr-only"
               />
-              <span className={`px-4 py-3 rounded-lg border-2 transition-all ${
+              <span className={`px-6 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
                 role === 'family' 
                   ? 'bg-accent text-white border-accent' 
                   : 'bg-white text-gray-700 border-gray-300 hover:border-accent'
@@ -202,7 +204,7 @@ export function InlineStandardsForm() {
                 required
                 className="sr-only"
               />
-              <span className={`px-4 py-3 rounded-lg border-2 transition-all ${
+              <span className={`px-6 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
                 role === 'other' 
                   ? 'bg-accent text-white border-accent' 
                   : 'bg-white text-gray-700 border-gray-300 hover:border-accent'
