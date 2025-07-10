@@ -13,23 +13,7 @@ interface CouncilMember {
 }
 
 const councilMembers: CouncilMember[] = [
-  {
-    name: "Sarah Chen",
-    title: "Estate Planning Attorney",
-    organization: "Chen Law Group",
-    linkedin: "https://linkedin.com",
-    image: "/council/sarah-chen.jpg",
-    isPlaceholder: false
-  },
-  {
-    name: "Michael Roberts",
-    title: "Digital Asset Expert",
-    organization: "Roberts Advisory",
-    linkedin: "https://linkedin.com",
-    image: "/council/michael-roberts.jpg",
-    isPlaceholder: false
-  },
-  // Placeholder seats
+  { isPlaceholder: true },
   { isPlaceholder: true },
   { isPlaceholder: true },
   { isPlaceholder: true },
@@ -49,7 +33,7 @@ export function AdvisoryCouncil() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
             {councilMembers.map((member, index) => (
               <div key={index} className="text-center">
                 {member.isPlaceholder ? (
