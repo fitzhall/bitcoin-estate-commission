@@ -817,7 +817,7 @@ export const programmaticPages: TopicPage[] = [
     wordCount: 3500,
     lastUpdated: '2025-01-10',
     status: 'published',
-    schemaType: 'TechArticle'
+    schemaType: 'Article'
   },
   {
     slug: 'multi-signature-implementation-management',
@@ -829,7 +829,7 @@ export const programmaticPages: TopicPage[] = [
     wordCount: 3800,
     lastUpdated: '2025-01-10',
     status: 'published',
-    schemaType: 'TechArticle'
+    schemaType: 'Article'
   },
   {
     slug: 'hardware-wallet-integration-security',
@@ -841,7 +841,7 @@ export const programmaticPages: TopicPage[] = [
     wordCount: 3600,
     lastUpdated: '2025-01-10',
     status: 'published',
-    schemaType: 'TechArticle'
+    schemaType: 'Article'
   },
   {
     slug: 'cold-storage-air-gapped-security-protocols',
@@ -853,7 +853,7 @@ export const programmaticPages: TopicPage[] = [
     wordCount: 3700,
     lastUpdated: '2025-01-10',
     status: 'published',
-    schemaType: 'TechArticle'
+    schemaType: 'Article'
   },
   {
     slug: 'blockchain-technology-network-integration',
@@ -865,7 +865,7 @@ export const programmaticPages: TopicPage[] = [
     wordCount: 3900,
     lastUpdated: '2025-01-10',
     status: 'published',
-    schemaType: 'TechArticle'
+    schemaType: 'Article'
   },
   
   // Compliance Pillar (Coming in Phase 1D)
