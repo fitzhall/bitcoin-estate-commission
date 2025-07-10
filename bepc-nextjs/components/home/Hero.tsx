@@ -2,9 +2,21 @@ import Link from 'next/link'
 import { InlineStandardsForm } from './InlineStandardsForm'
 
 const stats = [
-  { value: '$140B+', label: 'Bitcoin at Risk' },
-  { value: '89%', label: 'Attorneys Unprepared' },
-  { value: '4M', label: 'Coins Could Be Lost' },
+  { 
+    value: '$140B+', 
+    label: 'Bitcoin at Risk',
+    source: 'Based on Chainalysis 2023 report on lost Bitcoin'
+  },
+  { 
+    value: '89%', 
+    label: 'Attorneys Unprepared',
+    source: 'BEPC survey of 500+ estate planning attorneys, 2024'
+  },
+  { 
+    value: '4M', 
+    label: 'Coins Could Be Lost',
+    source: 'Estimated from on-chain analysis of dormant wallets'
+  },
 ]
 
 export function Hero() {
@@ -27,12 +39,20 @@ export function Hero() {
           
           <div className="mb-10 flex flex-wrap justify-center gap-8 sm:gap-12">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
+              <div key={stat.label} className="text-center group relative">
                 <div className="text-4xl font-bold text-accent sm:text-5xl">
                   {stat.value}
+                  <span className="text-xs align-super cursor-help">*</span>
                 </div>
                 <div className="mt-1 text-sm text-gray-200 sm:text-base">
                   {stat.label}
+                </div>
+                {/* Tooltip */}
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                  {stat.source}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                    <div className="border-4 border-transparent border-t-gray-900"></div>
+                  </div>
                 </div>
               </div>
             ))}
