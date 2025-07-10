@@ -28,7 +28,7 @@ export function AdvisoryCouncil() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Advisory Council Forming</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join industry leaders shaping the future of Bitcoin estate planning. 
+              Join leading attorneys, tax professionals, Bitcoin experts, and digital asset specialists shaping the future of secure inheritance. 
               Limited seats available for qualified professionals.
             </p>
           </div>
@@ -95,7 +95,7 @@ export function AdvisoryCouncil() {
               Apply for Council Seat
             </Link>
             <p className="text-sm text-gray-600 mt-4">
-              Requirements: Active bar membership, estate planning experience, and commitment to Bitcoin education
+              Requirements: Professional expertise in estate planning, tax strategy, digital assets, or Bitcoin technology, with demonstrated commitment to advancing secure inheritance practices
             </p>
           </div>
         </div>
