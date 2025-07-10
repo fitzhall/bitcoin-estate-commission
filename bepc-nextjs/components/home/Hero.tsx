@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { InlineStandardsForm } from './InlineStandardsForm'
 
 const stats = [
   { value: '$140B+', label: 'Bitcoin at Risk' },
@@ -19,6 +20,11 @@ export function Hero() {
             Join leading estate planners shaping Bitcoin inheritance standards
           </p>
           
+          {/* Inline Standards Form - Above the fold */}
+          <div className="mb-10">
+            <InlineStandardsForm />
+          </div>
+          
           <div className="mb-10 flex flex-wrap justify-center gap-8 sm:gap-12">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -33,11 +39,11 @@ export function Hero() {
           </div>
           
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link href="/get-standards" className="btn bg-accent hover:bg-accent-dark text-white btn-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-              Join Early Access
+            <Link href="/certification/apply" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
+              Become Certified
             </Link>
-            <Link href="/get-standards" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
-              Download Standards
+            <Link href="/find-attorney" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
+              Find an Attorney
             </Link>
           </div>
         </div>

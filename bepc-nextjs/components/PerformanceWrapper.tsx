@@ -3,12 +3,7 @@
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
-// Declare gtag type for TypeScript
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void
-  }
-}
+// gtag type is declared in types/gtag.d.ts
 
 export function PerformanceWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()

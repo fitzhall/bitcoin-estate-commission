@@ -9,6 +9,7 @@ interface EmailCaptureProps {
   description?: string
   buttonText?: string
   className?: string
+  showModal?: boolean
 }
 
 export function EmailCapture({
@@ -17,7 +18,8 @@ export function EmailCapture({
   title = 'Get Early Access: Bitcoin Estate Planning Standards',
   description = 'Join 500+ attorneys and thousands of Bitcoin holders preparing for the future.',
   buttonText = 'Download Free Standards',
-  className = ''
+  className = '',
+  showModal = false
 }: EmailCaptureProps) {
   const [email, setEmail] = useState('')
   const [firstName, setFirstName] = useState('')
@@ -25,6 +27,7 @@ export function EmailCapture({
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
+  const [showThankYouModal, setShowThankYouModal] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -50,8 +53,12 @@ export function EmailCapture({
       }
 
       setSuccess(true)
-      // Redirect to thank you page or download
-      window.location.href = '/thank-you?download=standards'
+      if (showModal) {
+        setShowThankYouModal(true)
+      } else {
+        // Redirect to thank you page or download
+        window.location.href = '/thank-you?download=standards'
+      }
     } catch (err) {
       setError('Something went wrong. Please try again.')
     } finally {
@@ -84,6 +91,42 @@ export function EmailCapture({
     inline: 'bg-white border-2 border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow',
     sidebar: 'bg-gradient-to-r from-primary to-primary-light text-white rounded-lg shadow-lg',
     compact: 'bg-gray-50 border border-gray-200 rounded-lg'
+  }
+
+  // Thank You Modal
+  if (showThankYouModal) {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-8">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              Success! Check Your Email
+            </h3>
+            <p className="text-gray-600 mb-6">
+              We've sent the Bitcoin Estate Planning Standards to your inbox. You should receive it within the next few minutes.
+            </p>
+            <a
+              href="/standards-download.pdf"
+              download
+              className="inline-flex items-center bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-all mb-4"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Standards Now
+            </a>
+            <p className="text-sm text-gray-500">
+              Check your email for bonus content and implementation checklists
+            </p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -140,8 +183,8 @@ export function EmailCapture({
                 }`}
               >
                 <option value="">I am a...</option>
-                <option value="bitcoin_holder">Bitcoin Holder</option>
                 <option value="attorney">Attorney</option>
+                <option value="family">Family Member</option>
                 <option value="other">Other</option>
               </select>
             </div>

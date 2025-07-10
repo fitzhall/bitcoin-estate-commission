@@ -87,8 +87,9 @@ export default function GetStandardsPage() {
             variant="hero"
             title="Get Your Free Copy Now"
             description="Join thousands securing their Bitcoin legacy with professional standards"
-            buttonText="Download Standards (PDF)"
+            buttonText="📄 Download Standards (PDF)"
             className="mb-12"
+            showModal={true}
           />
 
           {/* What's Inside Section */}
@@ -290,7 +291,8 @@ export default function GetStandardsPage() {
               variant="inline"
               title="Download Your Free Copy"
               description="Enter your email to receive the Bitcoin Estate Planning Standards instantly"
-              buttonText="Get Standards Now"
+              buttonText="📄 Get Standards Now"
+              showModal={true}
             />
 
             <p className="text-sm text-gray-500 mt-8">
