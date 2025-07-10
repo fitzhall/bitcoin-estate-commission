@@ -276,22 +276,34 @@ export const standardsContent = {
 
 export const stateRegulations = {
   california: {
-    probateCode: "Section 850 - Digital Asset Provisions",
-    requirements: "Specific language required for digital asset authority",
-    taxImplications: "Subject to state estate tax above $12.92M",
-    specialConsiderations: "Community property rules apply to cryptocurrency"
+    probateCode: "California Probate Code Part 20 (Sections 870-884)",
+    requirements: "Explicit consent required for digital asset content access",
+    taxImplications: "No state estate tax; federal estate tax above $13.61M",
+    specialConsiderations: "Community property rules apply; enhanced privacy protections"
   },
   texas: {
-    probateCode: "Chapter XIII - Electronic Assets",
-    requirements: "Clear grant of authority required",
-    taxImplications: "No state estate tax",
-    specialConsiderations: "Favorable trust laws for dynasty planning"
+    probateCode: "Texas Estates Code Chapter 2001",
+    requirements: "Clear grant of authority required for fiduciary access",
+    taxImplications: "No state estate tax or income tax",
+    specialConsiderations: "Independent administration available; strong property rights"
   },
   newyork: {
-    probateCode: "EPTL 13-A - Digital Assets",
-    requirements: "Detailed access provisions required",
-    taxImplications: "State estate tax above $6.58M",
-    specialConsiderations: "Strict fiduciary duty requirements"
+    probateCode: "New York EPTL Article 13-A",
+    requirements: "User consent required; court approval for assets over $50,000",
+    taxImplications: "State estate tax above $6.58M (3.06% to 16%)",
+    specialConsiderations: "Transfer-on-death provisions available; strict compliance"
+  },
+  florida: {
+    probateCode: "Florida Statutes Chapter 740",
+    requirements: "Full RUFADAA implementation; user direction takes precedence",
+    taxImplications: "No state estate tax or income tax",
+    specialConsiderations: "Summary administration for estates under $75,000"
+  },
+  southdakota: {
+    probateCode: "South Dakota Codified Laws Title 55, Chapter 19",
+    requirements: "Dynasty trust compatibility; directed trust provisions",
+    taxImplications: "No state estate tax or income tax",
+    specialConsiderations: "Perpetual trusts allowed; exceptional privacy protections"
   }
 }
 
