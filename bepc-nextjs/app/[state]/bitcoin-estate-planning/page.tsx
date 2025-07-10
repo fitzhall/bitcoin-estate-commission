@@ -221,13 +221,13 @@ export default async function StatePage({ params }: Props) {
       {faqData && <FAQSchema {...faqData} />}
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-primary-light text-white py-16">
+      <section className="bg-gradient-to-br from-primary-dark to-primary py-16">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-white drop-shadow-lg">
               Bitcoin Estate Planning Attorneys in {stateName}
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p className="text-xl text-white/90 mb-8 drop-shadow-md">
               {attorneyCount > 0 
                 ? `${attorneyCount} BEPC certified attorneys serving ${stateName} residents`
                 : `Find BEPC certified attorneys serving ${stateName} residents`
