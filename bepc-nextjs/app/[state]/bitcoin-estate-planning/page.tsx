@@ -6,6 +6,8 @@ import { safeDb } from '@/lib/database'
 import { getCitiesByState } from '@/lib/cities-data'
 import { BreadcrumbSchema, FAQSchema } from '@/components/SchemaMarkup'
 import { getStateData } from '@/lib/state-data'
+import { loadStateContent } from '@/lib/content-loader'
+import ReactMarkdown from 'react-markdown'
 
 // List of US states
 const US_STATES = {
@@ -167,6 +169,10 @@ export default async function StatePage({ params }: Props) {
   const stateCode = stateInfo.code
   const stateRegulation = stateRegulations[normalizedState] || stateRegulations.california
   const rufadaaData = getStateData(normalizedState)
+  
+  // Load rich content for pilot states
+  const stateContent = await loadStateContent(normalizedState)
+  const isPilotState = ['ny', 'ca', 'tx', 'fl', 'sd'].includes(normalizedState)
 
   // Get cities in this state - always use static data for consistent build
   const staticCities = getCitiesByState(normalizedState)
@@ -239,43 +245,79 @@ export default async function StatePage({ params }: Props) {
         </div>
       </section>
 
-      {/* State Overview */}
-      <section className="py-16">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg">
-              <h2>Bitcoin Estate Planning in {stateName}: What You Need to Know</h2>
-              <p>
-                {rufadaaData 
-                  ? rufadaaData.intro
-                  : `${stateName} residents holding Bitcoin and other cryptocurrencies face unique estate planning challenges. With proper planning through a BEPC certified attorney, you can ensure your digital assets are protected and properly transferred to your beneficiaries.`
-                }
-              </p>
-              
-              {stateRegulation && (
-                <>
-                  <h3>Key {stateName} Regulations</h3>
-                  <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-6">
-                    <p className="font-semibold mb-2">{stateRegulation.probateCode}</p>
-                    <p className="mb-4">{stateRegulation.requirements}</p>
-                    {stateRegulation.specialConsiderations && (
-                      <p className="text-sm text-gray-700">
-                        <strong>Special Considerations:</strong> {stateRegulation.specialConsiderations}
-                      </p>
-                    )}
-                  </div>
-
-                  <h3>Tax Implications in {stateName}</h3>
-                  <p>{stateRegulation.taxImplications}</p>
-                </>
-              )}
+      {/* State Content - Rich content for pilot states, template for others */}
+      {isPilotState && stateContent ? (
+        <section className="py-16">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <div className="prose prose-lg max-w-none">
+                <ReactMarkdown
+                  components={{
+                    h1: ({ children }) => <h1 className="text-4xl font-bold mb-8">{children}</h1>,
+                    h2: ({ children }) => <h2 className="text-3xl font-bold mt-12 mb-6">{children}</h2>,
+                    h3: ({ children }) => <h3 className="text-2xl font-bold mt-8 mb-4">{children}</h3>,
+                    h4: ({ children }) => <h4 className="text-xl font-bold mt-6 mb-3">{children}</h4>,
+                    p: ({ children }) => <p className="mb-6 text-gray-700 leading-relaxed">{children}</p>,
+                    ul: ({ children }) => <ul className="mb-6 ml-6 list-disc space-y-2">{children}</ul>,
+                    ol: ({ children }) => <ol className="mb-6 ml-6 list-decimal space-y-2">{children}</ol>,
+                    li: ({ children }) => <li className="text-gray-700">{children}</li>,
+                    strong: ({ children }) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                    blockquote: ({ children }) => (
+                      <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+                        {children}
+                      </blockquote>
+                    ),
+                    a: ({ href, children }) => (
+                      <Link href={href || '#'} className="text-primary hover:text-primary-dark underline">
+                        {children}
+                      </Link>
+                    ),
+                  }}
+                >
+                  {stateContent}
+                </ReactMarkdown>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="py-16">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <div className="prose prose-lg">
+                <h2>Bitcoin Estate Planning in {stateName}: What You Need to Know</h2>
+                <p>
+                  {rufadaaData 
+                    ? rufadaaData.intro
+                    : `${stateName} residents holding Bitcoin and other cryptocurrencies face unique estate planning challenges. With proper planning through a BEPC certified attorney, you can ensure your digital assets are protected and properly transferred to your beneficiaries.`
+                  }
+                </p>
+                
+                {stateRegulation && (
+                  <>
+                    <h3>Key {stateName} Regulations</h3>
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-6">
+                      <p className="font-semibold mb-2">{stateRegulation.probateCode}</p>
+                      <p className="mb-4">{stateRegulation.requirements}</p>
+                      {stateRegulation.specialConsiderations && (
+                        <p className="text-sm text-gray-700">
+                          <strong>Special Considerations:</strong> {stateRegulation.specialConsiderations}
+                        </p>
+                      )}
+                    </div>
 
-      {/* RUFADAA Status Section */}
-      {rufadaaData && (
+                    <h3>Tax Implications in {stateName}</h3>
+                    <p>{stateRegulation.taxImplications}</p>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* RUFADAA Status Section - Only for non-pilot states */}
+      {!isPilotState && rufadaaData && (
         <section className="py-16 bg-gray-50">
           <div className="container">
             <div className="max-w-4xl mx-auto">
@@ -327,13 +369,14 @@ export default async function StatePage({ params }: Props) {
         </section>
       )}
 
-      {/* State-Specific Content */}
-      <section className="py-16">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">
-              Why {stateName} Residents Need Specialized Bitcoin Estate Planning
-            </h2>
+      {/* State-Specific Content - Only for non-pilot states */}
+      {!isPilotState && (
+        <section className="py-16">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8">
+                Why {stateName} Residents Need Specialized Bitcoin Estate Planning
+              </h2>
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -381,8 +424,8 @@ export default async function StatePage({ params }: Props) {
               </div>
             </div>
 
-            {/* FAQ Section */}
-            {rufadaaData && rufadaaData.faqs.length > 0 && (
+            {/* FAQ Section - Only for non-pilot states */}
+            {!isPilotState && rufadaaData && rufadaaData.faqs.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-3xl font-bold mb-8">
                   Frequently Asked Questions
@@ -413,6 +456,7 @@ export default async function StatePage({ params }: Props) {
           </div>
         </div>
       </section>
+      )}
     </>
   )
 }

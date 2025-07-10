@@ -28,3 +28,27 @@ export function generateStaticParamsForCategory(category: string) {
       slug: page.slug
     }))
 }
+
+// Load state content
+export async function loadStateContent(state: string): Promise<string | null> {
+  try {
+    // Map state codes to content file names
+    const stateFiles: Record<string, string> = {
+      'ny': 'New_York_Bitcoin_Estate_Planning.md',
+      'ca': 'California_Bitcoin_Estate_Planning.md',
+      'tx': 'Texas_Bitcoin_Estate_Planning.md',
+      'fl': 'Florida_Bitcoin_Estate_Planning.md',
+      'sd': 'South_Dakota_Bitcoin_Estate_Planning.md'
+    }
+    
+    const filename = stateFiles[state.toLowerCase()]
+    if (!filename) return null
+    
+    const filePath = path.join(process.cwd(), 'content', 'state', filename)
+    const content = fs.readFileSync(filePath, 'utf8')
+    return content
+  } catch (error) {
+    console.error(`Error loading state content: ${state}`, error)
+    return null
+  }
+}
