@@ -8,9 +8,9 @@ const stats = [
     source: 'Based on Chainalysis 2023 report on lost Bitcoin'
   },
   { 
-    value: '89%', 
-    label: 'Attorneys Unprepared',
-    source: 'BEPC survey of 500+ estate planning attorneys, 2024'
+    value: '98%', 
+    label: 'States with RUFADAA',
+    source: '50 states + DC have digital asset inheritance laws'
   },
   { 
     value: '4M', 

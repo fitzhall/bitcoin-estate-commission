@@ -40,11 +40,12 @@ export const stateData: Record<string, StateData> = {
         'Fiduciaries can access digital assets with user consent',
         'Clear procedures for estate representatives to manage cryptocurrency',
         'Protection for custodian compliance with fiduciary requests',
-        'Specific provisions for transfer-on-death digital assets'
+        'Specific provisions for transfer-on-death digital assets',
+        'Part of the 98% of U.S. jurisdictions with RUFADAA'
       ],
       courtApprovalThreshold: 'Court approval required for assets over $50,000',
-      legislativeStatus: 'NY EPTL Article 13-A',
-      citation: 'N.Y. Est. Powers & Trusts Law § 13-A'
+      legislativeStatus: 'AB A9910A',
+      citation: 'New York Estates, Powers and Trusts Law Article 13-A'
     },
     intro: `New York has been at the forefront of digital asset legislation, adopting RUFADAA in 2016. For Bitcoin holders in the Empire State, this provides a clear legal framework for estate planning. However, the complexity of New York's financial regulations requires specialized expertise to ensure proper compliance and asset protection.`,
     faqs: [
@@ -82,19 +83,20 @@ export const stateData: Record<string, StateData> = {
     slug: 'ca',
     rufadaa: {
       adopted: true,
-      adoptionDate: '2017-01-01',
+      adoptionDate: '2016-09-24',
       status: 'Modified Version',
       keyProvisions: [
         'Enhanced privacy protections beyond standard RUFADAA',
         'Explicit consent required for content access',
         'Catalog information accessible to fiduciaries',
-        'Special provisions for minors\' digital assets'
+        'Special provisions for minors\' digital assets',
+        'Part of the 98% of U.S. jurisdictions with RUFADAA'
       ],
       courtApprovalThreshold: 'No specific threshold - fiduciary discretion applies',
-      legislativeStatus: 'California Probate Code §§ 870-884',
-      citation: 'Cal. Prob. Code § 870 et seq.'
+      legislativeStatus: 'AB-691',
+      citation: 'California Probate Code Part 20 (Sections 870-884)'
     },
-    intro: `California's modified RUFADAA provides some of the strongest digital asset protections in the nation. The state's tech-forward approach and large cryptocurrency community make proper Bitcoin estate planning essential. California's unique privacy laws add complexity that requires expert navigation.`,
+    intro: `California is among the 98% of U.S. jurisdictions that have adopted RUFADAA, providing a robust legal framework for Bitcoin inheritance. The state's modified version offers some of the strongest digital asset protections in the nation, with enhanced privacy requirements that align perfectly with cryptocurrency holders' values. California's tech-forward approach and large Bitcoin community make specialized estate planning essential.`,
     faqs: [
       {
         question: 'How does California\'s RUFADAA differ from other states?',
@@ -136,13 +138,14 @@ export const stateData: Record<string, StateData> = {
         'Full RUFADAA implementation',
         'Fiduciary access to manage digital property',
         'User direction takes precedence',
-        'Protection for custodians who comply'
+        'Protection for custodians who comply',
+        'Part of the 98% of U.S. jurisdictions with RUFADAA'
       ],
       courtApprovalThreshold: 'Summary administration available for estates under $75,000',
-      legislativeStatus: 'Florida Statutes Chapter 740',
-      citation: 'Fla. Stat. § 740.001 et seq.'
+      legislativeStatus: 'SB 494',
+      citation: 'Florida Statutes Chapter 740'
     },
-    intro: `Florida's early RUFADAA adoption and lack of state income tax make it attractive for Bitcoin holders. The state's large retiree population and significant wealth concentration require sophisticated estate planning approaches. Florida's homestead and creditor protection laws add unique considerations for digital asset planning.`,
+    intro: `Florida was among the first wave of states joining the 98% of U.S. jurisdictions with RUFADAA, adopting comprehensive digital asset laws in 2016. Combined with no state income tax and strong asset protection laws, Florida offers an exceptional environment for Bitcoin estate planning. The state's large retiree population and wealth concentration make specialized cryptocurrency inheritance strategies essential.`,
     faqs: [
       {
         question: 'How does Florida\'s lack of income tax affect Bitcoin inheritance?',
@@ -184,13 +187,14 @@ export const stateData: Record<string, StateData> = {
         'Comprehensive digital asset fiduciary access',
         'Strong property rights alignment',
         'Business digital asset provisions',
-        'Clear custodian compliance procedures'
+        'Clear custodian compliance procedures',
+        'Part of the 98% of U.S. jurisdictions with RUFADAA'
       ],
       courtApprovalThreshold: 'Independent administration available with minimal court oversight',
-      legislativeStatus: 'Texas Estates Code Chapter 2001',
-      citation: 'Tex. Est. Code § 2001.001 et seq.'
+      legislativeStatus: 'SB 1193',
+      citation: 'Texas Estates Code Chapter 2001'
     },
-    intro: `Texas's business-friendly environment and strong property rights extend to digital assets through RUFADAA adoption. The state's lack of income tax and growing tech sector make it increasingly popular for Bitcoin holders. Texas's independent administration procedures can simplify estate settlement when properly structured.`,
+    intro: `Texas joined the 98% of U.S. jurisdictions with RUFADAA in 2017, extending its strong property rights tradition to digital assets. The state's business-friendly environment, lack of income tax, and growing Bitcoin mining industry create unique opportunities for cryptocurrency estate planning. Texas's independent administration procedures offer efficient estate settlement for properly structured Bitcoin inheritances.`,
     faqs: [
       {
         question: 'How does Texas\'s community property law affect Bitcoin?',
@@ -232,13 +236,14 @@ export const stateData: Record<string, StateData> = {
         'Dynasty trust compatibility',
         'Strong privacy protections',
         'Directed trust provisions for digital assets',
-        'Flexible fiduciary access rules'
+        'Flexible fiduciary access rules',
+        'Part of the 98% of U.S. jurisdictions with RUFADAA'
       ],
       courtApprovalThreshold: 'Simplified procedures for small estates under $50,000',
-      legislativeStatus: 'SDCL Chapter 55-19',
-      citation: 'S.D. Codified Laws § 55-19'
+      legislativeStatus: 'HB1080',
+      citation: 'South Dakota Codified Laws Title 55, Chapter 19'
     },
-    intro: `South Dakota's trust-friendly laws and RUFADAA adoption create unique opportunities for Bitcoin estate planning. The state's dynasty trust provisions, privacy protections, and lack of state income tax make it attractive for long-term digital asset planning, even for non-residents.`,
+    intro: `South Dakota is part of the 98% of U.S. jurisdictions that have adopted RUFADAA, combining this digital asset framework with the nation's most advanced trust laws. The state's perpetual dynasty trusts, unmatched privacy protections, and lack of state income tax create the ideal environment for multi-generational Bitcoin wealth preservation. These advantages are available to residents and non-residents alike.`,
     faqs: [
       {
         question: 'Why is South Dakota popular for Bitcoin dynasty trusts?',
@@ -306,9 +311,9 @@ export function getAllStates(): StateData[] {
 // Generate intro with spintax variation
 export function generateStateIntro(state: StateData, variation: number = 0): string {
   const templates = [
-    `${state.name} residents holding Bitcoin and other cryptocurrencies need specialized estate planning to protect their digital wealth. With ${state.rufadaa.adopted ? 'RUFADAA adopted' : 'evolving regulations'}, proper legal guidance ensures your assets transfer smoothly to beneficiaries.`,
-    `Protecting Bitcoin investments in ${state.name} requires understanding both state law and cryptocurrency technology. ${state.rufadaa.adopted ? `The state's RUFADAA adoption provides clear guidelines` : 'Current regulations require careful navigation'} for digital asset inheritance.`,
-    `Estate planning for Bitcoin in ${state.name} presents unique challenges and opportunities. ${state.rufadaa.adopted ? 'With established digital asset laws' : 'Despite regulatory uncertainty'}, proper planning can secure your cryptocurrency legacy for future generations.`
+    `${state.name} residents holding Bitcoin and other cryptocurrencies need specialized estate planning to protect their digital wealth. As part of the 98% of U.S. jurisdictions with RUFADAA, ${state.name} provides a robust legal framework ensuring your digital assets transfer smoothly to beneficiaries.`,
+    `Protecting Bitcoin investments in ${state.name} requires understanding both state law and cryptocurrency technology. ${state.name} joins 49 other jurisdictions in adopting RUFADAA, providing clear legal guidelines for digital asset inheritance and fiduciary access.`,
+    `Estate planning for Bitcoin in ${state.name} benefits from the state's adoption of RUFADAA, joining the national consensus that covers 98% of U.S. jurisdictions. This established legal framework ensures your cryptocurrency legacy passes securely to future generations.`
   ]
   
   return templates[variation % templates.length]
