@@ -40,7 +40,7 @@ export default function CertificationApplyPage() {
               </div>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Certification Program Launching Q1 2025
+                Certification Program Launching Q4 2024
               </h2>
 
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ export default function CertificationApplyPage() {
 
 
               <p className="text-sm text-gray-500">
-                Expected launch: March 2025 • Limited spots available
+                Expected launch: Q4 2024 • Limited spots available
               </p>
             </div>
           </div>
