@@ -1108,6 +1108,66 @@ export const programmaticPages: TopicPage[] = [
     lastUpdated: '2025-01-11',
     status: 'published',
     schemaType: 'Article'
+  },
+  {
+    slug: 'anti-money-laundering-compliance-bitcoin-estate-planning',
+    title: 'Anti-Money Laundering Compliance for Bitcoin Estate Planning',
+    metaDescription: 'Master AML compliance for Bitcoin estate planning. KYC requirements, suspicious activity reporting, record keeping, and federal compliance systems.',
+    category: 'compliance',
+    keywords: ['AML compliance', 'anti-money laundering', 'KYC requirements', 'suspicious activity reporting'],
+    contentFile: '06_Anti_Money_Laundering_Compliance_Bitcoin_Estate_Planning.md',
+    wordCount: 4700,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'international-regulatory-compliance-cross-border',
+    title: 'International Regulatory Compliance & Cross-Border Planning',
+    metaDescription: 'Navigate international regulatory compliance for Bitcoin estates. Cross-border regulations, FATCA compliance, international reporting, and global coordination.',
+    category: 'compliance',
+    keywords: ['international compliance', 'cross-border regulations', 'FATCA compliance', 'global coordination'],
+    contentFile: '07_International_Regulatory_Compliance_Cross_Border_Bitcoin_Estate_Planning.md',
+    wordCount: 4900,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'fiduciary-duty-regulatory-standards',
+    title: 'Fiduciary Duty & Regulatory Standards',
+    metaDescription: 'Understand fiduciary duties in Bitcoin estate planning. Professional standards, client obligations, regulatory requirements, and ethical compliance.',
+    category: 'compliance',
+    keywords: ['fiduciary duty', 'professional standards', 'ethical compliance', 'client obligations'],
+    contentFile: '08_Fiduciary_Duty_Regulatory_Standards_Bitcoin_Estate_Planning.md',
+    wordCount: 4600,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'regulatory-audit-examination-preparedness',
+    title: 'Regulatory Audit & Examination Preparedness',
+    metaDescription: 'Prepare for regulatory audits and examinations. Audit response strategies, documentation requirements, examination procedures, and compliance verification.',
+    category: 'compliance',
+    keywords: ['regulatory audit', 'examination preparedness', 'audit response', 'compliance verification'],
+    contentFile: '09_Regulatory_Audit_Examination_Preparedness.md',
+    wordCount: 4800,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'regulatory-technology-innovation-compliance',
+    title: 'Regulatory Technology Innovation & Future Compliance',
+    metaDescription: 'Leverage regulatory technology for Bitcoin estate planning. RegTech solutions, automated compliance, innovation frameworks, and future-ready systems.',
+    category: 'compliance',
+    keywords: ['RegTech', 'regulatory technology', 'automated compliance', 'innovation frameworks'],
+    contentFile: '10_Regulatory_Technology_Innovation_Compliance_Future.md',
+    wordCount: 5000,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
   }
 ]
 
