@@ -4,8 +4,8 @@ import { CertificationWaitlistForm } from '@/components/CertificationWaitlistFor
 
 export const metadata: Metadata = {
   title: 'Join the Waitlist - Bitcoin Estate Planning Certification | BEPC',
-  description: 'Be among the first to access the comprehensive Bitcoin Estate Planning Certification when it launches in Q4 2024. Early bird pricing available.',
-  keywords: 'bitcoin estate planning certification waitlist, cryptocurrency attorney training, BEPC certification 2024',
+  description: 'Be among the first to access the comprehensive Bitcoin Estate Planning Certification when it launches in Q4 2025. Early bird pricing available.',
+  keywords: 'bitcoin estate planning certification waitlist, cryptocurrency attorney training, BEPC certification 2025',
 }
 
 export default function CertificationWaitlistPage() {
@@ -16,7 +16,7 @@ export default function CertificationWaitlistPage() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <div className="bg-accent text-white px-6 py-3 rounded-full inline-block font-semibold mb-6">
-              Launching Q4 2024
+              Launching Q4 2025
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-white drop-shadow-lg">
               Bitcoin Estate Planning Certification Program
