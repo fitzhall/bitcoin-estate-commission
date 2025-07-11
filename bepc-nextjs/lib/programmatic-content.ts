@@ -1228,6 +1228,66 @@ export const programmaticPages: TopicPage[] = [
     lastUpdated: '2025-01-11',
     status: 'published',
     schemaType: 'Article'
+  },
+  {
+    slug: 'advanced-privacy-regulation-compliance',
+    title: 'Advanced Privacy Regulation Compliance',
+    metaDescription: 'Master privacy regulation compliance for Bitcoin estates. GDPR compliance, data protection, privacy technology, and client confidentiality excellence.',
+    category: 'compliance',
+    keywords: ['privacy regulation', 'GDPR compliance', 'data protection', 'privacy compliance'],
+    contentFile: '16_Advanced_Privacy_Regulation_Compliance_Bitcoin_Estate_Planning.md',
+    wordCount: 5100,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'institutional-compliance-enterprise-bitcoin',
+    title: 'Institutional Compliance for Enterprise Bitcoin',
+    metaDescription: 'Implement institutional compliance for enterprise Bitcoin estates. Corporate governance, institutional standards, enterprise risk management.',
+    category: 'compliance',
+    keywords: ['institutional compliance', 'enterprise bitcoin', 'corporate governance', 'institutional standards'],
+    contentFile: '17_Institutional_Compliance_Enterprise_Bitcoin_Estate_Planning.md',
+    wordCount: 5300,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'regulatory-innovation-emerging-compliance',
+    title: 'Regulatory Innovation & Emerging Compliance',
+    metaDescription: 'Navigate emerging regulatory innovations for Bitcoin estates. New regulations, compliance technologies, regulatory sandboxes, and innovation frameworks.',
+    category: 'compliance',
+    keywords: ['regulatory innovation', 'emerging compliance', 'regulatory sandbox', 'compliance innovation'],
+    contentFile: '18_Regulatory_Innovation_Emerging_Compliance_Technologies.md',
+    wordCount: 5000,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'cross-border-regulatory-harmonization',
+    title: 'Cross-Border Regulatory Harmonization',
+    metaDescription: 'Master cross-border regulatory harmonization for global Bitcoin estates. International coordination, multi-jurisdictional compliance, global frameworks.',
+    category: 'compliance',
+    keywords: ['cross-border regulation', 'regulatory harmonization', 'multi-jurisdictional', 'global compliance'],
+    contentFile: '19_Cross_Border_Regulatory_Harmonization_Global_Compliance.md',
+    wordCount: 5400,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-regulatory-excellence-mastery',
+    title: 'Professional Regulatory Excellence & Mastery',
+    metaDescription: 'Achieve professional regulatory excellence in Bitcoin estate planning. Compliance mastery, competitive advantage, regulatory leadership strategies.',
+    category: 'compliance',
+    keywords: ['regulatory excellence', 'compliance mastery', 'regulatory leadership', 'professional excellence'],
+    contentFile: '20_Professional_Regulatory_Excellence_Competitive_Compliance_Mastery.md',
+    wordCount: 5500,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
   }
 ]
 
