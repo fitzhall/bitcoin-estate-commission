@@ -29,12 +29,28 @@ export default function FindAttorneyPage({
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b">
         <div className="container py-12">
-          <h1 className="text-4xl font-bold mb-4">
-            Find a Certified Bitcoin Estate Planning Attorney
-          </h1>
-          <p className="text-xl text-gray-600">
-            Connect with BEPC certified attorneys specializing in Bitcoin and cryptocurrency estate planning
-          </p>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+            <div className="mb-6 lg:mb-0">
+              <h1 className="text-4xl font-bold mb-4">
+                Find a Certified Bitcoin Estate Planning Attorney
+              </h1>
+              <p className="text-xl text-gray-600">
+                Connect with BEPC certified attorneys specializing in Bitcoin and cryptocurrency estate planning
+              </p>
+            </div>
+            <div className="lg:ml-8">
+              <Link 
+                href="/attorney-directory/join" 
+                className="btn btn-primary btn-lg flex items-center"
+              >
+                <span>Are You an Attorney?</span>
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <p className="text-sm text-gray-600 mt-2">Join our directory</p>
+            </div>
+          </div>
         </div>
       </div>
 

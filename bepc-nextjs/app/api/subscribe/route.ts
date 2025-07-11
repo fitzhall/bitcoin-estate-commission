@@ -9,7 +9,7 @@ const CONVERTKIT_API_SECRET = process.env.CONVERTKIT_API_SECRET
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, firstName, userType, source } = body
+    const { email, firstName, userType, source, customFields } = body
 
     if (!email || !email.includes('@')) {
       return NextResponse.json({ error: 'Valid email is required' }, { status: 400 })
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
 
     // Send to ConvertKit
     try {
-      await addToConvertKit(email, firstName, userType, state, city, source)
+      await addToConvertKit(email, firstName, userType, state, city, source, customFields)
     } catch (emailError) {
       console.error('ConvertKit error:', emailError)
       // Still return success to user even if ConvertKit fails
@@ -88,7 +88,8 @@ async function addToConvertKit(
   userType?: string,
   state?: string,
   city?: string,
-  source?: string
+  source?: string,
+  customFields?: any
 ) {
   if (!CONVERTKIT_API_KEY || !CONVERTKIT_API_SECRET) {
     console.log('ConvertKit API keys not configured')
@@ -127,6 +128,7 @@ async function addToConvertKit(
         state: state || '',
         city: city || '',
         source: source || 'website',
+        ...(customFields || {}),
       },
       tags: []
     }
@@ -134,6 +136,8 @@ async function addToConvertKit(
     // Add tags based on user type
     if (userType === 'attorney') {
       subscribeData.tags.push('attorney')
+    } else if (userType === 'attorney_applicant') {
+      subscribeData.tags.push('attorney', 'directory_applicant', 'pending_review')
     } else if (userType === 'bitcoin_holder') {
       subscribeData.tags.push('hodler', 'bitcoin_holder')
     }
