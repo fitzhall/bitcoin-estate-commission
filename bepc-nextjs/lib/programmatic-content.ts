@@ -867,6 +867,66 @@ export const programmaticPages: TopicPage[] = [
     status: 'published',
     schemaType: 'Article'
   },
+  {
+    slug: 'advanced-bitcoin-network-protocol-integration',
+    title: 'Advanced Bitcoin Network Protocol Integration',
+    metaDescription: 'Master advanced Bitcoin network protocols for estate planning. Lightning Network integration, Taproot privacy, Layer 2 solutions, and protocol evolution.',
+    category: 'technical',
+    keywords: ['bitcoin protocol', 'lightning network estate planning', 'taproot privacy', 'layer 2 solutions'],
+    contentFile: '11_Advanced_Bitcoin_Network_Protocol_Integration.md',
+    wordCount: 4200,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'institutional-grade-security-architecture',
+    title: 'Institutional Grade Security Architecture',
+    metaDescription: 'Build institutional-grade security architecture for Bitcoin estate planning. Enterprise custody, HSM integration, multi-layered security, and compliance frameworks.',
+    category: 'technical',
+    keywords: ['institutional security', 'enterprise bitcoin custody', 'HSM integration', 'security architecture'],
+    contentFile: '12_Institutional_Grade_Security_Architecture.md',
+    wordCount: 4300,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'cross-platform-wallet-management-systems',
+    title: 'Cross-Platform Wallet Management Systems',
+    metaDescription: 'Implement cross-platform wallet management for Bitcoin estates. Multi-device coordination, platform-agnostic recovery, and unified inheritance protocols.',
+    category: 'technical',
+    keywords: ['cross-platform wallet', 'multi-device bitcoin', 'wallet management systems', 'platform agnostic'],
+    contentFile: '13_Cross_Platform_Wallet_Management_Systems.md',
+    wordCount: 4100,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'advanced-transaction-monitoring-analytics',
+    title: 'Advanced Transaction Monitoring & Analytics',
+    metaDescription: 'Deploy advanced transaction monitoring and analytics for Bitcoin estates. Chain analysis, compliance monitoring, tax reporting, and inheritance tracking.',
+    category: 'technical',
+    keywords: ['transaction monitoring', 'bitcoin analytics', 'chain analysis', 'compliance monitoring'],
+    contentFile: '14_Advanced_Transaction_Monitoring_Analytics.md',
+    wordCount: 4000,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-bitcoin-infrastructure-management',
+    title: 'Professional Bitcoin Infrastructure Management',
+    metaDescription: 'Manage professional Bitcoin infrastructure for estate planning. Node operations, network redundancy, disaster recovery, and operational excellence.',
+    category: 'technical',
+    keywords: ['bitcoin infrastructure', 'node management', 'professional operations', 'disaster recovery'],
+    contentFile: '15_Professional_Bitcoin_Infrastructure_Management.md',
+    wordCount: 4400,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
   
   // Compliance Pillar (Coming in Phase 1D)
   {
