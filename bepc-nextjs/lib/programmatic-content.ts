@@ -987,6 +987,66 @@ export const programmaticPages: TopicPage[] = [
     status: 'published',
     schemaType: 'Article'
   },
+  {
+    slug: 'advanced-bitcoin-layer-2-integration',
+    title: 'Advanced Bitcoin Layer 2 Integration',
+    metaDescription: 'Master Layer 2 Bitcoin protocols for estate planning. Lightning Network integration, Liquid Network implementation, and multi-layer architecture design.',
+    category: 'technical',
+    keywords: ['layer 2 bitcoin', 'lightning network', 'liquid network', 'bitcoin scaling'],
+    contentFile: '21_Advanced_Bitcoin_Layer_2_Integration.md',
+    wordCount: 4800,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'enterprise-bitcoin-mining-integration',
+    title: 'Enterprise Bitcoin Mining Integration',
+    metaDescription: 'Integrate Bitcoin mining operations into estate planning. Mining business succession, hardware management, and operational continuity strategies.',
+    category: 'technical',
+    keywords: ['bitcoin mining', 'mining operations', 'enterprise mining', 'mining estate planning'],
+    contentFile: '22_Enterprise_Bitcoin_Mining_Integration.md',
+    wordCount: 4600,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'advanced-bitcoin-custody-technology',
+    title: 'Advanced Bitcoin Custody Technology',
+    metaDescription: 'Implement advanced custody technology for Bitcoin estates. Institutional custody, multi-party computation, and next-generation security protocols.',
+    category: 'technical',
+    keywords: ['bitcoin custody', 'institutional custody', 'MPC technology', 'custody solutions'],
+    contentFile: '23_Advanced_Bitcoin_Custody_Technology.md',
+    wordCount: 4700,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'bitcoin-smart-contract-estate-automation',
+    title: 'Bitcoin Smart Contract Estate Automation',
+    metaDescription: 'Automate Bitcoin estate management with smart contracts. Programmable inheritance, automated distributions, and self-executing estate plans.',
+    category: 'technical',
+    keywords: ['bitcoin smart contracts', 'estate automation', 'programmable inheritance', 'automated estates'],
+    contentFile: '24_Bitcoin_Smart_Contract_Estate_Automation.md',
+    wordCount: 4900,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-bitcoin-technology-integration-mastery',
+    title: 'Professional Bitcoin Technology Integration Mastery',
+    metaDescription: 'Master complete Bitcoin technology integration for estate planning. Comprehensive frameworks, best practices, and future-ready architectures.',
+    category: 'technical',
+    keywords: ['bitcoin technology mastery', 'integration excellence', 'professional frameworks', 'technology leadership'],
+    contentFile: '25_Professional_Bitcoin_Technology_Integration_Mastery.md',
+    wordCount: 5000,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
   
   // Compliance Pillar (Coming in Phase 1D)
   {
