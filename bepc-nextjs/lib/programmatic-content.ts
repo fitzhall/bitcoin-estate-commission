@@ -1168,6 +1168,66 @@ export const programmaticPages: TopicPage[] = [
     lastUpdated: '2025-01-11',
     status: 'published',
     schemaType: 'Article'
+  },
+  {
+    slug: 'advanced-securities-regulation-bitcoin-estate-planning',
+    title: 'Advanced Securities Regulation for Bitcoin Estate Planning',
+    metaDescription: 'Master securities regulation for Bitcoin estates. SEC compliance, investment advisor requirements, securities classification, and enforcement protection.',
+    category: 'compliance',
+    keywords: ['securities regulation', 'SEC compliance', 'investment advisor', 'securities law'],
+    contentFile: '11_Advanced_Securities_Regulation_Bitcoin_Estate_Planning.md',
+    wordCount: 4900,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-ethics-standards-bitcoin-estate-planning',
+    title: 'Professional Ethics Standards for Bitcoin Estate Planning',
+    metaDescription: 'Navigate professional ethics in Bitcoin estate planning. Bar ethics, fiduciary duties, conflict management, and professional responsibility standards.',
+    category: 'compliance',
+    keywords: ['professional ethics', 'bar ethics', 'fiduciary responsibility', 'ethical standards'],
+    contentFile: '12_Professional_Ethics_Standards_Bitcoin_Estate_Planning.md',
+    wordCount: 4700,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'regulatory-enforcement-defense-strategies',
+    title: 'Regulatory Enforcement Defense Strategies',
+    metaDescription: 'Defend against regulatory enforcement actions. Investigation response, enforcement defense, compliance remediation, and professional protection strategies.',
+    category: 'compliance',
+    keywords: ['enforcement defense', 'regulatory investigation', 'compliance remediation', 'professional protection'],
+    contentFile: '13_Regulatory_Enforcement_Defense_Strategies.md',
+    wordCount: 4800,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'compliance-technology-innovation-regtech',
+    title: 'Compliance Technology Innovation & RegTech Excellence',
+    metaDescription: 'Implement cutting-edge RegTech for Bitcoin compliance. Automation systems, AI compliance, blockchain monitoring, and innovation frameworks.',
+    category: 'compliance',
+    keywords: ['compliance technology', 'RegTech innovation', 'AI compliance', 'blockchain monitoring'],
+    contentFile: '14_Compliance_Technology_Innovation_RegTech.md',
+    wordCount: 5100,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'global-regulatory-harmonization-international-compliance',
+    title: 'Global Regulatory Harmonization & International Compliance',
+    metaDescription: 'Master global regulatory harmonization for Bitcoin estates. International standards, cross-border coordination, global compliance frameworks.',
+    category: 'compliance',
+    keywords: ['global harmonization', 'international compliance', 'cross-border regulation', 'global standards'],
+    contentFile: '15_Global_Regulatory_Harmonization_International_Compliance.md',
+    wordCount: 5200,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
   }
 ]
 
