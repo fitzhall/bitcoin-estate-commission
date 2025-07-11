@@ -101,6 +101,7 @@ async function addToConvertKit(
     const FORM_IDS = {
       certification_waitlist: 8298269,  // Certification Waitlist form
       attorney_applicant: 8298152,      // Directory Request form
+      council_applicant: 8289232,       // Using default form for now - update when council form ID is available
       default: 8289232                  // BEPC Collection form (general)
     }
 
@@ -110,6 +111,8 @@ async function addToConvertKit(
       formId = FORM_IDS.certification_waitlist
     } else if (userType === 'attorney_applicant') {
       formId = FORM_IDS.attorney_applicant
+    } else if (userType === 'council_applicant') {
+      formId = FORM_IDS.council_applicant
     }
 
     console.log(`Using form ID ${formId} for user type: ${userType}`)
@@ -136,6 +139,8 @@ async function addToConvertKit(
       subscribeData.tags.push('attorney', 'directory_applicant', 'pending_review')
     } else if (userType === 'certification_waitlist') {
       subscribeData.tags.push('certification_waitlist', 'pre_launch', 'founding_member_eligible')
+    } else if (userType === 'council_applicant') {
+      subscribeData.tags.push('council_applicant', 'advisory_council', 'pending_review', 'leadership')
     } else if (userType === 'bitcoin_holder') {
       subscribeData.tags.push('hodler', 'bitcoin_holder')
     }

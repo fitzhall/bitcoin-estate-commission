@@ -89,7 +89,7 @@ export function AdvisoryCouncil() {
 
           <div className="text-center">
             <Link 
-              href="/certification/apply"
+              href="/council/apply"
               className="btn btn-primary btn-lg"
             >
               Apply for Council Seat
