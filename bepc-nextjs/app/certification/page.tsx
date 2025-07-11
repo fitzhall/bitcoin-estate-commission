@@ -18,18 +18,18 @@ export default function CertificationPage() {
       <OrganizationSchema />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-primary-light text-white py-16">
+      <section className="bg-gradient-to-br from-primary-dark to-primary py-16">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-white drop-shadow-lg">
               Why 500+ Estate Attorneys Are Getting Bitcoin Certified Before Their Competition
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p className="text-xl text-white/90 mb-8 drop-shadow-md">
               The comprehensive certification program for attorneys who want to master Bitcoin estate planning
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/certification/apply" className="btn btn-secondary btn-lg">
-                Apply for Certification
+              <Link href="/certification/waitlist" className="btn btn-secondary btn-lg">
+                Join the Waitlist
               </Link>
               <Link href="#curriculum" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
                 View Curriculum

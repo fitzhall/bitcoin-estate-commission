@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-// ConvertKit Attorney Directory Form Setup Script
-// Run with: node scripts/setup-attorney-form.js
+// ConvertKit Certification Waitlist Form Setup Script
+// Run with: node scripts/setup-certification-waitlist.js
 
 require('dotenv').config({ path: '.env.local' });
 
@@ -15,25 +15,40 @@ if (!API_KEY || !API_SECRET) {
   process.exit(1);
 }
 
-async function createAttorneyForm() {
+async function createCertificationWaitlist() {
   try {
-    console.log('🚀 Setting up Attorney Directory in ConvertKit...');
+    console.log('🚀 Creating Certification Waitlist form in ConvertKit...');
 
-    // Use existing Directory Request form
-    const existingFormId = 8298152;
-    console.log(`✅ Using existing form with ID: ${existingFormId}`);
+    // Create the form
+    const formResponse = await fetch(`${CONVERTKIT_API_URL}/forms`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        api_key: API_KEY,
+        name: 'BEPC Certification Waitlist',
+        format: 'inline',
+        status: 'active',
+        description: 'Waitlist for Bitcoin Estate Planning Certification Program launching 2025',
+      }),
+    });
 
-    // Create custom fields for attorney data
+    if (!formResponse.ok) {
+      throw new Error(`Failed to create form: ${await formResponse.text()}`);
+    }
+
+    const form = await formResponse.json();
+    console.log(`✅ Form created with ID: ${form.id}`);
+
+    // Create custom fields for waitlist data
     const customFields = [
-      { label: 'bar_number', name: 'Bar Number' },
-      { label: 'law_firm', name: 'Law Firm' },
+      { label: 'last_name', name: 'Last Name' },
+      { label: 'state', name: 'State' },
       { label: 'years_experience', name: 'Years of Experience' },
-      { label: 'bitcoin_experience', name: 'Bitcoin Experience' },
-      { label: 'states_licensed', name: 'States Licensed' },
-      { label: 'phone', name: 'Phone Number' },
-      { label: 'website', name: 'Website' },
-      { label: 'linkedin', name: 'LinkedIn Profile' },
-      { label: 'specialties', name: 'Practice Specialties' },
+      { label: 'firm_size', name: 'Firm Size' },
+      { label: 'bitcoin_interest', name: 'Bitcoin Interest Level' },
+      { label: 'expected_launch_date', name: 'Expected Launch Date' },
     ];
 
     console.log('📝 Creating custom fields...');
@@ -67,13 +82,12 @@ async function createAttorneyForm() {
       }
     }
 
-    // Create tags for attorney segmentation
+    // Create tags for waitlist segmentation
     const tags = [
-      'attorney',
-      'directory_applicant',
-      'pending_review',
-      'approved_listing',
-      'bepc_certified',
+      'certification_waitlist',
+      'pre_launch',
+      'founding_member_eligible',
+      'certification_interest',
     ];
 
     console.log('🏷️  Creating tags...');
@@ -106,8 +120,8 @@ async function createAttorneyForm() {
       }
     }
 
-    // Create an email sequence for attorney applicants
-    console.log('📧 Creating attorney welcome sequence...');
+    // Create a waitlist nurture sequence
+    console.log('📧 Creating waitlist nurture sequence...');
     
     const sequenceResponse = await fetch(`${CONVERTKIT_API_URL}/sequences`, {
       method: 'POST',
@@ -116,7 +130,7 @@ async function createAttorneyForm() {
       },
       body: JSON.stringify({
         api_secret: API_SECRET,
-        name: 'Attorney Directory Application Sequence',
+        name: 'Certification Waitlist Nurture Sequence',
       }),
     });
 
@@ -126,25 +140,27 @@ async function createAttorneyForm() {
     } else {
       const error = await sequenceResponse.text();
       if (error.includes('already exists') || error.includes('duplicate')) {
-        console.log('ℹ️  Sequence already exists: Attorney Directory Application Sequence');
+        console.log('ℹ️  Sequence already exists');
       } else {
-        console.log('ℹ️  Sequence creation skipped or may already exist');
+        console.log('ℹ️  Sequence creation skipped');
       }
     }
 
     console.log('\n🎉 Setup complete!');
-    console.log('\n📋 Form Information:');
-    console.log(`Form ID: ${existingFormId}`);
-    console.log('Form Name: Directory Request');
-    console.log('Embed URL: https://backedbybitcoin.kit.com/72852e4bf7');
-    console.log('Embed JS: https://backedbybitcoin.kit.com/72852e4bf7/index.js');
     console.log('\n📋 Next steps:');
-    console.log('1. Log into ConvertKit and customize the form fields');
-    console.log('2. Set up the email sequence for attorney applicants');
-    console.log('3. Configure the form redirect URL to /attorney-application-success');
-    console.log(`4. Add this form ID to your website: ${existingFormId}`);
-    console.log('\n🔗 Form management URL:');
-    console.log(`   https://app.convertkit.com/forms/designers/${existingFormId}/edit`);
+    console.log('1. Log into ConvertKit and customize the waitlist form');
+    console.log('2. Set up the nurture email sequence with pre-launch content');
+    console.log('3. Configure the form redirect URL to /certification/waitlist-success');
+    console.log(`4. Add this form ID to your website: ${form.id}`);
+    console.log('\n🔗 Form embed code will be available at:');
+    console.log(`   https://app.convertkit.com/forms/designers/${form.id}/edit`);
+    
+    console.log('\n📧 Suggested email sequence:');
+    console.log('   - Welcome: Immediate confirmation + first resource');
+    console.log('   - Week 1: "Why Bitcoin Estate Planning Matters" guide');
+    console.log('   - Week 2: Case study of $12M Bitcoin inheritance failure');
+    console.log('   - Week 4: "5 Questions Every Attorney Should Ask" checklist');
+    console.log('   - Monthly: Updates on program development + exclusive content');
 
   } catch (error) {
     console.error('❌ Error setting up ConvertKit:', error);
@@ -152,4 +168,4 @@ async function createAttorneyForm() {
 }
 
 // Run the setup
-createAttorneyForm();
+createCertificationWaitlist();
