@@ -15,7 +15,7 @@ export function FinalCTA() {
           <Link href="/find-attorney" className="btn bg-accent hover:bg-accent-dark text-white btn-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
             Find Certified Attorney
           </Link>
-          <Link href="/certification" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-accent transition-all">
+          <Link href="/certification/apply" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-accent transition-all">
             Become Certified
           </Link>
         </div>

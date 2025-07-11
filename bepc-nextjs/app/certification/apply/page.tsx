@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { LeadMagnetCTA } from '@/components/LeadMagnetCTA'
+import { CertificationWaitlistForm } from '@/components/CertificationWaitlistForm'
 
 export const metadata: Metadata = {
   title: 'Apply for Certification - Bitcoin Estate Planning Commission',
@@ -91,21 +91,22 @@ export default function CertificationApplyPage() {
                 </div>
               </div>
 
-              {/* Early Interest Form */}
-              <div className="bg-primary/5 rounded-lg p-6 mb-8">
-                <h3 className="font-semibold text-gray-900 mb-3">
-                  Join the Early Interest List
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Be first to know when applications open and receive priority consideration.
-                </p>
-                <LeadMagnetCTA audience="attorney" variant="button" className="inline-flex" />
-              </div>
 
               <p className="text-sm text-gray-500">
                 Expected launch: March 2025 • Limited spots available
               </p>
             </div>
+          </div>
+
+          {/* Waitlist Form */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
+              Join the Certification Waitlist
+            </h2>
+            <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+              Be among the first to know when applications open and receive priority consideration for the inaugural cohort.
+            </p>
+            <CertificationWaitlistForm />
           </div>
 
           {/* Requirements Preview */}

@@ -59,7 +59,7 @@ export function Hero() {
           </div>
           
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link href="/certification" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
+            <Link href="/certification/apply" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
               Become Certified
             </Link>
             <Link href="/find-attorney" className="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
