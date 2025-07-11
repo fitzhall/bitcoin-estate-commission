@@ -5,7 +5,7 @@
 
 ## Introduction to the KEEP Protocol
 
-The KEEP Protocol represents the cornerstone methodology for Bitcoin estate planning, providing a systematic framework that addresses the unique challenges of digital asset inheritance while maintaining the highest standards of security, legal compliance, and professional practice. KEEP stands for Key Emergency Estate Protocol, encompassing four critical pillars that work together to create comprehensive Bitcoin inheritance solutions: Key Escrow Design, Execution Triggers, Estate Documentation Mapping, and Probate-Proofing procedures.
+The KEEP Protocol represents the cornerstone methodology for Bitcoin estate planning, providing a systematic framework that addresses the unique challenges of digital asset inheritance while maintaining the highest standards of security, legal compliance, and professional practice. KEEP stands for Keep Bitcoin Safe protocol, encompassing four critical pillars that work together to create comprehensive Bitcoin inheritance solutions: Key Escrow Design, Execution Triggers, Estate Documentation Mapping, and Probate-Proofing procedures.
 
 The protocol was developed through extensive collaboration between leading estate planning attorneys, Bitcoin technology experts, cryptographic security specialists, and regulatory compliance professionals. This multidisciplinary approach ensures that the KEEP Protocol addresses both the technical complexities of Bitcoin inheritance and the legal requirements of traditional estate planning, creating a unified framework that protects client assets while maintaining professional standards and regulatory compliance.
 

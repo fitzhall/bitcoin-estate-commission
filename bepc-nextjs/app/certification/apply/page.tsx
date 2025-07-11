@@ -67,7 +67,7 @@ export default function CertificationApplyPage() {
                     </svg>
                     <div>
                       <strong className="text-gray-900">KEEP Protocol Certification</strong>
-                      <p className="text-sm text-gray-600">Master the Key Emergency Estate Protocol</p>
+                      <p className="text-sm text-gray-600">Master the Keep Bitcoin Safe protocol</p>
                     </div>
                   </div>
                   <div className="flex items-start">

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { LeadMagnetCTA } from '@/components/LeadMagnetCTA'
 
 export const metadata: Metadata = {
-  title: 'KEEP Protocol - Key Emergency Estate Protocol | BEPC',
+  title: 'KEEP Protocol - Keep Bitcoin Safe Protocol | BEPC',
   description: 'Learn about the KEEP Protocol - the professional standard for Bitcoin inheritance ensuring 24-hour emergency access while maintaining security.',
 }
 
@@ -26,7 +26,7 @@ export default function KEEPProtocolPage() {
             </h1>
             
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Key Emergency Estate Protocol - The professional standard ensuring your beneficiaries 
+              Keep Bitcoin Safe protocol - The professional standard ensuring your beneficiaries 
               can access Bitcoin inheritance within 24 hours while maintaining security during your lifetime.
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function KEEPProtocolPage() {
           <div className="mb-12">
             <h2 className="text-3xl font-bold mb-6">What is the KEEP Protocol?</h2>
             <p className="text-gray-700 mb-6">
-              The Key Emergency Estate Protocol (KEEP) is a comprehensive framework developed by the 
+              The Keep Bitcoin Safe protocol (KEEP) is a comprehensive framework developed by the 
               Bitcoin Estate Planning Commission to solve the fundamental challenge of Bitcoin inheritance: 
               how to ensure beneficiaries can access digital assets after death while maintaining 
               absolute security during the owner's lifetime.

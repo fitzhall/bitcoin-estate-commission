@@ -23,7 +23,7 @@
 - [ ] Add tax optimization strategies
 
 ### KEEP Protocol Implementation
-- [ ] Set up Key Emergency Estate Protocol
+- [ ] Set up Keep Bitcoin Safe protocol
 - [ ] Designate technical executor
 - [ ] Create secure access instructions
 - [ ] Establish verification procedures

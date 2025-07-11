@@ -44,7 +44,7 @@ export const programmaticPages: TopicPage[] = [
   {
     slug: 'keep-protocol-implementation-guide',
     title: 'KEEP Protocol Implementation Guide',
-    metaDescription: 'Complete implementation guide for the Key Emergency Estate Protocol (KEEP). Multi-signature setup, execution triggers, and estate documentation mapping.',
+    metaDescription: 'Complete implementation guide for the Keep Bitcoin Safe protocol (KEEP). Multi-signature setup, execution triggers, and estate documentation mapping.',
     category: 'professional-standards',
     keywords: ['KEEP Protocol implementation', 'bitcoin inheritance protocol', 'cryptocurrency estate protocol', 'multi-signature inheritance'],
     contentFile: '03_KEEP_Protocol_Implementation_Guide.md',
