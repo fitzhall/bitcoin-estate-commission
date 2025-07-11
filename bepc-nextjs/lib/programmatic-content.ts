@@ -1048,16 +1048,65 @@ export const programmaticPages: TopicPage[] = [
     schemaType: 'Article'
   },
   
-  // Compliance Pillar (Coming in Phase 1D)
+  // Compliance Pillar
   {
-    slug: 'bitcoin-estate-planning-regulations',
-    title: 'Bitcoin Estate Planning Regulatory Framework',
-    metaDescription: 'Comprehensive guide to Bitcoin estate planning regulations. Federal guidelines, state requirements, and compliance procedures.',
+    slug: 'bitcoin-estate-planning-regulatory-framework-mastery',
+    title: 'Bitcoin Estate Planning Regulatory Framework Mastery',
+    metaDescription: 'Master Bitcoin estate planning regulatory compliance. Federal frameworks, state requirements, professional licensing, and comprehensive compliance systems.',
     category: 'compliance',
-    keywords: ['bitcoin estate planning regulations', 'cryptocurrency inheritance law', 'digital asset compliance'],
-    wordCount: 0,
-    lastUpdated: '2025-01-09',
-    status: 'draft',
+    keywords: ['bitcoin regulatory compliance', 'estate planning regulations', 'digital asset law', 'regulatory framework'],
+    contentFile: '01_Bitcoin_Estate_Planning_Regulatory_Framework_Mastery.md',
+    wordCount: 4500,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'federal-tax-compliance-bitcoin-estate-planning',
+    title: 'Federal Tax Compliance for Bitcoin Estate Planning',
+    metaDescription: 'Navigate federal tax compliance for Bitcoin estates. IRS regulations, tax reporting requirements, estate tax optimization, and compliance strategies.',
+    category: 'compliance',
+    keywords: ['bitcoin tax compliance', 'IRS regulations', 'federal tax law', 'estate tax planning'],
+    contentFile: '02_Federal_Tax_Compliance_Bitcoin_Estate_Planning.md',
+    wordCount: 4600,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'state-regulatory-compliance-digital-assets',
+    title: 'State Regulatory Compliance for Digital Assets',
+    metaDescription: 'Master state-level regulatory compliance for Bitcoin estates. RUFADAA implementation, state-specific requirements, and multi-jurisdictional strategies.',
+    category: 'compliance',
+    keywords: ['state regulations', 'RUFADAA compliance', 'digital asset laws', 'state compliance'],
+    contentFile: '03_State_Regulatory_Compliance_Digital_Assets.md',
+    wordCount: 4700,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-licensing-regulatory-standards',
+    title: 'Professional Licensing & Regulatory Standards',
+    metaDescription: 'Understand professional licensing requirements for Bitcoin estate planning. Bar compliance, fiduciary standards, and professional regulatory obligations.',
+    category: 'compliance',
+    keywords: ['professional licensing', 'bar compliance', 'fiduciary standards', 'regulatory standards'],
+    contentFile: '04_Professional_Licensing_Regulatory_Standards.md',
+    wordCount: 4400,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'regulatory-risk-management-compliance-systems',
+    title: 'Regulatory Risk Management & Compliance Systems',
+    metaDescription: 'Build comprehensive regulatory risk management systems. Compliance monitoring, risk assessment, enforcement preparedness, and professional protection.',
+    category: 'compliance',
+    keywords: ['risk management', 'compliance systems', 'regulatory risk', 'enforcement protection'],
+    contentFile: '05_Regulatory_Risk_Management_Compliance_Systems.md',
+    wordCount: 4800,
+    lastUpdated: '2025-01-11',
+    status: 'published',
     schemaType: 'Article'
   }
 ]
