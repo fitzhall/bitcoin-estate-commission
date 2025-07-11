@@ -28,6 +28,28 @@ export default function CertificationWaitlistPage() {
         </div>
       </section>
 
+      {/* Waitlist Form - Moved to top for immediate visibility */}
+      <section className="py-16 bg-gray-50" id="waitlist">
+        <div className="container">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              Join the Certification Waitlist
+            </h2>
+            <p className="text-center text-gray-600 mb-12">
+              Be among the first to know when enrollment opens. No obligation, unsubscribe anytime.
+            </p>
+            
+            <CertificationWaitlistForm />
+            
+            <p className="text-sm text-gray-500 text-center mt-8">
+              By joining the waitlist, you'll receive updates about the certification program 
+              and exclusive pre-launch educational content. We respect your privacy and will 
+              never share your information.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Value Proposition */}
       <section className="py-16">
         <div className="container">

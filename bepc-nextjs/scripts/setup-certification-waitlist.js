@@ -17,29 +17,11 @@ if (!API_KEY || !API_SECRET) {
 
 async function createCertificationWaitlist() {
   try {
-    console.log('🚀 Creating Certification Waitlist form in ConvertKit...');
+    console.log('🚀 Setting up Certification Waitlist in ConvertKit...');
 
-    // Create the form
-    const formResponse = await fetch(`${CONVERTKIT_API_URL}/forms`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        api_key: API_KEY,
-        name: 'BEPC Certification Waitlist',
-        format: 'inline',
-        status: 'active',
-        description: 'Waitlist for Bitcoin Estate Planning Certification Program launching 2025',
-      }),
-    });
-
-    if (!formResponse.ok) {
-      throw new Error(`Failed to create form: ${await formResponse.text()}`);
-    }
-
-    const form = await formResponse.json();
-    console.log(`✅ Form created with ID: ${form.id}`);
+    // Use existing BEPC Collection form
+    const existingFormId = 8289232;
+    console.log(`✅ Using existing form: BEPC Collection (ID: ${existingFormId})`);
 
     // Create custom fields for waitlist data
     const customFields = [
@@ -147,13 +129,18 @@ async function createCertificationWaitlist() {
     }
 
     console.log('\n🎉 Setup complete!');
+    console.log('\n📋 Form Information:');
+    console.log(`Form ID: ${existingFormId}`);
+    console.log('Form Name: BEPC Collection');
+    console.log('Embed URL: https://backedbybitcoin.kit.com/e85b49a811');
+    console.log('Embed JS: https://backedbybitcoin.kit.com/e85b49a811/index.js');
     console.log('\n📋 Next steps:');
     console.log('1. Log into ConvertKit and customize the waitlist form');
     console.log('2. Set up the nurture email sequence with pre-launch content');
     console.log('3. Configure the form redirect URL to /certification/waitlist-success');
-    console.log(`4. Add this form ID to your website: ${form.id}`);
-    console.log('\n🔗 Form embed code will be available at:');
-    console.log(`   https://app.convertkit.com/forms/designers/${form.id}/edit`);
+    console.log(`4. Add this form ID to your website: ${existingFormId}`);
+    console.log('\n🔗 Form management URL:');
+    console.log(`   https://app.convertkit.com/forms/designers/${existingFormId}/edit`);
     
     console.log('\n📧 Suggested email sequence:');
     console.log('   - Welcome: Immediate confirmation + first resource');
