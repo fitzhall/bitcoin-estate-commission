@@ -57,3 +57,15 @@ export async function loadStateContent(state: string): Promise<string | null> {
     return null
   }
 }
+
+// Load topic content by filename and category
+export async function loadTopicContent(filename: string, category: string): Promise<string | null> {
+  try {
+    const filePath = path.join(process.cwd(), 'content', category, filename)
+    const content = fs.readFileSync(filePath, 'utf8')
+    return content
+  } catch (error) {
+    console.error(`Error loading topic content: ${filename} in ${category}`, error)
+    return null
+  }
+}

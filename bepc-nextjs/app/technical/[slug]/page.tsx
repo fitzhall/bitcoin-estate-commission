@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPageBySlug, getPagesByCategory } from '@/lib/programmatic-content'
+import { loadTopicContent } from '@/lib/content-loader'
 import { TopicPageTemplate } from '@/components/programmatic/TopicPageTemplate'
 
 export async function generateStaticParams() {
@@ -26,12 +27,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function TechnicalPage({ params }: { params: { slug: string } }) {
+export default async function TechnicalPage({ params }: { params: { slug: string } }) {
   const page = getPageBySlug('technical', params.slug)
   
   if (!page) {
     notFound()
   }
 
-  return <TopicPageTemplate page={page} />
+  // Load the markdown content
+  const content = await loadTopicContent(page.contentFile, 'technical')
+  
+  if (!content) {
+    notFound()
+  }
+
+  // Get related pages
+  const relatedPages = getPagesByCategory('technical')
+    .filter(p => p.slug !== page.slug)
+    .slice(0, 4)
+
+  return <TopicPageTemplate page={page} content={content} relatedPages={relatedPages} />
 }
