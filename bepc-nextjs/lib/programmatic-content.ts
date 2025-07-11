@@ -927,6 +927,66 @@ export const programmaticPages: TopicPage[] = [
     status: 'published',
     schemaType: 'Article'
   },
+  {
+    slug: 'quantum-computing-resistance-future-proofing',
+    title: 'Quantum Computing Resistance & Future-Proofing',
+    metaDescription: 'Future-proof Bitcoin estates against quantum computing threats. Post-quantum cryptography, migration strategies, and quantum-safe estate planning architecture.',
+    category: 'technical',
+    keywords: ['quantum computing', 'post-quantum cryptography', 'bitcoin security', 'future-proofing'],
+    contentFile: '16_Quantum_Computing_Resistance_Future_Proofing.md',
+    wordCount: 4500,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'ai-integration-automated-estate-management',
+    title: 'AI Integration & Automated Estate Management',
+    metaDescription: 'Integrate AI and automation into Bitcoin estate management. Smart contract automation, AI-driven security, and autonomous inheritance protocols.',
+    category: 'technical',
+    keywords: ['AI bitcoin', 'automated estate management', 'smart contracts', 'artificial intelligence'],
+    contentFile: '17_AI_Integration_Automated_Estate_Management.md',
+    wordCount: 4300,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'advanced-privacy-technologies-implementation',
+    title: 'Advanced Privacy Technologies Implementation',
+    metaDescription: 'Implement advanced privacy technologies for Bitcoin estates. Zero-knowledge proofs, privacy coins integration, and confidential inheritance protocols.',
+    category: 'technical',
+    keywords: ['bitcoin privacy', 'zero-knowledge proofs', 'privacy technologies', 'confidential transactions'],
+    contentFile: '18_Advanced_Privacy_Technologies_Implementation.md',
+    wordCount: 4400,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'decentralized-finance-integration-strategies',
+    title: 'Decentralized Finance Integration Strategies',
+    metaDescription: 'Integrate DeFi protocols into Bitcoin estate planning. Yield strategies, liquidity management, cross-chain inheritance, and DeFi risk management.',
+    category: 'technical',
+    keywords: ['DeFi integration', 'decentralized finance', 'yield strategies', 'cross-chain bitcoin'],
+    contentFile: '19_Decentralized_Finance_Integration_Strategies.md',
+    wordCount: 4600,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
+  {
+    slug: 'professional-bitcoin-infrastructure-scaling',
+    title: 'Professional Bitcoin Infrastructure Scaling',
+    metaDescription: 'Scale professional Bitcoin infrastructure for growing estates. Enterprise architecture, performance optimization, and global distribution strategies.',
+    category: 'technical',
+    keywords: ['bitcoin scaling', 'infrastructure growth', 'enterprise architecture', 'performance optimization'],
+    contentFile: '20_Professional_Bitcoin_Infrastructure_Scaling.md',
+    wordCount: 4700,
+    lastUpdated: '2025-01-11',
+    status: 'published',
+    schemaType: 'Article'
+  },
   
   // Compliance Pillar (Coming in Phase 1D)
   {
