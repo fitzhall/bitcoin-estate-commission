@@ -19,21 +19,21 @@ async function createCertificationWaitlist() {
   try {
     console.log('🚀 Setting up Certification Waitlist in ConvertKit...');
 
-    // Use existing BEPC Collection form
-    const existingFormId = 8289232;
-    console.log(`✅ Using existing form: BEPC Collection (ID: ${existingFormId})`);
+    // Use the manually created Certification Waitlist form
+    const formId = 8298269;
+    console.log(`✅ Using form: Certification Waitlist (ID: ${formId})`);
 
     // Create custom fields for waitlist data
     const customFields = [
       { label: 'last_name', name: 'Last Name' },
       { label: 'state', name: 'State' },
-      { label: 'years_experience', name: 'Years of Experience' },
+      { label: 'years_experience_waitlist', name: 'Years of Experience (Waitlist)' },
       { label: 'firm_size', name: 'Firm Size' },
       { label: 'bitcoin_interest', name: 'Bitcoin Interest Level' },
       { label: 'expected_launch_date', name: 'Expected Launch Date' },
     ];
 
-    console.log('📝 Creating custom fields...');
+    console.log('📝 Checking custom fields...');
     
     for (const field of customFields) {
       try {
@@ -72,7 +72,7 @@ async function createCertificationWaitlist() {
       'certification_interest',
     ];
 
-    console.log('🏷️  Creating tags...');
+    console.log('🏷️  Checking tags...');
 
     for (const tagName of tags) {
       try {
@@ -128,19 +128,33 @@ async function createCertificationWaitlist() {
       }
     }
 
-    console.log('\n🎉 Setup complete!');
+    console.log('\n🎉 Certification Waitlist setup complete!');
     console.log('\n📋 Form Information:');
-    console.log(`Form ID: ${existingFormId}`);
-    console.log('Form Name: BEPC Collection');
-    console.log('Embed URL: https://backedbybitcoin.kit.com/e85b49a811');
-    console.log('Embed JS: https://backedbybitcoin.kit.com/e85b49a811/index.js');
+    console.log(`Form ID: ${formId}`);
+    console.log('Form Name: Certification Waitlist');
+    console.log('Form Type: Modal');
+    console.log('Embed URL: https://backedbybitcoin.kit.com/279b4e5a3f');
+    console.log('Embed JS: https://backedbybitcoin.kit.com/279b4e5a3f/index.js');
+    console.log('Form UID: 279b4e5a3f');
+    
     console.log('\n📋 Next steps:');
-    console.log('1. Log into ConvertKit and customize the waitlist form');
-    console.log('2. Set up the nurture email sequence with pre-launch content');
-    console.log('3. Configure the form redirect URL to /certification/waitlist-success');
-    console.log(`4. Add this form ID to your website: ${existingFormId}`);
-    console.log('\n🔗 Form management URL:');
-    console.log(`   https://app.convertkit.com/forms/designers/${existingFormId}/edit`);
+    console.log('1. Add the custom fields listed above to your form in ConvertKit');
+    console.log('2. Configure form settings and design');
+    console.log('3. Set up the nurture email sequence with pre-launch content');
+    console.log('4. Configure the form redirect URL to /certification/waitlist-success');
+    console.log(`5. Add this form to your website using form ID: ${formId}`);
+    
+    console.log('\n💻 Website Integration:');
+    console.log('Add this to your HTML where you want the form:');
+    console.log(`<script async data-uid="279b4e5a3f" src="https://backedbybitcoin.kit.com/279b4e5a3f/index.js"></script>`);
+    console.log('\nOr use the form ID in your ConvertKit React component:');
+    console.log(`<ConvertKitForm formId="${formId}" />`);
+    
+    console.log('\n🔗 ConvertKit Management URLs:');
+    console.log(`   Form Editor: https://app.convertkit.com/forms/designers/${formId}/edit`);
+    console.log('   Custom Fields: https://app.convertkit.com/custom_fields');
+    console.log('   Tags: https://app.convertkit.com/tags');
+    console.log('   Sequences: https://app.convertkit.com/sequences');
     
     console.log('\n📧 Suggested email sequence:');
     console.log('   - Welcome: Immediate confirmation + first resource');
@@ -148,6 +162,12 @@ async function createCertificationWaitlist() {
     console.log('   - Week 2: Case study of $12M Bitcoin inheritance failure');
     console.log('   - Week 4: "5 Questions Every Attorney Should Ask" checklist');
     console.log('   - Monthly: Updates on program development + exclusive content');
+
+    console.log('\n🏷️  Available tags for segmentation:');
+    console.log('   - certification_waitlist (all waitlist subscribers)');
+    console.log('   - pre_launch (early access group)');
+    console.log('   - founding_member_eligible (VIP tier)');
+    console.log('   - certification_interest (general interest)');
 
   } catch (error) {
     console.error('❌ Error setting up ConvertKit:', error);

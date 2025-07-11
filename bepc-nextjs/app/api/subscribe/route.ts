@@ -97,26 +97,22 @@ async function addToConvertKit(
   }
 
   try {
-    // First, we need to get the form ID for "bepc collection"
-    // Let's get all forms to find the correct one
-    const formsResponse = await fetch(
-      `${CONVERTKIT_API_URL}/forms?api_key=${CONVERTKIT_API_KEY}`,
-      { method: 'GET' }
-    )
-    
-    const formsData = await formsResponse.json()
-    console.log('Available forms:', formsData.forms?.map((f: any) => ({ id: f.id, name: f.name })))
-    
-    // Find the "bepc collection" form
-    const bepcForm = formsData.forms?.find((form: any) => 
-      form.name.toLowerCase().includes('bepc collection') || 
-      form.name.toLowerCase().includes('bepc')
-    )
-    
-    if (!bepcForm) {
-      console.error('BEPC Collection form not found')
-      // Still try to subscribe using the universal endpoint
+    // Form IDs mapping
+    const FORM_IDS = {
+      certification_waitlist: 8298269,  // Certification Waitlist form
+      attorney_applicant: 8298152,      // Directory Request form
+      default: 8289232                  // BEPC Collection form (general)
     }
+
+    // Determine which form to use based on userType
+    let formId = FORM_IDS.default
+    if (userType === 'certification_waitlist') {
+      formId = FORM_IDS.certification_waitlist
+    } else if (userType === 'attorney_applicant') {
+      formId = FORM_IDS.attorney_applicant
+    }
+
+    console.log(`Using form ID ${formId} for user type: ${userType}`)
 
     // Subscribe to ConvertKit
     const subscribeData = {
@@ -138,6 +134,8 @@ async function addToConvertKit(
       subscribeData.tags.push('attorney')
     } else if (userType === 'attorney_applicant') {
       subscribeData.tags.push('attorney', 'directory_applicant', 'pending_review')
+    } else if (userType === 'certification_waitlist') {
+      subscribeData.tags.push('certification_waitlist', 'pre_launch', 'founding_member_eligible')
     } else if (userType === 'bitcoin_holder') {
       subscribeData.tags.push('hodler', 'bitcoin_holder')
     }
@@ -147,10 +145,8 @@ async function addToConvertKit(
       subscribeData.tags.push(`state_${state.toLowerCase()}`)
     }
 
-    // Subscribe to the form if we found it, otherwise use universal subscribe
-    const subscribeUrl = bepcForm 
-      ? `${CONVERTKIT_API_URL}/forms/${bepcForm.id}/subscribe`
-      : `${CONVERTKIT_API_URL}/subscribers`
+    // Subscribe to the specific form
+    const subscribeUrl = `${CONVERTKIT_API_URL}/forms/${formId}/subscribe`
 
     const response = await fetch(subscribeUrl, {
       method: 'POST',

@@ -19,9 +19,9 @@ async function createAttorneyForm() {
   try {
     console.log('🚀 Setting up Attorney Directory in ConvertKit...');
 
-    // Use existing Directory Request form
-    const existingFormId = 8298152;
-    console.log(`✅ Using existing form with ID: ${existingFormId}`);
+    // Use Directory Request form
+    const formId = 8298152;
+    console.log(`✅ Using Directory Request form with ID: ${formId}`);
 
     // Create custom fields for attorney data
     const customFields = [
@@ -134,17 +134,16 @@ async function createAttorneyForm() {
 
     console.log('\n🎉 Setup complete!');
     console.log('\n📋 Form Information:');
-    console.log(`Form ID: ${existingFormId}`);
+    console.log(`Form ID: ${formId}`);
     console.log('Form Name: Directory Request');
-    console.log('Embed URL: https://backedbybitcoin.kit.com/72852e4bf7');
-    console.log('Embed JS: https://backedbybitcoin.kit.com/72852e4bf7/index.js');
+    console.log('Form Type: For attorney directory applications');
     console.log('\n📋 Next steps:');
     console.log('1. Log into ConvertKit and customize the form fields');
     console.log('2. Set up the email sequence for attorney applicants');
     console.log('3. Configure the form redirect URL to /attorney-application-success');
-    console.log(`4. Add this form ID to your website: ${existingFormId}`);
+    console.log(`4. This form ID is now configured in the website: ${formId}`);
     console.log('\n🔗 Form management URL:');
-    console.log(`   https://app.convertkit.com/forms/designers/${existingFormId}/edit`);
+    console.log(`   https://app.convertkit.com/forms/designers/${formId}/edit`);
 
   } catch (error) {
     console.error('❌ Error setting up ConvertKit:', error);
